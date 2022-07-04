@@ -7,11 +7,32 @@
 
 import Foundation
 
+// Types
+
 struct Product: Hashable {
     let name: String
     let price: Int
 }
 
-typealias DayData = (list: Set<Product>, total: Int)
+struct ProductsData {
+    var products: Set<Product>
+    var sum: Int
+}
+
+// Alias
+
 typealias Name = String
 typealias Category = String
+
+// Enums
+
+enum Movment {
+    case Expense
+    case Earning
+}
+
+// Errors
+
+enum AddErrors: Error {
+    case monthError
+}
