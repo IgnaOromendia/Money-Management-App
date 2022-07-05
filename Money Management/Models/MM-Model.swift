@@ -77,11 +77,14 @@ class MoneyManagement {
         let expensesD = self.expenses[date]
         
         if var expensesD = expensesD {
-            if expensesD.products.contains(where: {return $0.name == product.name && $0.price == product.price && $0.category == product.category}) {
-                let index = expensesD.products.firstIndex(where: {$0.name == product.name && $0.price == product.price && $0.category == product.category})
-                let oldProduct = expensesD.products.remove(at: index!)
-                let amount =  oldProduct.amount + 1
-                expensesD.products.insert(Product(name: product.name, price: product.price, category: product.category, amount: amount))
+            if let oldProduct = expensesD.products.find(product) {
+                do {
+                    var newProduct = oldProduct
+                    newProduct.incrmentAmount()
+                    try expensesD.products.replace(old: oldProduct, new: newProduct)
+                } catch {
+                    print(error.localizedDescription)
+                }
             } else {
                 expensesD.products.insert(product)
             }
@@ -104,11 +107,14 @@ class MoneyManagement {
         let earningD = self.earnings[date]
         
         if var earningD = earningD {
-            if earningD.products.contains(where: {return $0.name == product.name && $0.price == product.price && $0.category == product.category}) {
-                let index = earningD.products.firstIndex(where: {$0.name == product.name && $0.price == product.price && $0.category == product.category})
-                let oldProduct = earningD.products.remove(at: index!)
-                let amount =  oldProduct.amount + 1
-                earningD.products.insert(Product(name: product.name, price: product.price, category: product.category, amount: amount))
+            if let oldProduct = earningD.products.find(product) {
+                do {
+                    var newProduct = oldProduct
+                    newProduct.incrmentAmount()
+                    try earningD.products.replace(old: oldProduct, new: newProduct)
+                } catch {
+                    print(error.localizedDescription)
+                }
             } else {
                 earningD.products.insert(product)
             }
@@ -179,12 +185,11 @@ class MoneyManagement {
     func balance(from d1:DateComponents, to d2: DateComponents) -> Int {
         var result = 0
         var day = d1
-        print(d1.hour ?? -1)
         while day != d2 {
-            result += (self.expenses[day]?.sum ?? 0) + (self.earnings[day]?.sum ?? 0)
-            day = day.date?.advanced(by: 86.400).getKeyData() ?? d2
+            result += ((self.earnings[d1]?.sum ?? 0) - (self.expenses[d1]?.sum ?? 0))
+            day = day.date?.advanced(by: 86400).getKeyData() ?? d2
         }
-        result += (self.expenses[d2]?.sum ?? 0) + (self.earnings[d2]?.sum ?? 0)
+        result += ((self.earnings[d2]?.sum ?? 0) - (self.expenses[d2]?.sum ?? 0))
         return result
     }
     

@@ -18,6 +18,10 @@ struct Product: Hashable, Equatable {
     static func == (lhs: Product, rhs: Product) -> Bool {
         return lhs.name == rhs.name && lhs.price == rhs.price && lhs.category == rhs.category
     }
+    
+    mutating func incrmentAmount() {
+        self.amount += 1
+    }
 }
 
 struct ProductsData: Equatable {

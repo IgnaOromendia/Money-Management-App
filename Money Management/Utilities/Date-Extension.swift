@@ -11,4 +11,8 @@ extension Date {
     func getKeyData() -> DateComponents {
         return Calendar.current.dateComponents([.day,.month,.year,.weekOfMonth], from: self)
     }
+    
+    var yesterday: Date {
+        return Date().advanced(by: -86000)
+    }
 }
