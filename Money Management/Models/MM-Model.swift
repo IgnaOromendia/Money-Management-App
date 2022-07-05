@@ -10,8 +10,8 @@ import Foundation
 class MoneyManagement {
     private var expenses: Dictionary<DateComponents,ProductsData>
     private var earnings: Dictionary<DateComponents,ProductsData>
-    private var monthlyExpenses: Array<Int>         // 12 positions
-    private var monthlyEarnings: Array<Int>         // 12 positions
+    private var monthlyExpenses: Array<Int>                         // 12 positions
+    private var monthlyEarnings: Array<Int>                         // 12 positions
     private var debts: Dictionary<Name,Int>
     private var debtors: Dictionary<Name,Int>
     private var categories: Set<Category>

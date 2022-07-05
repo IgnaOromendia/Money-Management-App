@@ -8,5 +8,5 @@
 import Foundation
 
 // TO DO LIST
-// Seguir testeando desde las 129 de MM-Model en adelante
+// Empezar con la interfaz
 

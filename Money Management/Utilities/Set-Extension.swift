@@ -7,13 +7,13 @@
 
 import Foundation
 
-extension Set where Element == Product {
-    func find(_ elem: Product) -> Product? {
+extension Set where Element: Equatable {
+    func find<T>(_ elem: T) -> T? {
         var it = self.makeIterator()
         var p = it.next()
         while p != nil {
-            if p == elem {
-                return p
+            if p == elem as? Element {
+                return p as? T
             } else {
                 p = it.next()
             }
@@ -21,10 +21,10 @@ extension Set where Element == Product {
         return nil
     }
     
-    mutating func replace(old p1: Product, new p2: Product) throws {
+    mutating func replace<T>(old p1: T, new p2: T) throws {
         if let old = find(p1) {
-            self.remove(old)
-            self.insert(p2)
+            self.remove(old as! Element)
+            self.insert(p2 as! Element)
         } else {
             throw SetError.ElementDoesntExists
         }
