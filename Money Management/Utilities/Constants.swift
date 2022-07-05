@@ -12,7 +12,12 @@ import Foundation
 struct Product: Hashable, Equatable {
     let name: String
     let price: Int
+    let category: Category
+    var amount: Int
     
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        return lhs.name == rhs.name && lhs.price == rhs.price && lhs.category == rhs.category
+    }
 }
 
 struct ProductsData: Equatable {
@@ -34,6 +39,6 @@ enum Movment {
 
 // Errors
 
-enum AddErrors: Error {
+enum AddErrors: LocalizedError {
     case monthError
 }

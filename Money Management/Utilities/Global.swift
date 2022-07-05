@@ -8,6 +8,5 @@
 import Foundation
 
 // TO DO LIST
-// Ponerle categoira a los productos
-// Que calcule automaticamente los meses
-// Seguir testeando
+// Seguir testeando desde las 129 de MM-Model en adelante
+

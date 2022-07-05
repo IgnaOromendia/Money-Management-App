@@ -72,12 +72,19 @@ class MoneyManagement {
     
     // Set functions
     
-    func addExpenses(product: Product,on d: Date, category: Category) throws {
+    func addExpenses(product: Product,on d: Date) throws {
         let date = d.getKeyData()
         let expensesD = self.expenses[date]
         
         if var expensesD = expensesD {
-            expensesD.products.insert(product)
+            if expensesD.products.contains(where: {return $0.name == product.name && $0.price == product.price && $0.category == product.category}) {
+                let index = expensesD.products.firstIndex(where: {$0.name == product.name && $0.price == product.price && $0.category == product.category})
+                let oldProduct = expensesD.products.remove(at: index!)
+                let amount =  oldProduct.amount + 1
+                expensesD.products.insert(Product(name: product.name, price: product.price, category: product.category, amount: amount))
+            } else {
+                expensesD.products.insert(product)
+            }
             expensesD.sum += product.price
             self.expenses.updateValue(expensesD, forKey: date)
         } else {
@@ -92,12 +99,19 @@ class MoneyManagement {
         }
     }
     
-    func addEarnings(product: Product,on d: Date, category: Category) throws {
+    func addEarnings(product: Product,on d: Date) throws {
         let date = d.getKeyData()
         let earningD = self.earnings[date]
         
         if var earningD = earningD {
-            earningD.products.insert(product)
+            if earningD.products.contains(where: {return $0.name == product.name && $0.price == product.price && $0.category == product.category}) {
+                let index = earningD.products.firstIndex(where: {$0.name == product.name && $0.price == product.price && $0.category == product.category})
+                let oldProduct = earningD.products.remove(at: index!)
+                let amount =  oldProduct.amount + 1
+                earningD.products.insert(Product(name: product.name, price: product.price, category: product.category, amount: amount))
+            } else {
+                earningD.products.insert(product)
+            }
             earningD.sum += product.price
             self.earnings.updateValue(earningD, forKey: date)
         } else {
