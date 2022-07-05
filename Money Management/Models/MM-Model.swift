@@ -28,8 +28,19 @@ class MoneyManagement {
     }
     
     convenience init(expenses: Dictionary<DateComponents,ProductsData>, earnings: Dictionary<DateComponents,ProductsData>, debts: Dictionary<Name,Int>, debtors: Dictionary<Name,Int>, categories: Set<Category>) {
-        let arr = Array(repeating: 0, count: 12)
-        self.init(expenses: expenses,earnings: earnings,monthlyExpenses: arr,monthlyEarnings: arr,debts: debts,debtors: debtors, categories: categories)
+        var arr1 = Array(repeating: 0, count: 12)
+        var arr2 = Array(repeating: 0, count: 12)
+        
+        
+        for (dateKey,product) in expenses {
+            arr1[dateKey.month!] += product.sum
+        }
+        
+        for (dateKey,product) in earnings {
+            arr2[dateKey.month!] += product.sum
+        }
+        
+        self.init(expenses: expenses,earnings: earnings,monthlyExpenses: arr1,monthlyEarnings: arr2,debts: debts,debtors: debtors, categories: categories)
     }
     
     convenience init() {
@@ -52,7 +63,7 @@ class MoneyManagement {
     }
     
     func getDebtors() -> Dictionary<Name,Int> {
-        return self.debts
+        return self.debtors
     }
     
     func getCategories() -> Set<Category> {

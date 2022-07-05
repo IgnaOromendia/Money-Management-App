@@ -8,29 +8,53 @@
 import XCTest
 @testable import Money_Management
 
-class Money_ManagementTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class MoneyManagement_test: XCTestCase {
+    var expenses = ProductsData(products: [Product(name: "Coca", price: 100),
+                                           Product(name: "Hielo", price: 50)], sum: 50)
+    var earnings = ProductsData(products: [Product(name: "Robo", price: 500)], sum: 500)
+    let date = Date().getKeyData()
+    var arr1 = [0,0,0,0,0,0,150,0,0,0,0,0]
+    var arr2 = [0,0,0,0,0,0,500,0,0,0,0,0]
+    var debtsT = ["Juan":10000]
+    var debtorsT = ["Pepe":100]
+    
+    
+    // INIT & GET TEST
+    func testDesignatedInit() throws {
+        let mmTest = MoneyManagement(expenses: [date:expenses], earnings: [date:earnings], monthlyExpenses: arr1, monthlyEarnings: arr2, debts: debtsT, debtors: debtorsT, categories: ["Comida"])
+        
+        XCTAssert(mmTest.dateExpenses(on: Date()) == expenses)
+        XCTAssert(mmTest.dateEarnings(on: Date()) == earnings)
+        XCTAssert(mmTest.getDebts() == debtsT)
+        XCTAssert(mmTest.getDebtors() == debtorsT)
+        XCTAssert(mmTest.getCategories() == ["Comida"])
+        
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testConvenienceInit_1() throws {
+        let mmTest = MoneyManagement(expenses: [date:expenses], earnings: [date:earnings], debts: debtsT, debtors: debtorsT, categories: ["Comida"])
+        
+        XCTAssert(mmTest.dateExpenses(on: Date()) == expenses)
+        XCTAssert(mmTest.dateEarnings(on: Date()) == earnings)
+        XCTAssert(mmTest.getDebts() == debtsT)
+        XCTAssert(mmTest.getDebtors() == debtorsT)
+        XCTAssert(mmTest.getCategories() == ["Comida"])
+        
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testConvenienceInit_2() throws {
+        let mmTest = MoneyManagement()
+        
+        XCTAssert(mmTest.dateExpenses(on: Date()) == nil)
+        XCTAssert(mmTest.dateEarnings(on: Date()) == nil)
+        XCTAssert(mmTest.getDebts().isEmpty)
+        XCTAssert(mmTest.getDebtors().isEmpty)
+        XCTAssert(mmTest.getCategories().isEmpty)
+        
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    
+    // SET TEST
+    
+    // OTHER TESTS
 
 }

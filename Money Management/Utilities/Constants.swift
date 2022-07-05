@@ -9,12 +9,13 @@ import Foundation
 
 // Types
 
-struct Product: Hashable {
+struct Product: Hashable, Equatable {
     let name: String
     let price: Int
+    
 }
 
-struct ProductsData {
+struct ProductsData: Equatable {
     var products: Set<Product>
     var sum: Int
 }

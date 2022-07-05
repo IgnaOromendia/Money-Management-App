@@ -21,7 +21,10 @@
 		700A6FD528737784002A3F8E /* MM-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FC92873694B002A3F8E /* MM-Model.swift */; };
 		700A6FD8287388F2002A3F8E /* Array-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FD7287388F2002A3F8E /* Array-Extension.swift */; };
 		700A6FD9287388F2002A3F8E /* Array-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FD7287388F2002A3F8E /* Array-Extension.swift */; };
-		700A6FDA287388F2002A3F8E /* Array-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FD7287388F2002A3F8E /* Array-Extension.swift */; };
+		700A6FDB28739367002A3F8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FCB287369FD002A3F8E /* Constants.swift */; };
+		700A6FDC2873936A002A3F8E /* Date-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FCF287376B0002A3F8E /* Date-Extension.swift */; };
+		700A6FDE287394F5002A3F8E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FDD287394F5002A3F8E /* Global.swift */; };
+		700A6FDF287394F5002A3F8E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FDD287394F5002A3F8E /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,7 @@
 		700A6FCB287369FD002A3F8E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		700A6FCF287376B0002A3F8E /* Date-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date-Extension.swift"; sourceTree = "<group>"; };
 		700A6FD7287388F2002A3F8E /* Array-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-Extension.swift"; sourceTree = "<group>"; };
+		700A6FDD287394F5002A3F8E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 				700A6FCB287369FD002A3F8E /* Constants.swift */,
 				700A6FCF287376B0002A3F8E /* Date-Extension.swift */,
 				700A6FD7287388F2002A3F8E /* Array-Extension.swift */,
+				700A6FDD287394F5002A3F8E /* Global.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -340,6 +345,7 @@
 				700A6FD8287388F2002A3F8E /* Array-Extension.swift in Sources */,
 				700A6F93287361E4002A3F8E /* SceneDelegate.swift in Sources */,
 				700A6FCC287369FD002A3F8E /* Constants.swift in Sources */,
+				700A6FDE287394F5002A3F8E /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +355,10 @@
 			files = (
 				700A6FD9287388F2002A3F8E /* Array-Extension.swift in Sources */,
 				700A6FD528737784002A3F8E /* MM-Model.swift in Sources */,
+				700A6FDF287394F5002A3F8E /* Global.swift in Sources */,
 				700A6FA8287361E9002A3F8E /* Money_ManagementTests.swift in Sources */,
+				700A6FDC2873936A002A3F8E /* Date-Extension.swift in Sources */,
+				700A6FDB28739367002A3F8E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +366,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				700A6FDA287388F2002A3F8E /* Array-Extension.swift in Sources */,
 				700A6FB4287361EA002A3F8E /* Money_ManagementUITestsLaunchTests.swift in Sources */,
 				700A6FB2287361EA002A3F8E /* Money_ManagementUITests.swift in Sources */,
 			);
