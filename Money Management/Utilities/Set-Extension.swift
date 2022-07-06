@@ -8,6 +8,7 @@
 import Foundation
 
 extension Set where Element: Equatable {
+    /// Finds and returns an sepcifc element in the set
     func find<T>(_ elem: T) -> T? {
         var it = self.makeIterator()
         var p = it.next()
@@ -21,6 +22,7 @@ extension Set where Element: Equatable {
         return nil
     }
     
+    /// Replace an element by other in the set
     mutating func replace<T>(old p1: T, new p2: T) throws {
         if let old = find(p1) {
             self.remove(old as! Element)

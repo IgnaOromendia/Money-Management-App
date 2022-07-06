@@ -7,41 +7,19 @@
 
 import Foundation
 
-// Types
-
-struct Product: Hashable, Equatable {
-    let name: String
-    let price: Int
-    let category: Category
-    var amount: Int
-    
-    static func == (lhs: Product, rhs: Product) -> Bool {
-        return lhs.name == rhs.name && lhs.price == rhs.price && lhs.category == rhs.category
-    }
-    
-    mutating func incrmentAmount() {
-        self.amount += 1
-    }
-}
-
-struct ProductsData: Equatable {
-    var products: Set<Product>
-    var sum: Int
-}
-
-// Alias
+// MARK: - ALIAS
 
 typealias Name = String
 typealias Category = String
 
-// Enums
+// MARK: - ENUM
 
 enum Movment {
     case Expense
     case Earning
 }
 
-// Errors
+//  MARK: - ERRORS
 
 enum AddErrors: LocalizedError {
     case monthError

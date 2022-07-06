@@ -8,6 +8,7 @@
 import Foundation
 
 extension Array where Element == Int {
+    /// Add all the element of the array
     func addAll() -> Int {
         var result = 0
         for item in self {
