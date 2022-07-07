@@ -13,9 +13,9 @@ extension Date {
         return Calendar.current.dateComponents([.day,.month,.year,.weekOfMonth], from: self)
     }
     
-    /// Step back 1 day
+    /// Returns yesterday's date
     var yesterday: Date {
-        return Date().advanced(by: -86000)
+        return Date().advanced(by: -86400)
     }
     
     /// Get a string date 9/12/2018 with this fomrat

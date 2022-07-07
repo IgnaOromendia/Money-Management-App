@@ -27,24 +27,30 @@ final class MovmentViewModel {
     
     init(_ m: MoneyManagement) {
         let today = Date.now.getKeyData()
+        let yesterday = Date.now.yesterday
+        let twoDaysAgo = Date.now.yesterday.advanced(by: -86400)
         self.balance = m.balance(from: today, to: today)
-        let dataY = MovmentViewModel.compareToYesterday(m: m)
-        let dataTwoD = MovmentViewModel.compareTo2DaysAgo(m: m)
+        let expensesT = m.dateExpenses(on: Date.now)?.sum ?? 0
+        let expensesY = m.dateExpenses(on: yesterday)?.sum ?? 0
+        let expensesTwoD = m.dateExpenses(on: twoDaysAgo)?.sum ?? 0
+        
+        let dataY: (Bool,Int) = (expensesY < expensesT , (expensesY - expensesT))             // true = more
+        let dataTwoD: (Bool,Int) = (expensesTwoD < expensesT , abs(expensesTwoD - expensesT)) // false = less
         
         var t = dataY.0 ?  " more " : " less "
-        self.comp1Text = "$\(dataY.1)" + t + "yesterday"
-        self.comp1Color = dataY.0 ? lightGreen : lightRed
+        self.comp1Text = "$\(dataY.1) spent" + t + "than yesterday"
+        self.comp1Color = dataY.0 ? lightRed : lightGreen
         
         t = dataTwoD.0 ?  " more " : " less "
-        self.comp2Text = "$\(dataTwoD.1)" + t + "than 2 days ago"
-        self.comp2Color = dataTwoD.0 ? lightGreen : lightRed
-        
+        self.comp2Text = "$\(dataTwoD.1) spent" + t + "than 2 days ago"
+        self.comp2Color = dataTwoD.0 ? lightRed : lightGreen
     }
     
     
     func setUpDayBalanceView(containerView:UIView, title:UILabel, money: UILabel, compLabel1: UILabel, compLabel2: UILabel, btn: UIButton) {
         containerView.cornerRadius(of: 20)
         containerView.backgroundColor = .white
+        containerView.shadow = true
         
         title.font = UIFont.systemFont(ofSize: fontSizeTitle, weight: .semibold)
         title.text = titleString
@@ -63,14 +69,5 @@ final class MovmentViewModel {
         btn.clipsToBounds = true
         btn.cornerRadius(of: btn.frame.size.height / 2)
         btn.backgroundColor = blue
-    }
-    
-    // False = less , true = more
-    private static func compareToYesterday(m: MoneyManagement) -> (Bool,Int) {
-        return (false,0)
-    }
-    
-    private static func compareTo2DaysAgo(m: MoneyManagement) -> (Bool,Int) {
-        return (false,0)
     }
 }
