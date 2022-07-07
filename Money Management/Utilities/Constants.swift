@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: - ALIAS
 
 typealias Name = String
 typealias Category = String
+typealias UITableViewController_D_DS = UITableViewDelegate & UITableViewDataSource
 
 // MARK: - ENUM
 

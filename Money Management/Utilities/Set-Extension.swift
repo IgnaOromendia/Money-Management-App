@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Metal
 
 extension Set where Element: Equatable {
     /// Finds and returns an sepcifc element in the set
@@ -30,6 +31,15 @@ extension Set where Element: Equatable {
         } else {
             throw SetError.ElementDoesntExists
         }
+    }
+    
+    /// Transform a set into an array
+    func setToArray() -> Array<Element> {
+        var result: Array<Element> = []
+        for item in self {
+            result.append(item)
+        }
+        return result
     }
 }
 

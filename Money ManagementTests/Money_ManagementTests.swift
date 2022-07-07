@@ -8,7 +8,7 @@
 import XCTest
 @testable import Money_Management
 
-class MoneyManagement_test: XCTestCase {
+class MoneyManagement_Model_test: XCTestCase {
     var expenses = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", amount: 1),
                                            Product(name: "Hielo", price: 50, category: "Otros", amount: 1)], sum: 150)
     var earnings = ProductsData(products: [Product(name: "Robo", price: 500, category: "Otros", amount: 1)], sum: 500)
@@ -251,7 +251,7 @@ class MoneyManagement_test: XCTestCase {
         let mmTest = MoneyManagement()
         let prod1 = Product(name: "A", price: 1, category: "C1", amount: 1)
         try mmTest.addExpenses(product: prod1, on: Date())
-        XCTAssert(mmTest.weeklyExpenses(Date().getKeyData().weekOfMonth!, for: .Expense) == 1)
+        XCTAssert(mmTest.weeklyMovment(Date().getKeyData().weekOfMonth!, for: .Expense) == 1)
     }
     
     func test_weeklyMovment2() throws {
@@ -261,7 +261,7 @@ class MoneyManagement_test: XCTestCase {
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1, on: Date())
-        XCTAssert(mmTest.weeklyExpenses(Date().getKeyData().weekOfMonth!, for: .Expense) == 4)
+        XCTAssert(mmTest.weeklyMovment(Date().getKeyData().weekOfMonth!, for: .Expense) == 4)
     }
     
     func test_balanceSameDay() throws {
@@ -318,7 +318,11 @@ class Extensions_tests: XCTestCase {
         XCTAssert(set1.find(prod1M) == nil)
     }
     
-    
-    
-    
+    func test_setToArrayInt() {
+        let setT: Set<Int> = [1,2,3,4,5]
+        let arrT: Array<Int> = [1,2,3,4,5]
+        for item in setT.setToArray() {            
+            XCTAssert(arrT.contains(item))
+        }
+    }
 }

@@ -36,6 +36,8 @@ class MoneyManagement {
     private var debtors: Dictionary<Name,Int>
     private var categories: Set<Category>
     
+    // MARK: - Inits
+    
     init(expenses: Dictionary<DateComponents,ProductsData>, earnings: Dictionary<DateComponents,ProductsData>, monthlyExpenses: Array<Int>,
          monthlyEarnings: Array<Int>, debts: Dictionary<Name,Int>, debtors: Dictionary<Name,Int>, categories: Set<Category>) {
         self.expenses = expenses
@@ -68,30 +70,36 @@ class MoneyManagement {
         self.init(expenses: [:],earnings: [:],monthlyExpenses: arr,monthlyEarnings: arr,debts: [:],debtors: [:], categories: [])
     }
     
-    // Get functions
+    // MARK: - Get functions
     
+    /// Returns the expenses of the date and the sum of them
     func dateExpenses(on d: Date) -> ProductsData? {
         return self.expenses[d.getKeyData()]
     }
     
+    /// Returns the earnings of the date and the sum of them
     func dateEarnings(on d: Date) -> ProductsData? {
         return self.earnings[d.getKeyData()]
     }
     
+    /// Returns the debts
     func getDebts() -> Dictionary<Name,Int> {
         return self.debts
     }
     
+    /// Returns the debtors
     func getDebtors() -> Dictionary<Name,Int> {
         return self.debtors
     }
     
+    /// Returns the categories
     func getCategories() -> Set<Category> {
         return self.categories
     }
     
-    // Set functions
+    // MARK: - Set functions
     
+    /// Add an expense to a date
     func addExpenses(product: Product,on d: Date) throws {
         let date = d.getKeyData()
         let expensesD = self.expenses[date]
@@ -122,6 +130,7 @@ class MoneyManagement {
         }
     }
     
+    /// Add an earning to a date
     func addEarnings(product: Product,on d: Date) throws {
         let date = d.getKeyData()
         let earningD = self.earnings[date]
@@ -152,6 +161,7 @@ class MoneyManagement {
         }
     }
     
+    /// Add a debt
     func addDebt(name: Name, amount: Int) {
         if let oldDebt = self.debts[name] {
             self.debts.updateValue(oldDebt + amount, forKey: name)
@@ -160,6 +170,7 @@ class MoneyManagement {
         }
     }
     
+    /// Add a debtor
     func addDebtor(name: Name, amount: Int) {
         if let oldDebt = self.debtors[name] {
             self.debtors.updateValue(oldDebt + amount, forKey: name)
@@ -168,18 +179,21 @@ class MoneyManagement {
         }
     }
     
+    /// Add a category
     func addCategory(_ c: Category) {
         self.categories.insert(c)
     }
     
-    // Other funcitions
+    // MARK: - Other funcitions
     
+    /// Retruns the amount of money earned or spent in that month
     func monthlyMovment(_ month: Int, for m: Movment) -> Int {
         let monthMovment: Array<Int> = getAllMonthMovment(month,for: m).map({$0.sum})
         return monthMovment.reduce(0, +)
     }
     
-    private func getAllMonthMovment(_ month: Int, for m: Movment) -> Array<ProductsData> {
+    /// Retruns an array of products earned or spent in that month
+    func getAllMonthMovment(_ month: Int, for m: Movment) -> Array<ProductsData> {
         switch m {
         case .Expense:
             return self.expenses.filter({return $0.key.month == month}).map({$0.value})
@@ -188,20 +202,23 @@ class MoneyManagement {
         }
     }
     
-    func weeklyExpenses(_ week: Int,for m: Movment) -> Int {
+    /// Retruns the amount of money earned or spent in that week
+    func weeklyMovment(_ week: Int,for m: Movment) -> Int {
         let weekMovment: Array<Int> = getAllWeekMovment(week,for: m).map({$0.sum})
         return weekMovment.reduce(0, +)
     }
     
-    private func getAllWeekMovment(_ week: Int, for m: Movment) -> Array<ProductsData> {
+    /// Retruns an array of products earned or spent in that week
+    func getAllWeekMovment(_ week: Int, for m: Movment) -> Array<ProductsData> {
         switch m {
         case .Expense:
-            return self.expenses.filter({return $0.key.weekOfMonth == week}).map({$0.value})
+            return getValuesSortedByDate(of: self.expenses.filter({return $0.key.weekOfMonth == week}), on: .Expense)
         case .Earning:
-            return self.earnings.filter({return $0.key.weekOfMonth == week}).map({$0.value})
+            return getValuesSortedByDate(of: self.earnings.filter({return $0.key.weekOfMonth == week}), on: .Earning)
         }
     }
     
+    /// Returns a balance between earnings and expenses from one date to another (also works for the same date)
     func balance(from d1:DateComponents, to d2: DateComponents) -> Int {
         var result = 0
         var day = d1
@@ -210,6 +227,20 @@ class MoneyManagement {
             day = day.date?.advanced(by: 86400).getKeyData() ?? d2
         }
         result += ((self.earnings[d2]?.sum ?? 0) - (self.expenses[d2]?.sum ?? 0))
+        return result
+    }
+    
+    private func getValuesSortedByDate(of d:Dictionary<DateComponents,ProductsData>, on m: Movment) -> Array<ProductsData> {
+        var result: Array<ProductsData> = []
+        let keysSorted = d.keys.sorted(by: { $0 > $1 })
+        for item in keysSorted {
+            switch m {
+            case .Expense:
+                result.append(self.expenses[item]!)
+            case .Earning:
+                result.append(self.earnings[item]!)
+            }
+        }
         return result
     }
     
