@@ -35,6 +35,17 @@ extension UIView {
     func cornerRadius(of numero:CGFloat) {
         self.layer.cornerRadius = numero
     }
+    
+    /// Apply a blur effect to a view
+    func applyBlurEffect(style: UIBlurEffect.Style) {
+        let blurEffect = UIBlurEffect(style: style)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        self.addSubview(blurEffectView)
+        self.clipsToBounds = true
+    }
+    
 }
 
 extension UIColor {
@@ -44,10 +55,27 @@ extension UIColor {
     }
     
     /// Generates a random color
-    static func randomColor() -> UIColor? {
+    static func randomColor() -> UIColor {
         let randomRed = Int.random(in: 0...255)
         let randomGreen = Int.random(in: 0...255)
         let randomBlue = Int.random(in: 0...255)
         return rgbColor(r: randomRed, g: randomGreen, b: randomBlue)
     }
+    
+    func ligthUp(delta: CGFloat) -> UIColor {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        return UIColor(red: addDelta(delta, to: red), green: addDelta(delta, to: green), blue: addDelta(delta, to: blue), alpha: alpha)
+    }
+    
+    private func addDelta(_ value: CGFloat, to componenet: CGFloat) -> CGFloat {
+        return max(0, min(1, componenet + value))
+    }
+    
+    
 }

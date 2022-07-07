@@ -32,6 +32,7 @@ final class MovmentViewModel {
     var rowsPerSection: Array<Int> = []
     var productsPerDay: Array<ProductsData>
     let cellId = "ExpensesCell"
+    let cellHeight = 70.0
     
     init(_ m: MoneyManagement) {
         let today = Date.now.getKeyData()
@@ -81,6 +82,11 @@ final class MovmentViewModel {
         btn.clipsToBounds = true
         btn.cornerRadius(of: btn.frame.size.height / 2)
         btn.backgroundColor = blue
+    }
+    
+    func setUpTableView(_ tableView: UITableView) {
+        let nib = UINib(nibName: cellId, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: cellId)
     }
     
     private func getSectionTitles() -> Array<String> {

@@ -46,6 +46,7 @@ class MovementsController: UIViewController, UITableViewController_D_DS {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MCViewModel.setUpTableView(tableView_expenses)
         MCViewModel.setUpDayBalanceView(containerView: view_dayBalance,
                                         title: lbl_dayBalanceTitle,
                                         money: lbl_dayBalanceMoney,
@@ -56,6 +57,10 @@ class MovementsController: UIViewController, UITableViewController_D_DS {
     
     
     // MARK: - TABLE VIEW
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return MCViewModel.cellHeight
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return MCViewModel.sectionTitles[section]
@@ -70,8 +75,9 @@ class MovementsController: UIViewController, UITableViewController_D_DS {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MCViewModel.cellId, for: indexPath)
-        cell.textLabel?.text = MCViewModel.productsPerDay[indexPath.section].products.setToArray()[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: MCViewModel.cellId, for: indexPath) as! ExpensesCell
+        let product = MCViewModel.productsPerDay[indexPath.section].products.setToArray()[indexPath.row]
+        cell.fillWithData(product)
         return cell
     }
     
