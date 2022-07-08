@@ -79,7 +79,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         lbl_titleP.text = txt_title.text ?? "No-Name"
         lbl_priceP.text = txt_price.text ?? "-$0"
-        lbl_detailsP.text = txt_category.text ?? "No-Cat" + " " + txt_quantity.text ?? "x1"
+        lbl_detailsP.text = (txt_category.text ?? "No-Cat") + " " + (txt_quantity.text ?? "x1")
         textField.resignFirstResponder()
         return true
     }
