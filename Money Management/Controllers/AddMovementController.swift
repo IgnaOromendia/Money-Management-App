@@ -13,7 +13,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var segmentedMovement: UISegmentedControl!
     @IBOutlet var labels: [UILabel]!
     @IBOutlet var views: [UIView]!
-    @IBOutlet var text: [UITextField]!
+    @IBOutlet var texts: [UITextField]!
     
     // PREVIEW
     @IBOutlet weak var lbl_preview: UILabel!
@@ -57,6 +57,12 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpController()
+        setNavigationTransparent()
+        addMovVM.setUpLabels(labels)
+        addMovVM.setUpTexts(texts)
+        addMovVM.setUpPreview(viewP: view_preview, view_containerCatP, view_catP, lbl_titleP, lbl_detailsP, lbl_priceP)
+        addMovVM.setUpBtns(btn_save, btn_calendar)
     }
     
     // TEXTFIELD
@@ -64,5 +70,9 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     // ACTIONS
     
     // OTHERS
+    
+    private func setUpController() {
+        view.backgroundColor = customBlue
+    }
     
 }

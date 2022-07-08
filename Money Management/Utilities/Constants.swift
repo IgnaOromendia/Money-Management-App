@@ -10,9 +10,12 @@ import UIKit
 
 // MARK: - CONSTANTS
 
+// IDs
 let movementControllerID = "MovmentControllerID"
 let addMovementControllerID = "AddMovementControllerID"
 
+// Colors
+let customBlue = UIColor.rgbColor(r: 72, g: 129, b: 215)
 
 // MARK: - ALIAS
 

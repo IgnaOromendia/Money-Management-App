@@ -47,6 +47,7 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationTransparent()
         MCViewModel.setUpTableView(tableView_expenses)
         MCViewModel.setUpDayBalanceView(containerView: view_dayBalance,
                                         title: lbl_dayBalanceTitle,
@@ -54,6 +55,11 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
                                         compLabel1: lbl_dayBalanceCompYesterday,
                                         compLabel2: lbl_dayBalanceComp2days,
                                         btn: btn_DayBalancePlus)
+    }
+    
+    // ACTIONS
+    @IBAction func addMovement(_ sender: UIButton) {
+        transition(to: addMovementControllerID)
     }
     
     
