@@ -79,3 +79,29 @@ extension UIColor {
     
     
 }
+
+extension UIViewController {
+    
+    /// Set a search bar in the navigation controller
+    func setSearchBar(for searchBarController: UISearchController,hides:Bool, obscure:Bool, placeholder:String) {
+        searchBarController.searchResultsUpdater = self as? UISearchResultsUpdating
+        searchBarController.obscuresBackgroundDuringPresentation = obscure
+        searchBarController.searchBar.placeholder = placeholder
+        navigationItem.searchController = searchBarController
+        navigationItem.hidesSearchBarWhenScrolling = hides
+        definesPresentationContext = true
+    }
+}
+
+extension UISearchController {
+    
+    /// Get if the search bar is empty
+    var isSearchBarEmpty: Bool {
+        return self.searchBar.text?.isEmpty ?? true
+    }
+    
+    /// Get if someone is using the search bar
+    var isFiltering: Bool {
+        return self.isActive && !isSearchBarEmpty
+    }
+}

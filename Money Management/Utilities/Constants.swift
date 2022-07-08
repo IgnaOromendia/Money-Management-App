@@ -12,7 +12,8 @@ import UIKit
 
 typealias Name = String
 typealias Category = String
-typealias UITableViewController_D_DS = UITableViewDelegate & UITableViewDataSource
+typealias UITableViewControllerMethods = UITableViewDelegate & UITableViewDataSource
+typealias UISearchBarMethods =  UISearchResultsUpdating & UISearchBarDelegate
 
 // MARK: - ENUM
 

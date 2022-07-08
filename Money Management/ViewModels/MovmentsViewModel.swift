@@ -15,6 +15,7 @@ fileprivate let fontSizeMoney = 36.0
 fileprivate let fontSizeComp = 16.0
 fileprivate let lightGreen = UIColor.rgbColor(r: 158, g: 191, b: 131)
 fileprivate let lightRed = UIColor.rgbColor(r: 255, g: 139, b: 139)
+fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)
 fileprivate let blue = UIColor.rgbColor(r: 72, g: 129, b: 215)
 
 final class MovmentViewModel {
@@ -85,8 +86,10 @@ final class MovmentViewModel {
     }
     
     func setUpTableView(_ tableView: UITableView) {
-        let nib = UINib(nibName: cellId, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: cellId)
+        let nibCell = UINib(nibName: cellId, bundle: nil)
+        tableView.register(nibCell, forCellReuseIdentifier: cellId)
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
     }
     
     private func getSectionTitles() -> Array<String> {
@@ -106,6 +109,4 @@ final class MovmentViewModel {
         }
         return result
     }
-    
-    
 }

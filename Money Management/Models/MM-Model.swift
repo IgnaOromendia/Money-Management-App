@@ -230,6 +230,7 @@ class MoneyManagement {
         return result
     }
     
+    /// Get values sorted by date
     private func getValuesSortedByDate(of d:Dictionary<DateComponents,ProductsData>, on m: Movment) -> Array<ProductsData> {
         var result: Array<ProductsData> = []
         let keysSorted = d.keys.sorted(by: { $0 > $1 })

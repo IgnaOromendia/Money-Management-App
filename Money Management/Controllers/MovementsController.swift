@@ -9,7 +9,7 @@ import UIKit
 
 // TEST's begins
 var expenses1 = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", amount: 1),
-                                       Product(name: "Hielo", price: 50, category: "Otros", amount: 1)], sum: 150)
+                                       Product(name: "Hielo", price: 50, category: "Otros", amount: 2)], sum: 150)
 
 var expenses2 = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", amount: 1),], sum: 100)
 
@@ -27,8 +27,7 @@ let mm = MoneyManagement(expenses: [date:expenses2, dateY:expenses1, dateTwoD:ex
                          categories: [])
 // END of TEST coca, hielo-coca, mila
 
-class MovementsController: UIViewController, UITableViewController_D_DS {
-    
+class MovementsController: UIViewController, UITableViewControllerMethods {
     
     // Day Balance View
     @IBOutlet weak var view_dayBalance: UIView!                 // Corner radius = 20, white
@@ -41,7 +40,9 @@ class MovementsController: UIViewController, UITableViewController_D_DS {
     // Table view
     @IBOutlet weak var tableView_expenses: UITableView!
     
-    let MCViewModel = MovmentViewModel(mm)
+    
+    // Variables
+    private let MCViewModel = MovmentViewModel(mm)
    
     
     override func viewDidLoad() {
@@ -64,6 +65,10 @@ class MovementsController: UIViewController, UITableViewController_D_DS {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return MCViewModel.sectionTitles[section]
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "Total: $\(MCViewModel.productsPerDay[section].sum)"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
