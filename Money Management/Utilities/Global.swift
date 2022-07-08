@@ -7,5 +7,4 @@
 
 // TO DO LIST
 // Empezar con la interfaz
-// Terminar con MovmentController
-// - Hacer la custom cell
+//

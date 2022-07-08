@@ -47,7 +47,7 @@ class ExpensesCell: UITableViewCell {
     
     func fillWithData(_ product: Product) {
         lbl_expeseName.text = product.name
-        lbl_details.text = product.category + " x\(product.amount)"
+        lbl_details.text = product.category + " x\(product.quantity)"
         lbl_money.text = "-fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)f$\(product.price)"
     }
     

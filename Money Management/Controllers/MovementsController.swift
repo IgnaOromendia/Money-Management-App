@@ -8,14 +8,14 @@
 import UIKit
 
 // TEST's begins
-var expenses1 = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", amount: 1),
-                                       Product(name: "Hielo", price: 50, category: "Otros", amount: 2)], sum: 150)
+var expenses1 = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", quantity: 1),
+                                       Product(name: "Hielo", price: 50, category: "Otros", quantity: 2)], sum: 150)
 
-var expenses2 = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", amount: 1),], sum: 100)
+var expenses2 = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", quantity: 1),], sum: 100)
 
-var expenses3 = ProductsData(products: [Product(name: "Mila", price: 600, category: "Comida", amount: 1),], sum: 600)
+var expenses3 = ProductsData(products: [Product(name: "Mila", price: 600, category: "Comida", quantity: 1),], sum: 600)
 
-var earnings = ProductsData(products: [Product(name: "Robo", price: 500, category: "Otros", amount: 1)], sum: 500)
+var earnings = ProductsData(products: [Product(name: "Robo", price: 500, category: "Otros", quantity: 1)], sum: 500)
 
 let date = Date().getKeyData()
 let dateY = Date().yesterday.getKeyData()

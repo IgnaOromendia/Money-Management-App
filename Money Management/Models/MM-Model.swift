@@ -11,14 +11,14 @@ struct Product: Hashable, Equatable {
     let name: String
     let price: Int
     let category: Category
-    var amount: Int
+    var quantity: Int
     
     static func == (lhs: Product, rhs: Product) -> Bool {
         return lhs.name == rhs.name && lhs.price == rhs.price && lhs.category == rhs.category
     }
     
-    mutating func incrmentAmount() {
-        self.amount += 1
+    mutating func incrmentQuantity() {
+        self.quantity += 1
     }
 }
 
@@ -108,7 +108,7 @@ class MoneyManagement {
             if let oldProduct = expensesD.products.find(product) {
                 do {
                     var newProduct = oldProduct
-                    newProduct.incrmentAmount()
+                    newProduct.incrmentQuantity()
                     try expensesD.products.replace(old: oldProduct, new: newProduct)
                 } catch {
                     print(error.localizedDescription)
@@ -139,7 +139,7 @@ class MoneyManagement {
             if let oldProduct = earningD.products.find(product) {
                 do {
                     var newProduct = oldProduct
-                    newProduct.incrmentAmount()
+                    newProduct.incrmentQuantity()
                     try earningD.products.replace(old: oldProduct, new: newProduct)
                 } catch {
                     print(error.localizedDescription)
