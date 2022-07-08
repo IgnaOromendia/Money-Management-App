@@ -67,6 +67,23 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     
     // TEXTFIELD
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            textField.text = "$"
+        } else if textField.tag == 1 {
+            textField.text = "x"
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        lbl_titleP.text = txt_title.text ?? "No-Name"
+        lbl_priceP.text = txt_price.text ?? "-$0"
+        lbl_detailsP.text = txt_category.text ?? "No-Cat" + " " + txt_quantity.text ?? "x1"
+        textField.resignFirstResponder()
+        return true
+    }
+    
     // ACTIONS
     
     // OTHERS
