@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+// MARK: - CONSTANTS
+
+let movementControllerID = "MovmentControllerID"
+let addMovementControllerID = "AddMovementControllerID"
+
+
 // MARK: - ALIAS
 
 typealias Name = String

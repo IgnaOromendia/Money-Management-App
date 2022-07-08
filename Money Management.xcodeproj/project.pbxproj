@@ -27,6 +27,10 @@
 		700A6FDF287394F5002A3F8E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FDD287394F5002A3F8E /* Global.swift */; };
 		700A6FE12874622C002A3F8E /* Set-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FE02874622C002A3F8E /* Set-Extension.swift */; };
 		700A6FE22874622C002A3F8E /* Set-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FE02874622C002A3F8E /* Set-Extension.swift */; };
+		708AFAD62878C8D5009726DC /* AddMovementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD52878C8D5009726DC /* AddMovementController.swift */; };
+		708AFAD72878C8D5009726DC /* AddMovementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD52878C8D5009726DC /* AddMovementController.swift */; };
+		708AFAD92878C919009726DC /* AddMovementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD82878C919009726DC /* AddMovementViewModel.swift */; };
+		708AFADA2878C919009726DC /* AddMovementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD82878C919009726DC /* AddMovementViewModel.swift */; };
 		709745DD28762EAE0046EE06 /* MovementsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DC28762EAE0046EE06 /* MovementsController.swift */; };
 		709745DE28762EAE0046EE06 /* MovementsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DC28762EAE0046EE06 /* MovementsController.swift */; };
 		709745E028762EC00046EE06 /* MovmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DF28762EC00046EE06 /* MovmentsViewModel.swift */; };
@@ -75,6 +79,8 @@
 		700A6FD7287388F2002A3F8E /* Array-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-Extension.swift"; sourceTree = "<group>"; };
 		700A6FDD287394F5002A3F8E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		700A6FE02874622C002A3F8E /* Set-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set-Extension.swift"; sourceTree = "<group>"; };
+		708AFAD52878C8D5009726DC /* AddMovementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementController.swift; sourceTree = "<group>"; };
+		708AFAD82878C919009726DC /* AddMovementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementViewModel.swift; sourceTree = "<group>"; };
 		709745DC28762EAE0046EE06 /* MovementsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsController.swift; sourceTree = "<group>"; };
 		709745DF28762EC00046EE06 /* MovmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovmentsViewModel.swift; sourceTree = "<group>"; };
 		709745E5287631F50046EE06 /* UI-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI-Extensions.swift"; sourceTree = "<group>"; };
@@ -197,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				709745DC28762EAE0046EE06 /* MovementsController.swift */,
+				708AFAD52878C8D5009726DC /* AddMovementController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -228,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				709745DF28762EC00046EE06 /* MovmentsViewModel.swift */,
+				708AFAD82878C919009726DC /* AddMovementViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -368,10 +376,12 @@
 				70E6A96128774AAC005E9E4C /* ExpensesCell.swift in Sources */,
 				700A6FD0287376B0002A3F8E /* Date-Extension.swift in Sources */,
 				709745E6287631F50046EE06 /* UI-Extensions.swift in Sources */,
+				708AFAD92878C919009726DC /* AddMovementViewModel.swift in Sources */,
 				700A6F91287361E4002A3F8E /* AppDelegate.swift in Sources */,
 				700A6FCA2873694B002A3F8E /* MM-Model.swift in Sources */,
 				700A6FD8287388F2002A3F8E /* Array-Extension.swift in Sources */,
 				700A6FE12874622C002A3F8E /* Set-Extension.swift in Sources */,
+				708AFAD62878C8D5009726DC /* AddMovementController.swift in Sources */,
 				700A6F93287361E4002A3F8E /* SceneDelegate.swift in Sources */,
 				700A6FCC287369FD002A3F8E /* Constants.swift in Sources */,
 				709745E028762EC00046EE06 /* MovmentsViewModel.swift in Sources */,
@@ -389,11 +399,13 @@
 				700A6FDF287394F5002A3F8E /* Global.swift in Sources */,
 				700A6FA8287361E9002A3F8E /* Money_ManagementTests.swift in Sources */,
 				709745E128762EC00046EE06 /* MovmentsViewModel.swift in Sources */,
+				708AFADA2878C919009726DC /* AddMovementViewModel.swift in Sources */,
 				709745E7287631F50046EE06 /* UI-Extensions.swift in Sources */,
 				700A6FDC2873936A002A3F8E /* Date-Extension.swift in Sources */,
 				70E6A96228774AAC005E9E4C /* ExpensesCell.swift in Sources */,
 				700A6FE22874622C002A3F8E /* Set-Extension.swift in Sources */,
 				709745DE28762EAE0046EE06 /* MovementsController.swift in Sources */,
+				708AFAD72878C8D5009726DC /* AddMovementController.swift in Sources */,
 				700A6FDB28739367002A3F8E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

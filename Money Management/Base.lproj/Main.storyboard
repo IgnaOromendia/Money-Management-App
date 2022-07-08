@@ -12,7 +12,7 @@
         <!--Expenses-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MovementsController" customModule="Money_Management" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovmentControllerID" id="BYZ-38-t0r" customClass="MovementsController" customModule="Money_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,11 +125,28 @@
                         <outlet property="lbl_dayBalanceTitle" destination="3np-wK-UqS" id="oAL-zN-kla"/>
                         <outlet property="tableView_expenses" destination="QJa-6F-p8U" id="b2y-3p-4CF"/>
                         <outlet property="view_dayBalance" destination="wQC-4e-TtO" id="Jbe-dm-SGw"/>
+                        <segue destination="FjQ-cL-Cfh" kind="show" id="JF7-nL-lEN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40.579710144927539" y="91.741071428571431"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0H1-S8-ca1">
+            <objects>
+                <viewController storyboardIdentifier="AddMovementControllerID" id="FjQ-cL-Cfh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QFf-N2-BNW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9E5-Xl-B3F"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NGc-Fd-Pa2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="655-xj-VEx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="772" y="92"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="M2w-Nc-vDc">
