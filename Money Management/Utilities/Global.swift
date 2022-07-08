@@ -7,4 +7,5 @@
 
 // TO DO LIST
 // Empezar con la interfaz
-//
+// Que realemnte se agregue
+// Controlar datos antes del enter
