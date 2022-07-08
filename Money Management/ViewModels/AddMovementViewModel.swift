@@ -18,7 +18,7 @@ fileprivate let moneyRed = UIColor.rgbColor(r: 255, g: 0, b: 0)
 fileprivate let darkBlue = UIColor.rgbColor(r: 61, g: 108, b: 177)
 
 final class AddMovementViewModel {
-    private let titles = ["Preview","Price","Title","On","Category","Quantity"]
+    private let titles = ["Preview","Price","Title","Category","On","Quantity"]
     private let placeHolders = ["Title","Category","x1 (default)"]
     
     
@@ -35,6 +35,13 @@ final class AddMovementViewModel {
             let ph = NSAttributedString(string: placeHolders[i], attributes: [.foregroundColor: UIColor.gray])
             texts[i].attributedPlaceholder = ph
             texts[i].textColor = .white
+        }
+    }
+    
+    func setUpViews(_ views: [UIView]) {
+        for i in 0...views.count-1 {
+            views[i].cornerRadius(of: 20.0)
+            views[i].backgroundColor = darkBlue
         }
     }
     
