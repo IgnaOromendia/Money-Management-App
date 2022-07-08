@@ -52,12 +52,12 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btn_save: UIButton!
     
     // VARIABLES
-    
     let addMovVM = AddMovementViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpController()
+        fillWithData()
         setNavigationTransparent()
         addMovVM.setUpViews(views)
         addMovVM.setUpLabels(labels)
@@ -78,9 +78,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        lbl_titleP.text = txt_title.text ?? "No-Name"
-        lbl_priceP.text = "-" + (txt_price.text ?? "$0")
-        lbl_detailsP.text = (txt_category.text ?? "No-Cat") + " " + (txt_quantity.text ?? "x1")
+        fillWithData()
         textField.resignFirstResponder()
         return true
     }
@@ -96,6 +94,17 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     
     private func setUpController() {
         view.backgroundColor = customBlue
+    }
+    
+    private func fillWithData() {
+        let title = txt_title.text ?? ""
+        let price = txt_price.text ?? ""
+        let cat = txt_category.text ?? ""
+        let quant = txt_quantity.text ?? ""
+        
+        lbl_titleP.text = title.isEmpty ? "No-Name" : title
+        lbl_priceP.text = "-" + (price.isEmpty ? "$0" : price)
+        lbl_detailsP.text = (cat.isEmpty ? "No-Cat" : cat) + " " + (quant.isEmpty ? "x1" : quant)
     }
     
 }

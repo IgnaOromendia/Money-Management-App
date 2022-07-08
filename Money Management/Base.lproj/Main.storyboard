@@ -257,7 +257,7 @@
                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Yh-jK-fs8">
                                         <rect key="frame" x="30" y="3" width="268" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="FjQ-cL-Cfh" id="U31-aD-Khk"/>
                                         </connections>
@@ -287,7 +287,7 @@
                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gkj-JS-azb">
                                         <rect key="frame" x="30" y="3" width="268" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="FjQ-cL-Cfh" id="DVN-b3-tJ4"/>
                                         </connections>
@@ -315,7 +315,7 @@
                                 <rect key="frame" x="43" y="568" width="328" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg2-cW-RGT">
-                                        <rect key="frame" x="273" y="5" width="40" height="30"/>
+                                        <rect key="frame" x="275" y="5" width="38" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="">
                                             <backgroundConfiguration key="background">
@@ -338,7 +338,7 @@
                                     <constraint firstAttribute="bottom" secondItem="kg2-cW-RGT" secondAttribute="bottom" constant="5" id="4uH-Cz-1tD"/>
                                     <constraint firstAttribute="height" constant="40" id="9xb-M3-WPE"/>
                                     <constraint firstAttribute="trailing" secondItem="kg2-cW-RGT" secondAttribute="trailing" constant="15" id="DJ6-28-AGF"/>
-                                    <constraint firstItem="kg2-cW-RGT" firstAttribute="leading" secondItem="KAQ-Fv-aOE" secondAttribute="leading" constant="273" id="c9o-8Q-Zgh"/>
+                                    <constraint firstItem="kg2-cW-RGT" firstAttribute="leading" secondItem="KAQ-Fv-aOE" secondAttribute="leading" constant="275" id="c9o-8Q-Zgh"/>
                                     <constraint firstItem="kg2-cW-RGT" firstAttribute="top" secondItem="KAQ-Fv-aOE" secondAttribute="top" constant="5" id="u3a-pk-X1u"/>
                                 </constraints>
                             </view>
@@ -357,7 +357,7 @@
                                     <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wqJ-BZ-dUM">
                                         <rect key="frame" x="30" y="3" width="268" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="FjQ-cL-Cfh" id="E0B-XL-oQE"/>
                                         </connections>
@@ -377,7 +377,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="FD7-ev-3D2"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
                                     <action selector="saveMovement:" destination="FjQ-cL-Cfh" eventType="touchUpInside" id="WXD-eW-Wrw"/>

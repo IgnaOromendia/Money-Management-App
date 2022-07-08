@@ -68,6 +68,7 @@ final class AddMovementViewModel {
     func setUpBtns(_ saveBtn: UIButton, _ calendarBtn: UIButton) {
         saveBtn.shadow = true
         saveBtn.cornerRadius(of: 25.0)
+        saveBtn.backgroundColor = .white
         saveBtn.setTitle("Save", for: .normal)
         saveBtn.setTitleColor(customBlue, for: .normal)
     }
