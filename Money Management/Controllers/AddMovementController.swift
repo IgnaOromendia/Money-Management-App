@@ -38,6 +38,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var view_date: UIView!
     @IBOutlet weak var btn_calendar: UIButton!
     @IBOutlet weak var lbl_dateData: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     // CATEGORY
     @IBOutlet weak var lbl_category: UILabel!
@@ -57,13 +58,14 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     private let validation = DataValidation()
     private var selectedDate = Date.now
     private var selectedMovement: Movement = .Expense
+    private let animator = Animator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpController()
         setNavigationTransparent()
         addMovVM.setUpSegmentedControl(segmentedMovement)
-        addMovVM.setUpDate(lbl_dateData)
+        addMovVM.setUpDate(lbl_dateData, datePicker)
         addMovVM.setUpViews(views)
         addMovVM.setUpLabels(labels)
         addMovVM.setUpTexts(texts)
@@ -90,22 +92,39 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     
     // ACTIONS
     @IBAction func goToCalendar(_ sender: UIButton) {
+        let value: Double = datePicker.alpha == 1 ? 0 : 1
+        animator.animateAlpha(of: datePicker, to: value)
+        animator.animateAlpha(of: btn_save, to: 1 - value)
+        animator.animateAlpha(of: lbl_quantity, to: 1 - value)
+        animator.animateAlpha(of: view_quantity, to: 1 - value)
     }
     
     @IBAction func changeMovement(_ sender: UISegmentedControl) {
         selectedMovement = sender.selectedSegmentIndex == 0 ? .Expense : .Earning
-        addMovVM.updateMoneyLabel(lbl_priceP, selectedMovement)
+        addMovVM.updateMoneyLabel(lbl_priceP, selectedMovement,txt_price.text ?? "")
     }
     
+    @IBAction func selectDate(_ sender: UIDatePicker) {
+        selectedDate = sender.date
+        lbl_dateData.text = sender.date.comparableDate
+        animator.animateAlpha(of: datePicker, to: 0)
+        animator.animateAlpha(of: btn_save, to: 1)
+        animator.animateAlpha(of: lbl_quantity, to: 1)
+        animator.animateAlpha(of: view_quantity, to: 1)
+    }
     
     @IBAction func saveMovement(_ sender: UIButton) {
         do {
             let product = try addMovVM.createProduct(from: txt_title.text, txt_price.text, txt_category.text, txt_quantity.text, selectedMovement)
+            
+            try validation.futureDate(selectedDate)
+            
             if selectedMovement == .Expense {
                 try mm.addExpenses(product: product, on: selectedDate)
             } else {
                 try mm.addEarnings(product: product, on: selectedDate)
             }
+            
             navigationController?.popViewController(animated: true)
         } catch {
             print(error)
@@ -125,8 +144,6 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
         let quant = txt_quantity.text ?? ""
         
         price.removeFirst()
-        
-        //try validation.futureDate(date)
         
         lbl_titleP.text = title.isEmpty ? "No-Name" : title
         lbl_priceP.text = "-$" + (price.isEmpty ? "0" : price)

@@ -117,7 +117,7 @@ class MoneyManagement {
             } else {
                 expensesD.products.insert(product)
             }
-            expensesD.sum += product.price
+            expensesD.sum -= product.price
             self.expenses.updateValue(expensesD, forKey: date)
         } else {
             let data = ProductsData(products: [product], sum: product.price)
@@ -220,7 +220,7 @@ class MoneyManagement {
         case .Earning:
             return getValuesSortedByDate(of: self.earnings.filter({return $0.key.weekOfMonth == week}))
         case .Both:
-            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $0.sum + $1.sum)})
+            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $1.sum + $0.sum)})
             return getValuesSortedByDate(of: dic.filter({return $0.key.weekOfMonth == week}))
         }
     }
@@ -230,10 +230,10 @@ class MoneyManagement {
         var result = 0
         var day = d1
         while day != d2 {
-            result += ((self.earnings[d1]?.sum ?? 0) - (self.expenses[d1]?.sum ?? 0))
+            result += ((self.earnings[d1]?.sum ?? 0) + (self.expenses[d1]?.sum ?? 0))
             day = day.date?.advanced(by: 86400).getKeyData() ?? d2
         }
-        result += ((self.earnings[d2]?.sum ?? 0) - (self.expenses[d2]?.sum ?? 0))
+        result += ((self.earnings[d2]?.sum ?? 0) + (self.expenses[d2]?.sum ?? 0))
         return result
     }
     
@@ -251,8 +251,8 @@ class MoneyManagement {
     /// True = expenses on d1 ≤ expenses on d2
     /// Fasle = expenses on d1 ≥ expenses on d2
     func expensesDifferences(between d1: Date, _ d2: Date) -> (Bool,Int) {
-        let expensesD1 = self.dateExpenses(on: d1)?.sum ?? 0
-        let expensesD2 = self.dateExpenses(on: d2)?.sum ?? 0
+        let expensesD1 = abs(self.dateExpenses(on: d1)?.sum ?? 0)
+        let expensesD2 = abs(self.dateExpenses(on: d2)?.sum ?? 0)
         return (expensesD1 < expensesD2, abs(expensesD1 - expensesD2))
     }
     

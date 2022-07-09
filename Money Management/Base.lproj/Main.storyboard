@@ -331,7 +331,7 @@
                                             <backgroundConfiguration key="background">
                                                 <imageReference key="image" image="calendar" catalog="system" symbolScale="default" renderingMode="hierarchical">
                                                     <hierarchicalColors>
-                                                        <color systemColor="labelColor"/>
+                                                        <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color systemColor="secondaryLabelColor"/>
                                                         <color systemColor="tertiaryLabelColor"/>
                                                     </hierarchicalColors>
@@ -402,6 +402,15 @@
                                     <action selector="saveMovement:" destination="FjQ-cL-Cfh" eventType="touchUpInside" id="WXD-eW-Wrw"/>
                                 </connections>
                             </button>
+                            <datePicker alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="c5F-Xz-a2H">
+                                <rect key="frame" x="0.0" y="659" width="414" height="203"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="203" id="I1R-Un-RXs"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="selectDate:" destination="FjQ-cL-Cfh" eventType="valueChanged" id="EzG-ig-9EQ"/>
+                                </connections>
+                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9E5-Xl-B3F"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -425,12 +434,14 @@
                             <constraint firstItem="9E5-Xl-B3F" firstAttribute="trailing" secondItem="gvN-6H-dnM" secondAttribute="trailing" constant="43" id="TZF-Zv-Edq"/>
                             <constraint firstItem="Vbz-Dw-lLi" firstAttribute="top" secondItem="9E5-Xl-B3F" secondAttribute="top" priority="750" constant="20" id="VSG-Jh-ZZA"/>
                             <constraint firstItem="9E5-Xl-B3F" firstAttribute="trailing" secondItem="KAQ-Fv-aOE" secondAttribute="trailing" constant="43" id="W1w-Xd-nvS"/>
+                            <constraint firstItem="c5F-Xz-a2H" firstAttribute="trailing" secondItem="9E5-Xl-B3F" secondAttribute="trailing" id="WN1-Z1-tyU"/>
                             <constraint firstItem="h1O-UQ-nQJ" firstAttribute="top" secondItem="KAQ-Fv-aOE" secondAttribute="bottom" constant="20" id="XAr-Ht-A0H"/>
                             <constraint firstItem="9E5-Xl-B3F" firstAttribute="trailing" secondItem="uIf-eM-yJR" secondAttribute="trailing" constant="32" id="XBp-H6-VhM"/>
                             <constraint firstItem="jCv-Yg-a6b" firstAttribute="leading" secondItem="9E5-Xl-B3F" secondAttribute="leading" constant="43" id="XVH-Jk-NRU"/>
                             <constraint firstItem="9E5-Xl-B3F" firstAttribute="trailing" secondItem="pC5-n8-I2f" secondAttribute="trailing" priority="750" constant="250" id="Xl3-I2-IbA"/>
                             <constraint firstItem="uIf-eM-yJR" firstAttribute="leading" secondItem="9E5-Xl-B3F" secondAttribute="leading" constant="32" id="XzE-r1-5U5"/>
                             <constraint firstItem="pC5-n8-I2f" firstAttribute="leading" secondItem="9E5-Xl-B3F" secondAttribute="leading" constant="32" id="YRo-AQ-4n6"/>
+                            <constraint firstItem="c5F-Xz-a2H" firstAttribute="leading" secondItem="9E5-Xl-B3F" secondAttribute="leading" id="amg-Fe-XET"/>
                             <constraint firstItem="F3D-72-0nF" firstAttribute="leading" secondItem="9E5-Xl-B3F" secondAttribute="leading" constant="43" id="dc7-uh-04P"/>
                             <constraint firstItem="F3D-72-0nF" firstAttribute="top" secondItem="h1O-UQ-nQJ" secondAttribute="bottom" constant="8" symbolic="YES" id="eWD-4q-9U9"/>
                             <constraint firstItem="vxC-PI-REY" firstAttribute="leading" secondItem="9E5-Xl-B3F" secondAttribute="leading" constant="63" id="fKt-uq-Ubc"/>
@@ -440,6 +451,7 @@
                             <constraint firstItem="9E5-Xl-B3F" firstAttribute="trailing" secondItem="Vbz-Dw-lLi" secondAttribute="trailing" priority="750" constant="250" id="peh-3Q-W6O"/>
                             <constraint firstItem="lP7-7H-0vZ" firstAttribute="top" secondItem="uIf-eM-yJR" secondAttribute="bottom" constant="20" id="qBm-fo-tMc"/>
                             <constraint firstItem="vxC-PI-REY" firstAttribute="top" secondItem="F3D-72-0nF" secondAttribute="bottom" constant="40" id="rZ6-ia-3i6"/>
+                            <constraint firstItem="9E5-Xl-B3F" firstAttribute="bottom" secondItem="c5F-Xz-a2H" secondAttribute="bottom" id="rZR-ML-2Fh"/>
                             <constraint firstItem="KAQ-Fv-aOE" firstAttribute="leading" secondItem="9E5-Xl-B3F" secondAttribute="leading" constant="43" id="u2A-ea-6e9"/>
                             <constraint firstItem="lP7-7H-0vZ" firstAttribute="leading" secondItem="9E5-Xl-B3F" secondAttribute="leading" constant="32" id="whE-WS-bfh"/>
                             <constraint firstItem="KAQ-Fv-aOE" firstAttribute="top" secondItem="pC5-n8-I2f" secondAttribute="bottom" constant="8" symbolic="YES" id="wwY-Q3-yBm"/>
@@ -465,6 +477,7 @@
                     <connections>
                         <outlet property="btn_calendar" destination="kg2-cW-RGT" id="2l4-xn-VrJ"/>
                         <outlet property="btn_save" destination="vxC-PI-REY" id="zq4-TZ-HHN"/>
+                        <outlet property="datePicker" destination="c5F-Xz-a2H" id="xAq-Yz-uQX"/>
                         <outlet property="lbl_category" destination="bH5-OA-JwN" id="u18-Y7-YK2"/>
                         <outlet property="lbl_date" destination="pC5-n8-I2f" id="rVH-st-Qg1"/>
                         <outlet property="lbl_dateData" destination="dYU-Ot-ne3" id="tTA-y5-bvn"/>
@@ -547,9 +560,6 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="latch.2.case" catalog="system" width="128" height="100"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -74,10 +74,12 @@ final class AddMovementViewModel {
         saveBtn.setTitleColor(customBlue, for: .normal)
     }
     
-    func setUpDate(_ lbl: UILabel) {
+    func setUpDate(_ lbl: UILabel, _ dp: UIDatePicker) {
         lbl.text = Date.now.comparableDate
         lbl.textColor = .white
         lbl.font = .systemFont(ofSize: textsFontSize)
+        dp.setValue(UIColor.white, forKeyPath: "textColor")
+        dp.setValue(false, forKeyPath: "highlightsToday")
     }
     
     func setUpSegmentedControl(_ seg: UISegmentedControl) {
@@ -88,7 +90,7 @@ final class AddMovementViewModel {
         seg.backgroundColor = darkBlue
     }
     
-    func createProduct(from titleT: String?,_ priceT: String?,_ catT: String?, _ quantT: String?, _ mov: Movement ) throws -> Product {
+    func createProduct(from titleT: String?,_ priceT: String?,_ catT: String?, _ quantT: String?, _ mov: Movement) throws -> Product {
         try validation.emptyText(titleT)
         try validation.emptyText(priceT)
         
@@ -109,12 +111,13 @@ final class AddMovementViewModel {
         try validation.onlyNumbers(on: quant)
         let quantInt = Int(quant)!
         
-        //try validation.futureDate(date)
-        
         return Product(name: title, price: intPrice, category: cat, movement: mov, quantity: quantInt)
     }
     
-    func updateMoneyLabel(_ lbl: UILabel,_ mov: Movement) {
+    func updateMoneyLabel(_ lbl: UILabel,_ mov: Movement, _ price: String) {
+        if !price.isEmpty {
+            lbl.text = (mov == .Expense ? "-" : "+") + price
+        }
         lbl.textColor = mov == .Expense ? moneyRed : moneyGreen
     }
     
