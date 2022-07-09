@@ -18,8 +18,8 @@ struct Product: Hashable, Equatable {
         return lhs.name == rhs.name && lhs.price == rhs.price && lhs.category == rhs.category
     }
     
-    mutating func incrmentQuantity() {
-        self.quantity += 1
+    mutating func incrmentQuantity(by value: Int) {
+        self.quantity += value
     }
 }
 
@@ -109,18 +109,19 @@ class MoneyManagement {
             if let oldProduct = expensesD.products.find(product) {
                 do {
                     var newProduct = oldProduct
-                    newProduct.incrmentQuantity()
+                    newProduct.incrmentQuantity(by: product.quantity)
+                    expensesD.sum -= (product.price * product.quantity)
                     try expensesD.products.replace(old: oldProduct, new: newProduct)
                 } catch {
                     print(error.localizedDescription)
                 }
             } else {
                 expensesD.products.insert(product)
+                expensesD.sum -= product.price
             }
-            expensesD.sum -= product.price
             self.expenses.updateValue(expensesD, forKey: date)
         } else {
-            let data = ProductsData(products: [product], sum: product.price)
+            let data = ProductsData(products: [product], sum: -product.price)
             self.expenses.updateValue(data, forKey: date)
         }
         
@@ -140,15 +141,16 @@ class MoneyManagement {
             if let oldProduct = earningD.products.find(product) {
                 do {
                     var newProduct = oldProduct
-                    newProduct.incrmentQuantity()
+                    newProduct.incrmentQuantity(by: product.quantity)
+                    earningD.sum += (product.price * product.quantity)
                     try earningD.products.replace(old: oldProduct, new: newProduct)
                 } catch {
                     print(error.localizedDescription)
                 }
             } else {
                 earningD.products.insert(product)
+                earningD.sum += product.price
             }
-            earningD.sum += product.price
             self.earnings.updateValue(earningD, forKey: date)
         } else {
             let data = ProductsData(products: [product], sum: product.price)

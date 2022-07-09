@@ -8,9 +8,7 @@
 import Foundation
 
 // TO DO LIST
-// Empezar con la interfaz
-// Hacer lo de poder elegir la fecha
-
+// Hacer la parte de deudas
 
 // TEST's begins
 var expenses1 = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", movement: .Expense, quantity: 1),

@@ -58,12 +58,12 @@ class MoneyManagement_Model_test: XCTestCase {
     func test_AddExpensesToANewEmptyMM() throws {
         let mmTest = MoneyManagement()
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
-        let products = ProductsData(products: [prod1], sum: 250)
+        let products = ProductsData(products: [prod1], sum: -250)
         
         try mmTest.addExpenses(product: prod1, on: Date())
         
         XCTAssert(mmTest.dateExpenses(on: Date()) == products)
-        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == 250)
+        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == products.sum)
     }
     
     func test_AddExpensesToAMMWithOthersExpenses() throws {
@@ -71,7 +71,7 @@ class MoneyManagement_Model_test: XCTestCase {
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
         
         expenses.products.insert(prod1)
-        expenses.sum += 250
+        expenses.sum -= 250
         
         try mmTest.addExpenses(product: prod1, on: Date())
         
@@ -83,7 +83,7 @@ class MoneyManagement_Model_test: XCTestCase {
         let mmTest =  MoneyManagement()
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
         let prod2 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 2)
-        let products = ProductsData(products: [prod2], sum: 500)
+        let products = ProductsData(products: [prod2], sum: -500)
         
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1, on: Date())
@@ -103,7 +103,7 @@ class MoneyManagement_Model_test: XCTestCase {
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
         let prod2 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 5)
         let prod3 = Product(name: "Papas", price: 100, category: "Comida", movement: .Expense, quantity: 5)
-        let products = ProductsData(products: [prod2,prod3], sum: 250*5 + 100)
+        let products = ProductsData(products: [prod2,prod3], sum: -250*5 - 100)
         
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1, on: Date())
@@ -122,15 +122,35 @@ class MoneyManagement_Model_test: XCTestCase {
         XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == products.sum)
     }
     
+    func test_AddExpensesToAMMMultiplesTimes_2() throws {
+        let mmTest =  MoneyManagement()
+        let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
+        let prod1_3 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 3)
+        let prod2 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 4)
+        let products = ProductsData(products: [prod2], sum: -(250*4))
+        
+        try mmTest.addExpenses(product: prod1, on: Date())
+        try mmTest.addExpenses(product: prod1_3, on: Date())
+        
+        let productsOnMM = mmTest.dateExpenses(on: Date())
+        
+        if let productsOnMM = productsOnMM {
+            XCTAssert(productsOnMM.products.find(prod1)?.quantity ?? 0 == 4)
+        }
+        
+        XCTAssert(mmTest.dateExpenses(on: Date()) == products)
+        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == products.sum)
+    }
+    
     func test_AddEarningsToANewEmptyMM() throws {
         let mmTest = MoneyManagement()
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
         let products = ProductsData(products: [prod1], sum: 250)
         
-        try mmTest.addExpenses(product: prod1, on: Date())
+        try mmTest.addEarnings(product: prod1, on: Date())
         
-        XCTAssert(mmTest.dateExpenses(on: Date()) == products)
-        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == 250)
+        XCTAssert(mmTest.dateEarnings(on: Date()) == products)
+        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Earning) == 250)
     }
     
     func test_AddEarningsToAMMWithOthersExpenses() throws {
@@ -189,6 +209,26 @@ class MoneyManagement_Model_test: XCTestCase {
         XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Earning) == products.sum)
     }
     
+    func test_AddEarningsToAMMMultiplesTimes_2() throws {
+        let mmTest =  MoneyManagement()
+        let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
+        let prod1_3 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 3)
+        let prod2 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 4)
+        let products = ProductsData(products: [prod2], sum: 250*4)
+        
+        try mmTest.addEarnings(product: prod1, on: Date())
+        try mmTest.addEarnings(product: prod1_3, on: Date())
+        
+        let productsOnMM = mmTest.dateEarnings(on: Date())
+        
+        if let productsOnMM = productsOnMM {
+            XCTAssert(productsOnMM.products.find(prod1)?.quantity ?? 0 == 4)
+        }
+        
+        XCTAssert(mmTest.dateEarnings(on: Date()) == products)
+        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Earning) == products.sum)
+    }
+    
     func test_addDebt() {
         let mmTest = MoneyManagement()
         mmTest.addDebt(name: "Pedro", amount: 100)
@@ -234,7 +274,7 @@ class MoneyManagement_Model_test: XCTestCase {
         let mmTest = MoneyManagement()
         let prod1 = Product(name: "A", price: 1, category: "C1", movement: .Expense, quantity: 1)
         try mmTest.addExpenses(product: prod1, on: Date())
-        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == 1)
+        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == -1)
     }
     
     func test_monthlyMovement2() throws {
@@ -244,14 +284,14 @@ class MoneyManagement_Model_test: XCTestCase {
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1, on: Date())
-        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == 4)
+        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == -4)
     }
     
     func test_weeklyMovement() throws {
         let mmTest = MoneyManagement()
         let prod1 = Product(name: "A", price: 1, category: "C1", movement: .Expense, quantity: 1)
         try mmTest.addExpenses(product: prod1, on: Date())
-        XCTAssert(mmTest.weeklyMovement(Date().getKeyData().weekOfMonth!, for: .Expense) == 1)
+        XCTAssert(mmTest.weeklyMovement(Date().getKeyData().weekOfMonth!, for: .Expense) == -1)
     }
     
     func test_weeklyMovement2() throws {
@@ -261,7 +301,7 @@ class MoneyManagement_Model_test: XCTestCase {
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1, on: Date())
-        XCTAssert(mmTest.weeklyMovement(Date().getKeyData().weekOfMonth!, for: .Expense) == 4)
+        XCTAssert(mmTest.weeklyMovement(Date().getKeyData().weekOfMonth!, for: .Expense) == -4)
     }
     
     func test_balanceSameDay() throws {
@@ -281,48 +321,4 @@ class MoneyManagement_Model_test: XCTestCase {
         XCTAssert(balance1 == 0)
     }
 
-}
-
-class Extensions_tests: XCTestCase {
-    let prod1 = Product(name: "A", price: 1, category: "C1", movement: .Expense, quantity: 1)
-    let prod2 = Product(name: "B", price: 2, category: "C2", movement: .Expense, quantity: 1)
-    let prod3 = Product(name: "C", price: 3, category: "C3", movement: .Expense, quantity: 1)
-    
-    let prod1M = Product(name: "A", price: 1, category: "C1", movement: .Expense, quantity: 1)
-    
-    var set1: Set<Product> = []
-    
-    // SET TESTS
-    
-    func test_find() {
-        set1 = [prod1,prod2,prod3]
-        let p = set1.find(prod1)
-        XCTAssert(p == prod1)
-    }
-    
-    func test_findElementNotExisting() {
-        set1 = [prod2,prod3]
-        let p = set1.find(prod1)
-        XCTAssert(p == nil)
-    }
-    
-    func test_replaceElement() throws {
-        set1 = [prod1,prod2,prod3]
-        try set1.replace(old: prod1, new: prod1M)
-        XCTAssert(set1.find(prod1M) == prod1M)
-    }
-    
-    func test_replaceNonExistingElement() throws {
-        set1 = [prod2,prod3]
-        XCTAssertThrowsError(try set1.replace(old: prod1, new: prod1M))
-        XCTAssert(set1.find(prod1M) == nil)
-    }
-    
-    func test_setToArrayInt() {
-        let setT: Set<Int> = [1,2,3,4,5]
-        let arrT: Array<Int> = [1,2,3,4,5]
-        for item in setT.setToArray() {            
-            XCTAssert(arrT.contains(item))
-        }
-    }
 }
