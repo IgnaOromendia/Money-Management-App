@@ -245,6 +245,15 @@ class MoneyManagement {
         return result
     }
     
+    /// Returns the difference of expenses between two dates
+    /// True = expenses on d1 ≤ expenses on d2
+    /// Fasle = expenses on d1 ≥ expenses on d2
+    func expensesDifferences(between d1: Date, _ d2: Date) -> (Bool,Int) {
+        let expensesD1 = self.dateExpenses(on: d1)?.sum ?? 0
+        let expensesD2 = self.dateExpenses(on: d2)?.sum ?? 0
+        
+        return (expensesD1 < expensesD2, abs(expensesD1 - expensesD2))
+    }
     
     
     

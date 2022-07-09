@@ -13,6 +13,7 @@ fileprivate let nameFontSize = 20.0
 fileprivate let detailsFontSize = 13.0
 fileprivate let moneyFontSize = 18.0
 fileprivate let labelFontSize = 14.0
+fileprivate let textsFontSize = 20.0
 fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)
 fileprivate let moneyRed = UIColor.rgbColor(r: 255, g: 0, b: 0)
 fileprivate let darkBlue = UIColor.rgbColor(r: 61, g: 108, b: 177)
@@ -20,7 +21,7 @@ fileprivate let darkBlue = UIColor.rgbColor(r: 61, g: 108, b: 177)
 final class AddMovementViewModel {
     private let titles = ["Preview","Price","Title","Category","On","Quantity"]
     private let placeHolders = ["Title","Category","x1 (default)"]
-    
+    private let validation = DataValidation()
     
     func setUpLabels(_ labels: [UILabel]) {
         for i in 0...labels.count-1 {
@@ -35,6 +36,7 @@ final class AddMovementViewModel {
             let ph = NSAttributedString(string: placeHolders[i], attributes: [.foregroundColor: UIColor.gray])
             texts[i].attributedPlaceholder = ph
             texts[i].textColor = .white
+            texts[i].font = .systemFont(ofSize: textsFontSize)
         }
     }
     
@@ -71,6 +73,38 @@ final class AddMovementViewModel {
         saveBtn.backgroundColor = .white
         saveBtn.setTitle("Save", for: .normal)
         saveBtn.setTitleColor(customBlue, for: .normal)
+    }
+    
+    func setUpDate(_ lbl: UILabel) {
+        lbl.text = Date.now.comparableDate
+        lbl.textColor = .white
+        lbl.font = .systemFont(ofSize: textsFontSize)
+    }
+    
+    func createProduct(from titleT: String?,_ priceT: String?,_ catT: String?, _ quantT: String?) throws -> Product {
+        try validation.emptyText(titleT)
+        try validation.emptyText(priceT)
+        
+        let title = titleT!
+        var price = priceT!
+        let cat = catT ?? ""
+        var quant = quantT ?? ""
+        
+        if quant.isEmpty {
+            quant = "x1"
+        }
+        
+        price.removeFirst()
+        try validation.onlyNumbers(on: price)
+        let intPrice = Int(price)!
+
+        quant.removeFirst()
+        try validation.onlyNumbers(on: quant)
+        let quantInt = Int(quant)!
+        
+        //try validation.futureDate(date)
+        
+        return Product(name: title, price: intPrice, category: cat, quantity: quantInt)
     }
     
 }

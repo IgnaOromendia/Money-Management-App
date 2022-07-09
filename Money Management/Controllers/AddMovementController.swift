@@ -37,6 +37,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lbl_date: UILabel!
     @IBOutlet weak var view_date: UIView!
     @IBOutlet weak var btn_calendar: UIButton!
+    @IBOutlet weak var lbl_dateData: UILabel!
     
     // CATEGORY
     @IBOutlet weak var lbl_category: UILabel!
@@ -52,13 +53,15 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btn_save: UIButton!
     
     // VARIABLES
-    let addMovVM = AddMovementViewModel()
+    private let addMovVM = AddMovementViewModel()
+    private let validation = DataValidation()
+    private var selectedDate = Date.now
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpController()
-        fillWithData()
         setNavigationTransparent()
+        addMovVM.setUpDate(lbl_dateData)
         addMovVM.setUpViews(views)
         addMovVM.setUpLabels(labels)
         addMovVM.setUpTexts(texts)
@@ -88,6 +91,13 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveMovement(_ sender: UIButton) {
+        do {
+            let product = try addMovVM.createProduct(from: txt_title.text, txt_price.text, txt_category.text, txt_quantity.text)
+            try mm.addExpenses(product: product, on: selectedDate)
+            navigationController?.popViewController(animated: true)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     // OTHERS
@@ -98,12 +108,16 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     
     private func fillWithData() {
         let title = txt_title.text ?? ""
-        let price = txt_price.text ?? ""
+        var price = txt_price.text ?? "$"
         let cat = txt_category.text ?? ""
         let quant = txt_quantity.text ?? ""
         
+        price.removeFirst()
+        
+        //try validation.futureDate(date)
+        
         lbl_titleP.text = title.isEmpty ? "No-Name" : title
-        lbl_priceP.text = "-" + (price.isEmpty ? "$0" : price)
+        lbl_priceP.text = "-$" + (price.isEmpty ? "0" : price)
         lbl_detailsP.text = (cat.isEmpty ? "No-Cat" : cat) + " " + (quant.isEmpty ? "x1" : quant)
     }
     
