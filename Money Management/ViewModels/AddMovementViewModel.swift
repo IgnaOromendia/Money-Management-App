@@ -80,7 +80,15 @@ final class AddMovementViewModel {
         lbl.font = .systemFont(ofSize: textsFontSize)
     }
     
-    func createProduct(from titleT: String?,_ priceT: String?,_ catT: String?, _ quantT: String?) throws -> Product {
+    func setUpSegmentedControl(_ seg: UISegmentedControl) {
+        seg.setTitle("Expense", forSegmentAt: 0)
+        seg.setTitle("Earning", forSegmentAt: 1)
+        seg.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+        seg.selectedSegmentTintColor = customBlue
+        seg.backgroundColor = darkBlue
+    }
+    
+    func createProduct(from titleT: String?,_ priceT: String?,_ catT: String?, _ quantT: String?, _ mov: Movement ) throws -> Product {
         try validation.emptyText(titleT)
         try validation.emptyText(priceT)
         
@@ -102,8 +110,12 @@ final class AddMovementViewModel {
         let quantInt = Int(quant)!
         
         //try validation.futureDate(date)
-        #warning("El movement se va a tener q cambiar")
-        return Product(name: title, price: intPrice, category: cat, movement: .Expense, quantity: quantInt)
+        
+        return Product(name: title, price: intPrice, category: cat, movement: mov, quantity: quantInt)
+    }
+    
+    func updateMoneyLabel(_ lbl: UILabel,_ mov: Movement) {
+        lbl.textColor = mov == .Expense ? moneyRed : moneyGreen
     }
     
 }

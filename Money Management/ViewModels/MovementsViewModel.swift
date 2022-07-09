@@ -1,5 +1,5 @@
 //
-//  MovmentsViewModel.swift
+//  MovementsViewModel.swift
 //  Money Management
 //
 //  Created by Igna on 06/07/2022.
@@ -18,7 +18,7 @@ fileprivate let lightRed = UIColor.rgbColor(r: 255, g: 139, b: 139)
 fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)
 fileprivate let blue = UIColor.rgbColor(r: 72, g: 129, b: 215)
 
-final class MovmentViewModel {
+final class MovementViewModel {
     
     // Day balance view
     private var balance: Int
@@ -66,7 +66,7 @@ final class MovmentViewModel {
         let dataTwoD = m.expensesDifferences(between: twoDaysAgo, Date.now)
         
         self.balance = m.balance(from: today, to: today)
-        self.productsPerDay = m.getAllWeekMovment(today.weekOfMonth!, for: .Both)
+        self.productsPerDay = m.getAllWeekMovement(today.weekOfMonth!, for: .Both)
         self.sections = productsPerDay.count
         self.rowsPerSection = calculateRowPerSection()
         self.sectionTitles = getSectionTitles()

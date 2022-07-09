@@ -11,7 +11,7 @@ import UIKit
 // MARK: - CONSTANTS
 
 // IDs
-let movementControllerID = "MovmentControllerID"
+let movementControllerID = "MovementControllerID"
 let addMovementControllerID = "AddMovementControllerID"
 
 // Colors
@@ -28,7 +28,7 @@ typealias UISearchBarMethods =  UISearchResultsUpdating & UISearchBarDelegate
 
 // MARK: - ENUM
 
-enum Movment {
+enum Movement {
     case Expense
     case Earning
     case Both

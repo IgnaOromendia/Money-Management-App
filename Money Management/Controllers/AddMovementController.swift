@@ -56,11 +56,13 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     private let addMovVM = AddMovementViewModel()
     private let validation = DataValidation()
     private var selectedDate = Date.now
+    private var selectedMovement: Movement = .Expense
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpController()
         setNavigationTransparent()
+        addMovVM.setUpSegmentedControl(segmentedMovement)
         addMovVM.setUpDate(lbl_dateData)
         addMovVM.setUpViews(views)
         addMovVM.setUpLabels(labels)
@@ -90,13 +92,23 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     @IBAction func goToCalendar(_ sender: UIButton) {
     }
     
+    @IBAction func changeMovement(_ sender: UISegmentedControl) {
+        selectedMovement = sender.selectedSegmentIndex == 0 ? .Expense : .Earning
+        addMovVM.updateMoneyLabel(lbl_priceP, selectedMovement)
+    }
+    
+    
     @IBAction func saveMovement(_ sender: UIButton) {
         do {
-            let product = try addMovVM.createProduct(from: txt_title.text, txt_price.text, txt_category.text, txt_quantity.text)
-            try mm.addExpenses(product: product, on: selectedDate)
+            let product = try addMovVM.createProduct(from: txt_title.text, txt_price.text, txt_category.text, txt_quantity.text, selectedMovement)
+            if selectedMovement == .Expense {
+                try mm.addExpenses(product: product, on: selectedDate)
+            } else {
+                try mm.addEarnings(product: product, on: selectedDate)
+            }
             navigationController?.popViewController(animated: true)
         } catch {
-            print(error.localizedDescription)
+            print(error)
         }
     }
     
@@ -118,7 +130,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
         
         lbl_titleP.text = title.isEmpty ? "No-Name" : title
         lbl_priceP.text = "-$" + (price.isEmpty ? "0" : price)
-        lbl_detailsP.text = (cat.isEmpty ? "No-Cat" : cat) + " " + (quant.isEmpty ? "x1" : quant)
+        lbl_detailsP.text = cat + " " + (quant.isEmpty ? "x1" : quant)
     }
     
 }

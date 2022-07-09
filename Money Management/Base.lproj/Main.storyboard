@@ -12,7 +12,7 @@
         <!--Expenses-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MovmentControllerID" id="BYZ-38-t0r" customClass="MovementsController" customModule="Money_Management" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovementControllerID" id="BYZ-38-t0r" customClass="MovementsController" customModule="Money_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -451,12 +451,15 @@
                     <navigationItem key="navigationItem" id="NGc-Fd-Pa2">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MbO-DS-NUw">
-                            <rect key="frame" x="141.5" y="6" width="131" height="32"/>
+                            <rect key="frame" x="107" y="6" width="200" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="First"/>
                                 <segment title="Second"/>
                             </segments>
+                            <connections>
+                                <action selector="changeMovement:" destination="FjQ-cL-Cfh" eventType="valueChanged" id="zNW-F5-xxB"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>

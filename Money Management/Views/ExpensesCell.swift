@@ -50,7 +50,7 @@ class ExpensesCell: UITableViewCell {
         if product.movement == .Expense {
             lbl_money.text = "-$\(product.price)"
             lbl_money.textColor = moneyRed
-        } else if product.movement == .Earning {
+        } else {
             lbl_money.text = "+$\(product.price)"
             lbl_money.textColor = moneyGreen
         }

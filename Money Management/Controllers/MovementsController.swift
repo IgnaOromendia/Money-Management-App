@@ -22,7 +22,7 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
     
     
     // Variables
-    private let MCViewModel = MovmentViewModel(mm)
+    private let MCViewModel = MovementViewModel(mm)
    
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
     
     override func viewWillAppear(_ animated: Bool) {
         let week = Date.now.getKeyData().weekOfMonth
-        if MCViewModel.productsPerDay != mm.getAllWeekMovment(week!, for: .Expense) {
+        if MCViewModel.productsPerDay != mm.getAllWeekMovement(week!, for: .Expense) {
             MCViewModel.updateValues(mm, money: lbl_dayBalanceMoney, comp1: lbl_dayBalanceCompYesterday, comp2: lbl_dayBalanceComp2days)
             tableView_expenses.reloadData()
         }

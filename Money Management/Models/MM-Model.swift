@@ -11,7 +11,7 @@ struct Product: Hashable, Equatable {
     let name: String
     let price: Int
     let category: Category
-    let movement: Movment
+    let movement: Movement
     var quantity: Int
     
     static func == (lhs: Product, rhs: Product) -> Bool {
@@ -188,13 +188,13 @@ class MoneyManagement {
     // MARK: - Other funcitions
     
     /// Retruns the amount of money earned or spent in that month
-    func monthlyMovment(_ month: Int, for m: Movment) -> Int {
-        let monthMovment: Array<Int> = getAllMonthMovment(month,for: m).map({$0.sum})
-        return monthMovment.reduce(0, +)
+    func monthlyMovement(_ month: Int, for m: Movement) -> Int {
+        let monthMovement: Array<Int> = getAllMonthMovement(month,for: m).map({$0.sum})
+        return monthMovement.reduce(0, +)
     }
     
     /// Retruns an array of products earned or spent in that month
-    func getAllMonthMovment(_ month: Int, for m: Movment) -> Array<ProductsData> {
+    func getAllMonthMovement(_ month: Int, for m: Movement) -> Array<ProductsData> {
         switch m {
         case .Expense:
             return getValuesSortedByDate(of: self.expenses.filter({return $0.key.month == month}))
@@ -207,13 +207,13 @@ class MoneyManagement {
     }
     
     /// Retruns the amount of money earned or spent in that week
-    func weeklyMovment(_ week: Int,for m: Movment) -> Int {
-        let weekMovment: Array<Int> = getAllWeekMovment(week,for: m).map({$0.sum})
-        return weekMovment.reduce(0, +)
+    func weeklyMovement(_ week: Int,for m: Movement) -> Int {
+        let weekMovement: Array<Int> = getAllWeekMovement(week,for: m).map({$0.sum})
+        return weekMovement.reduce(0, +)
     }
     
     /// Retruns an array of products earned or spent in that week
-    func getAllWeekMovment(_ week: Int, for m: Movment) -> Array<ProductsData> {
+    func getAllWeekMovement(_ week: Int, for m: Movement) -> Array<ProductsData> {
         switch m {
         case .Expense:
             return getValuesSortedByDate(of: self.expenses.filter({return $0.key.weekOfMonth == week}))
