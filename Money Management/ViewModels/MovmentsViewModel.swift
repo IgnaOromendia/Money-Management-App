@@ -66,7 +66,7 @@ final class MovmentViewModel {
         let dataTwoD = m.expensesDifferences(between: twoDaysAgo, Date.now)
         
         self.balance = m.balance(from: today, to: today)
-        self.productsPerDay = m.getAllWeekMovment(today.weekOfMonth!, for: .Expense)
+        self.productsPerDay = m.getAllWeekMovment(today.weekOfMonth!, for: .Both)
         self.sections = productsPerDay.count
         self.rowsPerSection = calculateRowPerSection()
         self.sectionTitles = getSectionTitles()

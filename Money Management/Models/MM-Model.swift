@@ -11,6 +11,7 @@ struct Product: Hashable, Equatable {
     let name: String
     let price: Int
     let category: Category
+    let movement: Movment
     var quantity: Int
     
     static func == (lhs: Product, rhs: Product) -> Bool {
@@ -196,9 +197,12 @@ class MoneyManagement {
     func getAllMonthMovment(_ month: Int, for m: Movment) -> Array<ProductsData> {
         switch m {
         case .Expense:
-            return self.expenses.filter({return $0.key.month == month}).map({$0.value})
+            return getValuesSortedByDate(of: self.expenses.filter({return $0.key.month == month}))
         case .Earning:
-            return self.earnings.filter({return $0.key.month == month}).map({$0.value})
+            return getValuesSortedByDate(of: self.earnings.filter({return $0.key.month == month}))
+        case .Both:
+            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $0.sum + $1.sum)})
+            return getValuesSortedByDate(of: dic.filter({return $0.key.month == month}))
         }
     }
     
@@ -212,9 +216,12 @@ class MoneyManagement {
     func getAllWeekMovment(_ week: Int, for m: Movment) -> Array<ProductsData> {
         switch m {
         case .Expense:
-            return getValuesSortedByDate(of: self.expenses.filter({return $0.key.weekOfMonth == week}), on: .Expense)
+            return getValuesSortedByDate(of: self.expenses.filter({return $0.key.weekOfMonth == week}))
         case .Earning:
-            return getValuesSortedByDate(of: self.earnings.filter({return $0.key.weekOfMonth == week}), on: .Earning)
+            return getValuesSortedByDate(of: self.earnings.filter({return $0.key.weekOfMonth == week}))
+        case .Both:
+            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $0.sum + $1.sum)})
+            return getValuesSortedByDate(of: dic.filter({return $0.key.weekOfMonth == week}))
         }
     }
     
@@ -231,16 +238,11 @@ class MoneyManagement {
     }
     
     /// Get values sorted by date
-    private func getValuesSortedByDate(of d:Dictionary<DateComponents,ProductsData>, on m: Movment) -> Array<ProductsData> {
+    private func getValuesSortedByDate(of d:Dictionary<DateComponents,ProductsData>) -> Array<ProductsData> {
         var result: Array<ProductsData> = []
         let keysSorted = d.keys.sorted(by: { $0 > $1 })
         for item in keysSorted {
-            switch m {
-            case .Expense:
-                result.append(self.expenses[item]!)
-            case .Earning:
-                result.append(self.earnings[item]!)
-            }
+            result.append(d[item]!)
         }
         return result
     }
@@ -251,7 +253,6 @@ class MoneyManagement {
     func expensesDifferences(between d1: Date, _ d2: Date) -> (Bool,Int) {
         let expensesD1 = self.dateExpenses(on: d1)?.sum ?? 0
         let expensesD2 = self.dateExpenses(on: d2)?.sum ?? 0
-        
         return (expensesD1 < expensesD2, abs(expensesD1 - expensesD2))
     }
     

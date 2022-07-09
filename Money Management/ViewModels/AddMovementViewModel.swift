@@ -15,7 +15,6 @@ fileprivate let moneyFontSize = 18.0
 fileprivate let labelFontSize = 14.0
 fileprivate let textsFontSize = 20.0
 fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)
-fileprivate let moneyRed = UIColor.rgbColor(r: 255, g: 0, b: 0)
 fileprivate let darkBlue = UIColor.rgbColor(r: 61, g: 108, b: 177)
 
 final class AddMovementViewModel {
@@ -103,8 +102,8 @@ final class AddMovementViewModel {
         let quantInt = Int(quant)!
         
         //try validation.futureDate(date)
-        
-        return Product(name: title, price: intPrice, category: cat, quantity: quantInt)
+        #warning("El movement se va a tener q cambiar")
+        return Product(name: title, price: intPrice, category: cat, movement: .Expense, quantity: quantInt)
     }
     
 }
