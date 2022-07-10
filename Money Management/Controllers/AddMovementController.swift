@@ -116,7 +116,6 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     @IBAction func saveMovement(_ sender: UIButton) {
         do {
             let product = try addMovVM.createProduct(from: txt_title.text, txt_price.text, txt_category.text, txt_quantity.text, selectedMovement)
-            
             try validation.futureDate(selectedDate)
             
             if selectedMovement == .Expense {
@@ -141,13 +140,35 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
         let title = txt_title.text ?? ""
         var price = txt_price.text ?? "$"
         let cat = txt_category.text ?? ""
-        let quant = txt_quantity.text ?? ""
+        var quant = txt_quantity.text ?? ""
         
-        price.removeFirst()
+        do {
+            var quantInt = 1
+            var priceInt = 0
+            if !price.isEmpty {
+                if price.first! == "$" {
+                    price.removeFirst()
+                }
+                try validation.onlyNumbers(on: price)
+                priceInt = Int(price)!
+            }
+            if !quant.isEmpty {
+                if quant.first! == "x" {
+                    quant.removeFirst()
+                }
+                try validation.onlyNumbers(on: quant)
+                quantInt = Int(quant)!
+            }
+            
+            price = "\(priceInt * quantInt)"
+            
+            lbl_titleP.text = title.isEmpty ? "No-Name" : title
+            lbl_priceP.text = "-$" + (price.isEmpty ? "0" : price)
+            lbl_detailsP.text = cat + " x" + (quant.isEmpty ? "1" : quant)
+        } catch {
+            print(error)
+        }
         
-        lbl_titleP.text = title.isEmpty ? "No-Name" : title
-        lbl_priceP.text = "-$" + (price.isEmpty ? "0" : price)
-        lbl_detailsP.text = cat + " " + (quant.isEmpty ? "x1" : quant)
     }
     
 }

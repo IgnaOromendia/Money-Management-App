@@ -117,7 +117,7 @@ class MoneyManagement {
                 }
             } else {
                 expensesD.products.insert(product)
-                expensesD.sum -= product.price
+                expensesD.sum -= (product.price * product.quantity)
             }
             self.expenses.updateValue(expensesD, forKey: date)
         } else {
@@ -149,7 +149,7 @@ class MoneyManagement {
                 }
             } else {
                 earningD.products.insert(product)
-                earningD.sum += product.price
+                earningD.sum += (product.price * product.quantity)
             }
             self.earnings.updateValue(earningD, forKey: date)
         } else {
@@ -236,6 +236,7 @@ class MoneyManagement {
             day = day.date?.advanced(by: 86400).getKeyData() ?? d2
         }
         result += ((self.earnings[d2]?.sum ?? 0) + (self.expenses[d2]?.sum ?? 0))
+        print((self.expenses[d2]?.sum ?? 0))
         return result
     }
     

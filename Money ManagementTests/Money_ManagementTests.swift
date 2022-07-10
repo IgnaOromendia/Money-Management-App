@@ -320,5 +320,20 @@ class MoneyManagement_Model_test: XCTestCase {
         let balance1 = mmTest.balance(from: Date().yesterday.getKeyData(), to: Date().getKeyData())
         XCTAssert(balance1 == 0)
     }
+    
+    func test_balanceAfterAdding() throws {
+        let mmTest = MoneyManagement()
+        let prod1 = Product(name: "A", price: 2, category: "C1", movement: .Expense, quantity: 1)
+        let prod2 = Product(name: "A", price: 2, category: "C1", movement: .Expense, quantity: 2)
+        
+        try mmTest.addExpenses(product: prod1, on: Date())
+        let balance1 = mmTest.balance(from: Date.now.getKeyData(), to: Date.now.getKeyData()) // -2
+        
+        try mmTest.addExpenses(product: prod2, on: Date())
+        let balance2 = mmTest.balance(from: Date.now.getKeyData(), to: Date.now.getKeyData()) // -6
+        
+        XCTAssert(balance1 == -2)
+        XCTAssert(balance2 == -6)
+    }
 
 }

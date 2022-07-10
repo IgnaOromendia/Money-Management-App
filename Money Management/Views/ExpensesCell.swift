@@ -48,10 +48,10 @@ class ExpensesCell: UITableViewCell {
         lbl_expeseName.text = product.name
         lbl_details.text = product.category + " x\(product.quantity)"
         if product.movement == .Expense {
-            lbl_money.text = "-$\(product.price)"
+            lbl_money.text = "-$\(product.price * product.quantity)"
             lbl_money.textColor = moneyRed
         } else {
-            lbl_money.text = "+$\(product.price)"
+            lbl_money.text = "+$\(product.price * product.quantity)"
             lbl_money.textColor = moneyGreen
         }
        
