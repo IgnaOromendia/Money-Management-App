@@ -236,7 +236,6 @@ class MoneyManagement {
             day = day.date?.advanced(by: 86400).getKeyData() ?? d2
         }
         result += ((self.earnings[d2]?.sum ?? 0) + (self.expenses[d2]?.sum ?? 0))
-        print((self.expenses[d2]?.sum ?? 0))
         return result
     }
     

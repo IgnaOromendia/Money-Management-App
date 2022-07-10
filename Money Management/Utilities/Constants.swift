@@ -19,6 +19,10 @@ let customBlue = UIColor.rgbColor(r: 72, g: 129, b: 215)
 let moneyRed = UIColor.rgbColor(r: 255, g: 0, b: 0)
 let moneyGreen = UIColor.rgbColor(r: 104, g: 154, b: 64)
 
+// Fonts
+let moneyFontSize = 18.0
+let titleFontSize = 20.0
+
 // MARK: - ALIAS
 
 typealias Name = String
@@ -32,6 +36,11 @@ enum Movement {
     case Expense
     case Earning
     case Both
+}
+
+enum DebtType {
+    case Debt
+    case Debtor
 }
 
 //  MARK: - ERRORS

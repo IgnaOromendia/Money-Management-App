@@ -8,9 +8,7 @@
 import UIKit
 
 fileprivate let cornerRadiusV = 10.0
-fileprivate let nameFontSize = 20.0
 fileprivate let detailsFontSize = 13.0
-fileprivate let moneyFontSize = 18.0
 fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)
 
 
@@ -29,7 +27,7 @@ class ExpensesCell: UITableViewCell {
     }
     
     private func setUpCell() {
-        lbl_expeseName.font = UIFont.systemFont(ofSize: nameFontSize, weight: .medium)
+        lbl_expeseName.font = UIFont.systemFont(ofSize: titleFontSize, weight: .medium)
         
         lbl_details.font = UIFont.systemFont(ofSize: detailsFontSize, weight: .regular)
         lbl_details.textColor = lightGrey

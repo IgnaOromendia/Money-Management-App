@@ -9,9 +9,7 @@ import Foundation
 import UIKit
 
 fileprivate let cornerRadiusV = 10.0
-fileprivate let nameFontSize = 20.0
 fileprivate let detailsFontSize = 13.0
-fileprivate let moneyFontSize = 18.0
 fileprivate let labelFontSize = 14.0
 fileprivate let textsFontSize = 20.0
 fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)
@@ -47,7 +45,7 @@ final class AddMovementViewModel {
     }
     
     func setUpPreview(viewP: UIView, _ container:UIView, _ catView: UIView, _ lblName: UILabel, _ lblDetail: UILabel, _ lblMoney: UILabel) {
-        lblName.font = UIFont.systemFont(ofSize: nameFontSize, weight: .medium)
+        lblName.font = UIFont.systemFont(ofSize: titleFontSize, weight: .medium)
         
         lblDetail.font = UIFont.systemFont(ofSize: detailsFontSize, weight: .regular)
         lblDetail.textColor = lightGrey
