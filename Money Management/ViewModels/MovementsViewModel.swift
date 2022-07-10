@@ -1,5 +1,5 @@
 //
-//  MovmentsViewModel.swift
+//  MovementsViewModel.swift
 //  Money Management
 //
 //  Created by Igna on 06/07/2022.
@@ -18,7 +18,7 @@ fileprivate let lightRed = UIColor.rgbColor(r: 255, g: 139, b: 139)
 fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)
 fileprivate let blue = UIColor.rgbColor(r: 72, g: 129, b: 215)
 
-final class MovmentViewModel {
+final class MovementViewModel {
     
     // Day balance view
     private var balance: Int
@@ -27,38 +27,52 @@ final class MovmentViewModel {
     private var comp2Text: String
     private var comp2Color: UIColor
     
+    private let today = Date.now.getKeyData()
+    private let yesterday = Date.now.yesterday
+    private let twoDaysAgo = Date.now.yesterday.advanced(by: -86400)
+    
     // Table view
-    var sections: Int
+    var sections: Int = 0
     var sectionTitles: Array<String> = []
     var rowsPerSection: Array<Int> = []
-    var productsPerDay: Array<ProductsData>
+    var productsPerDay: Array<ProductsData> = []
     let cellId = "ExpensesCell"
     let cellHeight = 70.0
     
     init(_ m: MoneyManagement) {
-        let today = Date.now.getKeyData()
-        let yesterday = Date.now.yesterday
-        let twoDaysAgo = Date.now.yesterday.advanced(by: -86400)
-        let expensesT = m.dateExpenses(on: Date.now)?.sum ?? 0
-        let expensesY = m.dateExpenses(on: yesterday)?.sum ?? 0
-        let expensesTwoD = m.dateExpenses(on: twoDaysAgo)?.sum ?? 0
+        self.balance = 0
+        self.comp1Text = ""
+        self.comp2Text = ""
+        self.comp1Color = UIColor()
+        self.comp2Color = UIColor()
         
-        let dataY: (Bool,Int) = (expensesY < expensesT , (expensesY - expensesT))             // true = more
-        let dataTwoD: (Bool,Int) = (expensesTwoD < expensesT , abs(expensesTwoD - expensesT)) // false = less
+        calculateValues(with: m)
+    }
+    
+    func updateValues(_ m: MoneyManagement, money: UILabel, comp1: UILabel, comp2: UILabel) {
+        calculateValues(with: m)
         
-        var t = dataY.0 ?  " more " : " less "
-        self.comp1Text = "$\(dataY.1) spent" + t + "than yesterday"
-        self.comp1Color = dataY.0 ? lightRed : lightGreen
+        money.text = balance < 0 ? "-$\(abs(balance))" : "$\(balance)"
         
-        t = dataTwoD.0 ?  " more " : " less "
-        self.comp2Text = "$\(dataTwoD.1) spent" + t + "than 2 days ago"
-        self.comp2Color = dataTwoD.0 ? lightRed : lightGreen
+        comp1.textColor = self.comp1Color
+        comp1.text = self.comp1Text
+        
+        comp2.textColor = self.comp2Color
+        comp2.text = self.comp2Text
+    }
+    
+    private func calculateValues(with m: MoneyManagement) {
+        let dataY = m.expensesDifferences(between: yesterday, Date.now)
+        let dataTwoD = m.expensesDifferences(between: twoDaysAgo, Date.now)
         
         self.balance = m.balance(from: today, to: today)
-        self.productsPerDay = m.getAllWeekMovment(today.weekOfMonth!, for: .Expense)
+        self.productsPerDay = m.getAllWeekMovement(today.weekOfMonth!, for: .Both)
         self.sections = productsPerDay.count
         self.rowsPerSection = calculateRowPerSection()
         self.sectionTitles = getSectionTitles()
+        
+        setUpStringAndColor(with: dataY, text: &comp1Text, color: &comp1Color, day: "yesterday")
+        setUpStringAndColor(with: dataTwoD, text: &comp2Text, color: &comp2Color, day: "2 days ago")
     }
     
     func setUpDayBalanceView(containerView:UIView, title:UILabel, money: UILabel, compLabel1: UILabel, compLabel2: UILabel, btn: UIButton) {
@@ -68,9 +82,9 @@ final class MovmentViewModel {
         
         title.font = UIFont.systemFont(ofSize: fontSizeTitle, weight: .semibold)
         title.text = titleString
-        
+         
         money.font = UIFont.systemFont(ofSize: fontSizeMoney, weight: .light)
-        money.text = "$\(balance)"
+        money.text = balance < 0 ? "-$\(abs(balance))" : "$\(balance)"
         
         compLabel1.font = UIFont.systemFont(ofSize: fontSizeComp)
         compLabel1.textColor = self.comp1Color
@@ -108,5 +122,11 @@ final class MovmentViewModel {
             result[i] = item.products.count
         }
         return result
+    }
+    
+    private func setUpStringAndColor(with data: (Bool,Int), text: inout String, color: inout UIColor, day: String) {
+        let t = data.0 ?  " more " : " less "
+        text = "$\(data.1) spent" + t + "than " + day
+        color = data.0 ? lightRed : lightGreen
     }
 }

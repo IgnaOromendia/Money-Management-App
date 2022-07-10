@@ -12,7 +12,7 @@ fileprivate let nameFontSize = 20.0
 fileprivate let detailsFontSize = 13.0
 fileprivate let moneyFontSize = 18.0
 fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)
-fileprivate let moneyRed = UIColor.rgbColor(r: 255, g: 0, b: 0)
+
 
 class ExpensesCell: UITableViewCell {
     
@@ -35,7 +35,6 @@ class ExpensesCell: UITableViewCell {
         lbl_details.textColor = lightGrey
         
         lbl_money.font = UIFont.systemFont(ofSize: moneyFontSize, weight: .medium)
-        lbl_money.textColor = moneyRed
         
         view_category.cornerRadius(of: cornerRadiusV)
         view_category.backgroundColor = UIColor.randomColor()
@@ -48,7 +47,14 @@ class ExpensesCell: UITableViewCell {
     func fillWithData(_ product: Product) {
         lbl_expeseName.text = product.name
         lbl_details.text = product.category + " x\(product.quantity)"
-        lbl_money.text = "-fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)f$\(product.price)"
+        if product.movement == .Expense {
+            lbl_money.text = "-$\(product.price * product.quantity)"
+            lbl_money.textColor = moneyRed
+        } else {
+            lbl_money.text = "+$\(product.price * product.quantity)"
+            lbl_money.textColor = moneyGreen
+        }
+       
     }
     
 }

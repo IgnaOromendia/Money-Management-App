@@ -7,26 +7,6 @@
 
 import UIKit
 
-// TEST's begins
-var expenses1 = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", quantity: 1),
-                                       Product(name: "Hielo", price: 50, category: "Otros", quantity: 2)], sum: 150)
-
-var expenses2 = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", quantity: 1),], sum: 100)
-
-var expenses3 = ProductsData(products: [Product(name: "Mila", price: 600, category: "Comida", quantity: 1),], sum: 600)
-
-var earnings = ProductsData(products: [Product(name: "Robo", price: 500, category: "Otros", quantity: 1)], sum: 500)
-
-let date = Date().getKeyData()
-let dateY = Date().yesterday.getKeyData()
-let dateTwoD = Date.now.yesterday.advanced(by: -86400).getKeyData()
-let mm = MoneyManagement(expenses: [date:expenses2, dateY:expenses1, dateTwoD:expenses3],
-                         earnings: [date:earnings],
-                         debts: [:],
-                         debtors: [:],
-                         categories: [])
-// END of TEST coca, hielo-coca, mila
-
 class MovementsController: UIViewController, UITableViewControllerMethods {
     
     // Day Balance View
@@ -42,11 +22,12 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
     
     
     // Variables
-    private let MCViewModel = MovmentViewModel(mm)
+    private let MCViewModel = MovementViewModel(mm)
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationTransparent()
         MCViewModel.setUpTableView(tableView_expenses)
         MCViewModel.setUpDayBalanceView(containerView: view_dayBalance,
                                         title: lbl_dayBalanceTitle,
@@ -54,6 +35,19 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
                                         compLabel1: lbl_dayBalanceCompYesterday,
                                         compLabel2: lbl_dayBalanceComp2days,
                                         btn: btn_DayBalancePlus)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let week = Date.now.getKeyData().weekOfMonth
+        if MCViewModel.productsPerDay != mm.getAllWeekMovement(week!, for: .Expense) {
+            MCViewModel.updateValues(mm, money: lbl_dayBalanceMoney, comp1: lbl_dayBalanceCompYesterday, comp2: lbl_dayBalanceComp2days)
+            tableView_expenses.reloadData()
+        }
+    }
+    
+    // ACTIONS
+    @IBAction func addMovement(_ sender: UIButton) {
+        transition(to: addMovementControllerID)
     }
     
     

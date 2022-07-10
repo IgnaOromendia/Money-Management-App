@@ -91,6 +91,20 @@ extension UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = hides
         definesPresentationContext = true
     }
+    
+    /// Set the navigation trnasparent
+    func setNavigationTransparent(title: String? = nil) {
+        navigationItem.title = title
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    /// Transifiton from vc to vc
+    func transition(to id:String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destino = storyboard.instantiateViewController(identifier: id)
+        navigationController?.pushViewController(destino, animated: true)
+    }
 }
 
 extension UISearchController {

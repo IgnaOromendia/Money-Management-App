@@ -18,25 +18,35 @@
 		700A6FCA2873694B002A3F8E /* MM-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FC92873694B002A3F8E /* MM-Model.swift */; };
 		700A6FCC287369FD002A3F8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FCB287369FD002A3F8E /* Constants.swift */; };
 		700A6FD0287376B0002A3F8E /* Date-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FCF287376B0002A3F8E /* Date-Extension.swift */; };
-		700A6FD528737784002A3F8E /* MM-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FC92873694B002A3F8E /* MM-Model.swift */; };
 		700A6FD8287388F2002A3F8E /* Array-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FD7287388F2002A3F8E /* Array-Extension.swift */; };
-		700A6FD9287388F2002A3F8E /* Array-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FD7287388F2002A3F8E /* Array-Extension.swift */; };
-		700A6FDB28739367002A3F8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FCB287369FD002A3F8E /* Constants.swift */; };
-		700A6FDC2873936A002A3F8E /* Date-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FCF287376B0002A3F8E /* Date-Extension.swift */; };
 		700A6FDE287394F5002A3F8E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FDD287394F5002A3F8E /* Global.swift */; };
-		700A6FDF287394F5002A3F8E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FDD287394F5002A3F8E /* Global.swift */; };
 		700A6FE12874622C002A3F8E /* Set-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FE02874622C002A3F8E /* Set-Extension.swift */; };
-		700A6FE22874622C002A3F8E /* Set-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FE02874622C002A3F8E /* Set-Extension.swift */; };
+		708AFAD62878C8D5009726DC /* AddMovementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD52878C8D5009726DC /* AddMovementController.swift */; };
+		708AFAD92878C919009726DC /* AddMovementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD82878C919009726DC /* AddMovementViewModel.swift */; };
 		709745DD28762EAE0046EE06 /* MovementsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DC28762EAE0046EE06 /* MovementsController.swift */; };
-		709745DE28762EAE0046EE06 /* MovementsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DC28762EAE0046EE06 /* MovementsController.swift */; };
-		709745E028762EC00046EE06 /* MovmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DF28762EC00046EE06 /* MovmentsViewModel.swift */; };
-		709745E128762EC00046EE06 /* MovmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DF28762EC00046EE06 /* MovmentsViewModel.swift */; };
+		709745E028762EC00046EE06 /* MovementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DF28762EC00046EE06 /* MovementsViewModel.swift */; };
 		709745E6287631F50046EE06 /* UI-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745E5287631F50046EE06 /* UI-Extensions.swift */; };
-		709745E7287631F50046EE06 /* UI-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745E5287631F50046EE06 /* UI-Extensions.swift */; };
 		70E6A96128774AAC005E9E4C /* ExpensesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6A95F28774AAC005E9E4C /* ExpensesCell.swift */; };
-		70E6A96228774AAC005E9E4C /* ExpensesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6A95F28774AAC005E9E4C /* ExpensesCell.swift */; };
 		70E6A96328774AAC005E9E4C /* ExpensesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E6A96028774AAC005E9E4C /* ExpensesCell.xib */; };
-		70E6A96428774AAC005E9E4C /* ExpensesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E6A96028774AAC005E9E4C /* ExpensesCell.xib */; };
+		70EA1CE02879E38300546031 /* DataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA1CDF2879E38300546031 /* DataValidation.swift */; };
+		70EA1CE62879E80100546031 /* Validation_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA1CE52879E80100546031 /* Validation_test.swift */; };
+		70EA1CE9287A311500546031 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA1CE8287A311500546031 /* Animations.swift */; };
+		70EA1CED287A3C3100546031 /* DataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA1CDF2879E38300546031 /* DataValidation.swift */; };
+		70EA1CEE287A3C3100546031 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FCB287369FD002A3F8E /* Constants.swift */; };
+		70EA1CEF287A3C3100546031 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA1CE8287A311500546031 /* Animations.swift */; };
+		70EA1CF0287A3C3100546031 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FDD287394F5002A3F8E /* Global.swift */; };
+		70EA1CF1287A3C3500546031 /* Array-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FD7287388F2002A3F8E /* Array-Extension.swift */; };
+		70EA1CF2287A3C3500546031 /* Date-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FCF287376B0002A3F8E /* Date-Extension.swift */; };
+		70EA1CF3287A3C3500546031 /* Set-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FE02874622C002A3F8E /* Set-Extension.swift */; };
+		70EA1CF4287A3C3500546031 /* UI-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745E5287631F50046EE06 /* UI-Extensions.swift */; };
+		70EA1CF5287A3C3800546031 /* MM-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700A6FC92873694B002A3F8E /* MM-Model.swift */; };
+		70EA1CF6287A3C3A00546031 /* AddMovementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD82878C919009726DC /* AddMovementViewModel.swift */; };
+		70EA1CF7287A3C3A00546031 /* MovementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DF28762EC00046EE06 /* MovementsViewModel.swift */; };
+		70EA1CF9287A3C4200546031 /* AddMovementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD52878C8D5009726DC /* AddMovementController.swift */; };
+		70EA1CFA287A3C4200546031 /* MovementsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DC28762EAE0046EE06 /* MovementsController.swift */; };
+		70EA1CFB287A3C5A00546031 /* ExpensesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6A95F28774AAC005E9E4C /* ExpensesCell.swift */; };
+		70EA1CFD287A3C7900546031 /* Extension_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA1CFC287A3C7900546031 /* Extension_tests.swift */; };
+		70EA1CFF287A3D9700546031 /* DateComponenets-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA1CFE287A3D9700546031 /* DateComponenets-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,11 +85,18 @@
 		700A6FD7287388F2002A3F8E /* Array-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-Extension.swift"; sourceTree = "<group>"; };
 		700A6FDD287394F5002A3F8E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		700A6FE02874622C002A3F8E /* Set-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set-Extension.swift"; sourceTree = "<group>"; };
+		708AFAD52878C8D5009726DC /* AddMovementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementController.swift; sourceTree = "<group>"; };
+		708AFAD82878C919009726DC /* AddMovementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementViewModel.swift; sourceTree = "<group>"; };
 		709745DC28762EAE0046EE06 /* MovementsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsController.swift; sourceTree = "<group>"; };
-		709745DF28762EC00046EE06 /* MovmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovmentsViewModel.swift; sourceTree = "<group>"; };
+		709745DF28762EC00046EE06 /* MovementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsViewModel.swift; sourceTree = "<group>"; };
 		709745E5287631F50046EE06 /* UI-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI-Extensions.swift"; sourceTree = "<group>"; };
 		70E6A95F28774AAC005E9E4C /* ExpensesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesCell.swift; sourceTree = "<group>"; };
 		70E6A96028774AAC005E9E4C /* ExpensesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpensesCell.xib; sourceTree = "<group>"; };
+		70EA1CDF2879E38300546031 /* DataValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidation.swift; sourceTree = "<group>"; };
+		70EA1CE52879E80100546031 /* Validation_test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation_test.swift; sourceTree = "<group>"; };
+		70EA1CE8287A311500546031 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		70EA1CFC287A3C7900546031 /* Extension_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_tests.swift; sourceTree = "<group>"; };
+		70EA1CFE287A3D9700546031 /* DateComponenets-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponenets-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				700A6FA7287361E9002A3F8E /* Money_ManagementTests.swift */,
+				70EA1CE52879E80100546031 /* Validation_test.swift */,
+				70EA1CFC287A3C7900546031 /* Extension_tests.swift */,
 			);
 			path = "Money ManagementTests";
 			sourceTree = "<group>";
@@ -185,10 +204,9 @@
 			children = (
 				700A6FDD287394F5002A3F8E /* Global.swift */,
 				700A6FCB287369FD002A3F8E /* Constants.swift */,
-				700A6FCF287376B0002A3F8E /* Date-Extension.swift */,
-				700A6FD7287388F2002A3F8E /* Array-Extension.swift */,
-				700A6FE02874622C002A3F8E /* Set-Extension.swift */,
-				709745E5287631F50046EE06 /* UI-Extensions.swift */,
+				70EA1CE8287A311500546031 /* Animations.swift */,
+				70EA1CDF2879E38300546031 /* DataValidation.swift */,
+				70EA1CE42879E65A00546031 /* Extensions */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -197,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				709745DC28762EAE0046EE06 /* MovementsController.swift */,
+				708AFAD52878C8D5009726DC /* AddMovementController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -227,9 +246,22 @@
 		700A6FC828736733002A3F8E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				709745DF28762EC00046EE06 /* MovmentsViewModel.swift */,
+				709745DF28762EC00046EE06 /* MovementsViewModel.swift */,
+				708AFAD82878C919009726DC /* AddMovementViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		70EA1CE42879E65A00546031 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				700A6FCF287376B0002A3F8E /* Date-Extension.swift */,
+				700A6FD7287388F2002A3F8E /* Array-Extension.swift */,
+				700A6FE02874622C002A3F8E /* Set-Extension.swift */,
+				709745E5287631F50046EE06 /* UI-Extensions.swift */,
+				70EA1CFE287A3D9700546031 /* DateComponenets-Extension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,7 +379,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70E6A96428774AAC005E9E4C /* ExpensesCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,14 +399,19 @@
 				70E6A96128774AAC005E9E4C /* ExpensesCell.swift in Sources */,
 				700A6FD0287376B0002A3F8E /* Date-Extension.swift in Sources */,
 				709745E6287631F50046EE06 /* UI-Extensions.swift in Sources */,
+				708AFAD92878C919009726DC /* AddMovementViewModel.swift in Sources */,
 				700A6F91287361E4002A3F8E /* AppDelegate.swift in Sources */,
+				70EA1CFF287A3D9700546031 /* DateComponenets-Extension.swift in Sources */,
 				700A6FCA2873694B002A3F8E /* MM-Model.swift in Sources */,
 				700A6FD8287388F2002A3F8E /* Array-Extension.swift in Sources */,
 				700A6FE12874622C002A3F8E /* Set-Extension.swift in Sources */,
+				708AFAD62878C8D5009726DC /* AddMovementController.swift in Sources */,
 				700A6F93287361E4002A3F8E /* SceneDelegate.swift in Sources */,
 				700A6FCC287369FD002A3F8E /* Constants.swift in Sources */,
-				709745E028762EC00046EE06 /* MovmentsViewModel.swift in Sources */,
+				70EA1CE02879E38300546031 /* DataValidation.swift in Sources */,
+				709745E028762EC00046EE06 /* MovementsViewModel.swift in Sources */,
 				709745DD28762EAE0046EE06 /* MovementsController.swift in Sources */,
+				70EA1CE9287A311500546031 /* Animations.swift in Sources */,
 				700A6FDE287394F5002A3F8E /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,17 +420,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				700A6FD9287388F2002A3F8E /* Array-Extension.swift in Sources */,
-				700A6FD528737784002A3F8E /* MM-Model.swift in Sources */,
-				700A6FDF287394F5002A3F8E /* Global.swift in Sources */,
+				70EA1CE62879E80100546031 /* Validation_test.swift in Sources */,
+				70EA1CEF287A3C3100546031 /* Animations.swift in Sources */,
+				70EA1CF7287A3C3A00546031 /* MovementsViewModel.swift in Sources */,
+				70EA1CF1287A3C3500546031 /* Array-Extension.swift in Sources */,
+				70EA1CF9287A3C4200546031 /* AddMovementController.swift in Sources */,
+				70EA1CF0287A3C3100546031 /* Global.swift in Sources */,
+				70EA1CFD287A3C7900546031 /* Extension_tests.swift in Sources */,
+				70EA1CFA287A3C4200546031 /* MovementsController.swift in Sources */,
 				700A6FA8287361E9002A3F8E /* Money_ManagementTests.swift in Sources */,
-				709745E128762EC00046EE06 /* MovmentsViewModel.swift in Sources */,
-				709745E7287631F50046EE06 /* UI-Extensions.swift in Sources */,
-				700A6FDC2873936A002A3F8E /* Date-Extension.swift in Sources */,
-				70E6A96228774AAC005E9E4C /* ExpensesCell.swift in Sources */,
-				700A6FE22874622C002A3F8E /* Set-Extension.swift in Sources */,
-				709745DE28762EAE0046EE06 /* MovementsController.swift in Sources */,
-				700A6FDB28739367002A3F8E /* Constants.swift in Sources */,
+				70EA1CFB287A3C5A00546031 /* ExpensesCell.swift in Sources */,
+				70EA1CF6287A3C3A00546031 /* AddMovementViewModel.swift in Sources */,
+				70EA1CF4287A3C3500546031 /* UI-Extensions.swift in Sources */,
+				70EA1CF5287A3C3800546031 /* MM-Model.swift in Sources */,
+				70EA1CF3287A3C3500546031 /* Set-Extension.swift in Sources */,
+				70EA1CED287A3C3100546031 /* DataValidation.swift in Sources */,
+				70EA1CEE287A3C3100546031 /* Constants.swift in Sources */,
+				70EA1CF2287A3C3500546031 /* Date-Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
