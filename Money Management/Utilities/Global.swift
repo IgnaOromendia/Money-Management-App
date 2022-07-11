@@ -9,6 +9,10 @@ import Foundation
 
 // TO DO LIST
 // Hacer la parte de deudas
+// .
+// Poner alertas
+// Hacer modo oscuro
+// Hacer que peudas elegir como aparecen ordenadas las deudas
 
 // TEST's begins
 var expenses1 = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", movement: .Expense, quantity: 1),
@@ -20,12 +24,15 @@ var expenses3 = ProductsData(products: [Product(name: "Mila", price: 600, catego
 
 var earnings = ProductsData(products: [Product(name: "Robo", price: 500, category: "Otros", movement: .Earning, quantity: 1)], sum: 500)
 
+let debts = ["Harry":100, "Lil":120, "John":300]
+let debtors = ["Jake":420, "Ed":80, "George":175]
+
 let date = Date().getKeyData()
 let dateY = Date().yesterday.getKeyData()
 let dateTwoD = Date.now.yesterday.advanced(by: -86400).getKeyData()
 let mm = MoneyManagement(expenses: [date:expenses2, dateY:expenses1, dateTwoD:expenses3],
                          earnings: [date:earnings],
-                         debts: [:],
-                         debtors: [:],
+                         debts: debts,
+                         debtors: debtors,
                          categories: [])
 // END of TEST coca, hielo-coca, mila

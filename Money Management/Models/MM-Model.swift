@@ -187,6 +187,16 @@ class MoneyManagement {
         self.categories.insert(c)
     }
     
+    // MARK: - REMOVES
+    
+    func removeDebt(of name: String) {
+        self.debts.removeValue(forKey: name)
+    }
+    
+    func removeDebtor(of name: String) {
+        self.debtors.removeValue(forKey: name)
+    }
+    
     // MARK: - Other funcitions
     
     /// Retruns the amount of money earned or spent in that month

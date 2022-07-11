@@ -17,3 +17,15 @@ extension Array where Element == Int {
         return result
     }
 }
+
+extension Array where Element:Equatable {
+    /// Get the index of a given element
+    func getIndex(of item: Element) -> Int?{
+        for i in 0...self.count {
+            if self[i] == item {
+                return i
+            }
+        }
+        return nil
+    }
+}

@@ -123,7 +123,6 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
             } else {
                 try mm.addEarnings(product: product, on: selectedDate)
             }
-            
             navigationController?.popViewController(animated: true)
         } catch {
             print(error)
@@ -134,6 +133,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     
     private func setUpController() {
         view.backgroundColor = customBlue
+        navigationController?.navigationBar.tintColor = .white
     }
     
     private func fillWithData() {
@@ -150,6 +150,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
                     price.removeFirst()
                 }
                 try validation.onlyNumbers(on: price)
+                try validation.emptyText(price)
                 priceInt = Int(price)!
             }
             if !quant.isEmpty {

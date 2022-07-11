@@ -9,26 +9,26 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DebtCellID" rowHeight="55" id="KGk-i7-Jjw" customClass="DebtsCell" customModule="Money_Management" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DebtsCell" rowHeight="55" id="KGk-i7-Jjw" customClass="DebtsCell" customModule="Money_Management" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlC-6h-201">
-                        <rect key="frame" x="19" y="12" width="151" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDs-mt-mLQ">
+                        <rect key="frame" x="200" y="18" width="100" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="baO-CF-UPc"/>
+                            <constraint firstAttribute="height" constant="20" id="hh1-xu-9Wr"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDs-mt-mLQ">
-                        <rect key="frame" x="200" y="18" width="100" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlC-6h-201">
+                        <rect key="frame" x="19" y="18" width="151" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="4rs-3N-svK"/>
+                            <constraint firstAttribute="height" constant="20" id="baO-CF-UPc"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -36,14 +36,13 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="zDs-mt-mLQ" firstAttribute="leading" secondItem="BlC-6h-201" secondAttribute="trailing" constant="30" id="FCd-en-lro"/>
-                    <constraint firstAttribute="bottom" secondItem="BlC-6h-201" secondAttribute="bottom" constant="12" id="LrG-v8-IaA"/>
-                    <constraint firstAttribute="bottom" secondItem="zDs-mt-mLQ" secondAttribute="bottom" constant="18" id="MFS-y6-1nz"/>
+                    <constraint firstAttribute="bottom" secondItem="zDs-mt-mLQ" secondAttribute="bottom" constant="17" id="4jr-f1-OG1"/>
+                    <constraint firstItem="zDs-mt-mLQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="200" id="9p0-Cg-Crv"/>
+                    <constraint firstItem="BlC-6h-201" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="KCw-Z4-7g9"/>
                     <constraint firstItem="BlC-6h-201" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="VPD-xl-Ol1"/>
                     <constraint firstAttribute="trailing" secondItem="BlC-6h-201" secondAttribute="trailing" constant="150" id="Z0i-xd-tkW"/>
-                    <constraint firstItem="BlC-6h-201" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="had-qc-cTG"/>
-                    <constraint firstItem="zDs-mt-mLQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="vqJ-77-dpf"/>
-                    <constraint firstAttribute="trailing" secondItem="zDs-mt-mLQ" secondAttribute="trailing" constant="20" id="yQe-FC-KwG"/>
+                    <constraint firstItem="zDs-mt-mLQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="c5X-ef-bhM"/>
+                    <constraint firstAttribute="trailing" secondItem="zDs-mt-mLQ" secondAttribute="trailing" constant="20" symbolic="YES" id="naM-yD-Kww"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
