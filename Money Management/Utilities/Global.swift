@@ -8,7 +8,7 @@
 import Foundation
 
 // TO DO LIST
-// Poder ver todos los gastos/ganacias ambas
+// Poder ver todos los gastos/ganacias ambas 
 // .
 // Poner alertas
 // Mejorar modo oscuro
