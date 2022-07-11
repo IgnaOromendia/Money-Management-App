@@ -46,14 +46,17 @@ final class DebtsViewModel {
     }
     
     func deleteSelection(_ selection:Array<Int>) {
+        print(selection)
+        print(arrDD)
         for i in selection {
-            let item = self.arrDD.remove(at: i)
+            let item = self.arrDD[i]
             if item.type == .Debt {
                 mm.removeDebt(of: item.name)
             } else {
                 mm.removeDebtor(of: item.name)
             }
         }
+        update(from: mm)
     }
     
     func setUpTableView(_ tableView: UITableView) {
@@ -75,8 +78,7 @@ final class DebtsViewModel {
             for i in 0...self.arrDD.count {
                 let index = IndexPath(row: i, section: 0)
                 tableView.cellForRow(at: index)?.setSelected(false, animated: true)
-            }
-            
+            }            
         }
     }
 }

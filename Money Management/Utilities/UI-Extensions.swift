@@ -43,6 +43,7 @@ extension UIView {
         blurEffectView.frame = self.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         self.addSubview(blurEffectView)
+        self.sendSubviewToBack(blurEffectView)
         self.clipsToBounds = true
     }
     

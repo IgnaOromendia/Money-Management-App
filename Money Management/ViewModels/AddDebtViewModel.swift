@@ -30,7 +30,8 @@ final class AddDebtViewModel {
     }
     
     func setUpTexts(_ txtName: UITextField, _ txtAmount: UITextField) {
-        
+        txtName.placeholder = "Name"
+        txtAmount.placeholder = "Amount"
     }
     
     func setUpSegmentedControl(_ seg: UISegmentedControl) {
@@ -38,8 +39,29 @@ final class AddDebtViewModel {
         seg.setTitle("Debtor", forSegmentAt: 1)
     }
     
-    func setUpBtn(_ btn: UIButton) {
+    func setUpBtn(_ btnSave: UIButton,_ btnCancel: UIButton) {
+        btnSave.cornerRadius(of: 15.0)
+        btnSave.backgroundColor = customBlue
+        btnSave.setTitle("Save", for: .normal)
+        btnSave.setTitleColor(.white, for: .normal)
         
+        btnCancel.cornerRadius(of: 15.0)
+        btnCancel.backgroundColor = .systemRed
+        btnCancel.setTitle("Cancel", for: .normal)
+        btnCancel.setTitleColor(.white, for: .normal)
+    }
+    
+    func setUpView(_ view: UIView) {
+        view.cornerRadius(of: 20.0)
+        view.shadow = true
+    }
+    
+    func setUpController(_ vc: UIViewController) {
+        vc.view.applyBlurEffect(style: .systemThinMaterialLight)
+    }
+    
+    func postNotification() {
+        NotificationCenter.default.post(name: reloadDataNotification, object: nil)
     }
     
 }

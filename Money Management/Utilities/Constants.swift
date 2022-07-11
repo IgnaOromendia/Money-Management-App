@@ -13,6 +13,7 @@ import UIKit
 // IDs
 let movementControllerID = "MovementControllerID"
 let addMovementControllerID = "AddMovementControllerID"
+let debtControllerID = "DebtControllerID"
 
 // Colors
 let customBlue = UIColor.rgbColor(r: 72, g: 129, b: 215)
@@ -23,6 +24,9 @@ let darkBlue = UIColor.rgbColor(r: 61, g: 108, b: 177)
 // Fonts
 let moneyFontSize = 18.0
 let titleFontSize = 20.0
+
+// Notifications
+let reloadDataNotification = Notification.Name("reloadData")
 
 // MARK: - ALIAS
 

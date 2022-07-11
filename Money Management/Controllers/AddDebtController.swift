@@ -13,6 +13,8 @@ class AddDebtController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txt_amount: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var btn_save: UIButton!
+    @IBOutlet weak var btn_cancel: UIButton!
+    @IBOutlet weak var view_popOver: UIView!
     
     let addDebtViewModel = AddDebtViewModel()
     
@@ -23,8 +25,10 @@ class AddDebtController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         addDebtViewModel.setUpTexts(txt_name, txt_amount)
-        addDebtViewModel.setUpBtn(btn_save)
+        addDebtViewModel.setUpBtn(btn_save,btn_cancel)
         addDebtViewModel.setUpSegmentedControl(segmentedControl)
+        addDebtViewModel.setUpController(self)
+        addDebtViewModel.setUpView(view_popOver)
     }
     
     // TEXTS
@@ -40,11 +44,15 @@ class AddDebtController: UIViewController, UITextFieldDelegate {
         do {
             let data = try addDebtViewModel.validation(name: txt_name.text, amount: txt_amount.text, type: selectedType)
             addDebtViewModel.add(of: data)
+            addDebtViewModel.postNotification()
             dismiss(animated: true)
         } catch {
             print(error)
         }
     }
     
-
+    @IBAction func cancelAdd(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DebtsController: UITableViewController {
+class DebtsController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var btn_add: UIBarButtonItem!
     @IBOutlet weak var btn_edit: UIBarButtonItem!
@@ -20,17 +20,14 @@ class DebtsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         debtsViewModel.setUpTableView(tableView)
+        addObserver()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        debtsViewModel.update(from: mm)
-        tableView.reloadData()
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // ACTIONS
-    @IBAction func addDebt(_ sender: UIBarButtonItem) {
-        
-    }
     
     @IBAction func editTable(_ sender: UIBarButtonItem) {
         debtsViewModel.setUpEditingStyle(tableView, btn_edit, btn_add, btn_delete)
@@ -69,19 +66,33 @@ class DebtsController: UITableViewController {
         let index = debtsViewModel.getIndex(of: data)
         
         if let index = index {
-            if deleteIndexes.contains(index) {
-                let subindex = deleteIndexes.getIndex(of: index)
-                if let subindex = subindex {
-                    deleteIndexes.remove(at: subindex)
-                } else {
-                    print("Error index")
-                }
-            } else {
-                deleteIndexes.append(index)
-            }
-        } else {
-            print("Error index")
+            deleteIndexes.append(index)
         }
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! DebtsCell
+        cell.setSelected(cell.isSelected, animated: true)
+        
+        let data = cell.getData()
+        let index = debtsViewModel.getIndex(of: data)
+        
+        if let index = index {
+            let subindex = deleteIndexes.getIndex(of: index)
+            if let subindex = subindex {
+                deleteIndexes.remove(at: subindex)
+            }
+        }
+    }
+    
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: reloadDataNotification, object: nil)
+    }
+    
+    @objc func refresh() {
+        debtsViewModel.update(from: mm)
+        self.tableView.reloadData()
     }
     
 }

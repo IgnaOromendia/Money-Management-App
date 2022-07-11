@@ -25,10 +25,10 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlC-6h-201">
-                        <rect key="frame" x="19" y="18" width="151" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labelg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlC-6h-201">
+                        <rect key="frame" x="19" y="15" width="151" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="baO-CF-UPc"/>
+                            <constraint firstAttribute="height" constant="25" id="baO-CF-UPc"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -38,7 +38,7 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="zDs-mt-mLQ" secondAttribute="bottom" constant="17" id="4jr-f1-OG1"/>
                     <constraint firstItem="zDs-mt-mLQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="200" id="9p0-Cg-Crv"/>
-                    <constraint firstItem="BlC-6h-201" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="KCw-Z4-7g9"/>
+                    <constraint firstItem="BlC-6h-201" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="KCw-Z4-7g9"/>
                     <constraint firstItem="BlC-6h-201" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="VPD-xl-Ol1"/>
                     <constraint firstAttribute="trailing" secondItem="BlC-6h-201" secondAttribute="trailing" constant="150" id="Z0i-xd-tkW"/>
                     <constraint firstItem="zDs-mt-mLQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="c5X-ef-bhM"/>
