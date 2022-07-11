@@ -8,7 +8,7 @@
 import Foundation
 
 // TO DO LIST
-// Hacer la parte de deudas
+// Hacer parte de agregar deuda o deudor
 // .
 // Poner alertas
 // Hacer modo oscuro

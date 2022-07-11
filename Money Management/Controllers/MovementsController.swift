@@ -62,7 +62,7 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "Total: $\(MCViewModel.productsPerDay[section].sum)"
+        return "Day balance: $\(MCViewModel.productsPerDay[section].sum)"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
