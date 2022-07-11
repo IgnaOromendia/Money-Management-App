@@ -34,6 +34,8 @@
 		709745DD28762EAE0046EE06 /* MovementsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DC28762EAE0046EE06 /* MovementsController.swift */; };
 		709745E028762EC00046EE06 /* MovementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DF28762EC00046EE06 /* MovementsViewModel.swift */; };
 		709745E6287631F50046EE06 /* UI-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745E5287631F50046EE06 /* UI-Extensions.swift */; };
+		70A61F87287CC6FA00459114 /* EEController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A61F86287CC6FA00459114 /* EEController.swift */; };
+		70A61F89287CC78F00459114 /* EEViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A61F88287CC78F00459114 /* EEViewModel.swift */; };
 		70E6A96128774AAC005E9E4C /* ExpensesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6A95F28774AAC005E9E4C /* ExpensesCell.swift */; };
 		70E6A96328774AAC005E9E4C /* ExpensesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E6A96028774AAC005E9E4C /* ExpensesCell.xib */; };
 		70EA1CE02879E38300546031 /* DataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA1CDF2879E38300546031 /* DataValidation.swift */; };
@@ -104,6 +106,8 @@
 		709745DC28762EAE0046EE06 /* MovementsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsController.swift; sourceTree = "<group>"; };
 		709745DF28762EC00046EE06 /* MovementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsViewModel.swift; sourceTree = "<group>"; };
 		709745E5287631F50046EE06 /* UI-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI-Extensions.swift"; sourceTree = "<group>"; };
+		70A61F86287CC6FA00459114 /* EEController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EEController.swift; sourceTree = "<group>"; };
+		70A61F88287CC78F00459114 /* EEViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EEViewModel.swift; sourceTree = "<group>"; };
 		70E6A95F28774AAC005E9E4C /* ExpensesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesCell.swift; sourceTree = "<group>"; };
 		70E6A96028774AAC005E9E4C /* ExpensesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpensesCell.xib; sourceTree = "<group>"; };
 		70EA1CDF2879E38300546031 /* DataValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidation.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				708AFAD52878C8D5009726DC /* AddMovementController.swift */,
 				7023B9AD287B4D7D000FD45C /* DebtsController.swift */,
 				7092A864287C5F100074DC5E /* AddDebtController.swift */,
+				70A61F86287CC6FA00459114 /* EEController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 				708AFAD82878C919009726DC /* AddMovementViewModel.swift */,
 				7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */,
 				7092A867287C5FF20074DC5E /* AddDebtViewModel.swift */,
+				70A61F88287CC78F00459114 /* EEViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -420,12 +426,14 @@
 				70E6A96128774AAC005E9E4C /* ExpensesCell.swift in Sources */,
 				700A6FD0287376B0002A3F8E /* Date-Extension.swift in Sources */,
 				7023B9AB287B4D5B000FD45C /* DebtsCell.swift in Sources */,
+				70A61F87287CC6FA00459114 /* EEController.swift in Sources */,
 				7092A868287C5FF20074DC5E /* AddDebtViewModel.swift in Sources */,
 				709745E6287631F50046EE06 /* UI-Extensions.swift in Sources */,
 				708AFAD92878C919009726DC /* AddMovementViewModel.swift in Sources */,
 				7023B9B1287B4DA4000FD45C /* DebtsViewModel.swift in Sources */,
 				700A6F91287361E4002A3F8E /* AppDelegate.swift in Sources */,
 				70EA1CFF287A3D9700546031 /* DateComponenets-Extension.swift in Sources */,
+				70A61F89287CC78F00459114 /* EEViewModel.swift in Sources */,
 				700A6FCA2873694B002A3F8E /* MM-Model.swift in Sources */,
 				700A6FD8287388F2002A3F8E /* Array-Extension.swift in Sources */,
 				700A6FE12874622C002A3F8E /* Set-Extension.swift in Sources */,

@@ -9,7 +9,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Expenses-->
+        <!--Controller-->
+        <scene sceneID="MTP-KL-Rnd">
+            <objects>
+                <tableViewController id="t8U-Nf-ojg" customClass="EEController" customModule="Money_Management" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Pgg-cP-4oL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="t8U-Nf-ojg" id="MLz-r5-dfk"/>
+                            <outlet property="delegate" destination="t8U-Nf-ojg" id="HpH-JD-SgM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="apL-z6-yOw">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="e6T-tZ-DaY">
+                            <rect key="frame" x="79" y="5.5" width="256" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Both"/>
+                                <segment title="Expenses"/>
+                                <segment title="Earnings"/>
+                            </segments>
+                            <connections>
+                                <action selector="changeMovement:" destination="t8U-Nf-ojg" eventType="valueChanged" id="pn0-fU-4Pn"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="segmentedControl" destination="e6T-tZ-DaY" id="MhY-jD-75c"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MWH-ua-l1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31.884057971014496" y="-1226.1160714285713"/>
+        </scene>
+        <!--Movement-->
+        <scene sceneID="w0H-gM-ASu">
+            <objects>
+                <navigationController id="ukd-1u-LD0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Movement" image="latch.2.case" catalog="system" selectedImage="latch.2.case.fill" id="ZAa-fr-zak"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ljj-YV-RUC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="t8U-Nf-ojg" kind="relationship" relationship="rootViewController" id="9Wh-Bq-BH1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iIH-Fa-bPN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-681" y="-1226"/>
+        </scene>
+        <!--Balance-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MovementControllerID" id="BYZ-38-t0r" customClass="MovementsController" customModule="Money_Management" customModuleProvider="target" sceneMemberID="viewController">
@@ -114,7 +167,7 @@
                             <constraint firstItem="wQC-4e-TtO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="nuV-Yq-Yxj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Expenses" image="latch.2.case" catalog="system" selectedImage="latch.2.case.fill" id="Z7q-az-jLO"/>
+                    <tabBarItem key="tabBarItem" title="Balance" image="balance" selectedImage="balance.fill" id="Z7q-az-jLO"/>
                     <navigationItem key="navigationItem" id="lJ0-8h-mjA">
                         <nil key="title"/>
                     </navigationItem>
@@ -527,6 +580,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Z77-jM-MEz" kind="relationship" relationship="viewControllers" id="ddi-wd-aro"/>
+                        <segue destination="ukd-1u-LD0" kind="relationship" relationship="viewControllers" id="fey-ve-adV"/>
                         <segue destination="HIv-pd-T4W" kind="relationship" relationship="viewControllers" id="LES-d9-2ZL"/>
                     </connections>
                 </tabBarController>
@@ -693,6 +747,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="balance" width="24" height="24"/>
+        <image name="balance.fill" width="24" height="24"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="latch.2.case" catalog="system" width="128" height="100"/>
         <image name="latch.2.case.fill" catalog="system" width="128" height="100"/>

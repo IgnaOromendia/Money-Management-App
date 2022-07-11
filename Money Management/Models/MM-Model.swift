@@ -205,7 +205,7 @@ class MoneyManagement {
         return monthMovement.reduce(0, +)
     }
     
-    /// Retruns an array of products earned or spent in that month
+    /// Retruns an array of products earned or spent in that month sorted by date
     func getAllMonthMovement(_ month: Int, for m: Movement) -> Array<ProductsData> {
         switch m {
         case .Expense:
@@ -224,7 +224,7 @@ class MoneyManagement {
         return weekMovement.reduce(0, +)
     }
     
-    /// Retruns an array of products earned or spent in that week
+    /// Retruns an array of products earned or spent in that week sorted by date
     func getAllWeekMovement(_ week: Int, for m: Movement) -> Array<ProductsData> {
         switch m {
         case .Expense:
@@ -268,6 +268,18 @@ class MoneyManagement {
         return (expensesD1 < expensesD2, abs(expensesD1 - expensesD2))
     }
     
+    /// Returns all movements sorted by date
+    func getAllMovements(for m: Movement) -> Array<ProductsData> {
+        switch m {
+        case .Expense:
+            return getValuesSortedByDate(of: self.expenses)
+        case .Earning:
+            return getValuesSortedByDate(of: self.earnings)
+        case .Both:
+            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $1.sum + $0.sum)})
+            return getValuesSortedByDate(of: dic)
+        }
+    }
     
     
 }
