@@ -29,6 +29,8 @@
 		7023B9B2287B4DA4000FD45C /* DebtsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */; };
 		708AFAD62878C8D5009726DC /* AddMovementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD52878C8D5009726DC /* AddMovementController.swift */; };
 		708AFAD92878C919009726DC /* AddMovementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD82878C919009726DC /* AddMovementViewModel.swift */; };
+		7092A865287C5F100074DC5E /* AddDebtController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7092A864287C5F100074DC5E /* AddDebtController.swift */; };
+		7092A868287C5FF20074DC5E /* AddDebtViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7092A867287C5FF20074DC5E /* AddDebtViewModel.swift */; };
 		709745DD28762EAE0046EE06 /* MovementsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DC28762EAE0046EE06 /* MovementsController.swift */; };
 		709745E028762EC00046EE06 /* MovementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745DF28762EC00046EE06 /* MovementsViewModel.swift */; };
 		709745E6287631F50046EE06 /* UI-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745E5287631F50046EE06 /* UI-Extensions.swift */; };
@@ -97,6 +99,8 @@
 		7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewModel.swift; sourceTree = "<group>"; };
 		708AFAD52878C8D5009726DC /* AddMovementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementController.swift; sourceTree = "<group>"; };
 		708AFAD82878C919009726DC /* AddMovementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementViewModel.swift; sourceTree = "<group>"; };
+		7092A864287C5F100074DC5E /* AddDebtController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDebtController.swift; sourceTree = "<group>"; };
+		7092A867287C5FF20074DC5E /* AddDebtViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDebtViewModel.swift; sourceTree = "<group>"; };
 		709745DC28762EAE0046EE06 /* MovementsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsController.swift; sourceTree = "<group>"; };
 		709745DF28762EC00046EE06 /* MovementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsViewModel.swift; sourceTree = "<group>"; };
 		709745E5287631F50046EE06 /* UI-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI-Extensions.swift"; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				709745DC28762EAE0046EE06 /* MovementsController.swift */,
 				708AFAD52878C8D5009726DC /* AddMovementController.swift */,
 				7023B9AD287B4D7D000FD45C /* DebtsController.swift */,
+				7092A864287C5F100074DC5E /* AddDebtController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 				709745DF28762EC00046EE06 /* MovementsViewModel.swift */,
 				708AFAD82878C919009726DC /* AddMovementViewModel.swift */,
 				7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */,
+				7092A867287C5FF20074DC5E /* AddDebtViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 				70E6A96128774AAC005E9E4C /* ExpensesCell.swift in Sources */,
 				700A6FD0287376B0002A3F8E /* Date-Extension.swift in Sources */,
 				7023B9AB287B4D5B000FD45C /* DebtsCell.swift in Sources */,
+				7092A868287C5FF20074DC5E /* AddDebtViewModel.swift in Sources */,
 				709745E6287631F50046EE06 /* UI-Extensions.swift in Sources */,
 				708AFAD92878C919009726DC /* AddMovementViewModel.swift in Sources */,
 				7023B9B1287B4DA4000FD45C /* DebtsViewModel.swift in Sources */,
@@ -429,6 +436,7 @@
 				70EA1CE02879E38300546031 /* DataValidation.swift in Sources */,
 				709745E028762EC00046EE06 /* MovementsViewModel.swift in Sources */,
 				709745DD28762EAE0046EE06 /* MovementsController.swift in Sources */,
+				7092A865287C5F100074DC5E /* AddDebtController.swift in Sources */,
 				70EA1CE9287A311500546031 /* Animations.swift in Sources */,
 				700A6FDE287394F5002A3F8E /* Global.swift in Sources */,
 			);

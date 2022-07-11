@@ -11,7 +11,7 @@ import Foundation
 // Hacer parte de agregar deuda o deudor
 // .
 // Poner alertas
-// Hacer modo oscuro
+// Mejorar modo oscuro
 // Hacer que peudas elegir como aparecen ordenadas las deudas
 
 // TEST's begins

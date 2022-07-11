@@ -559,6 +559,9 @@
                             <barButtonItem systemItem="add" id="d8r-AT-wsA">
                                 <connections>
                                     <action selector="addDebt:" destination="d0f-BJ-FeT" id="cTl-xR-g2y"/>
+                                    <segue destination="iEs-ox-hoF" kind="popoverPresentation" popoverAnchorBarButtonItem="d8r-AT-wsA" id="aJc-mr-HIm">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem enabled="NO" systemItem="trash" id="nzO-lh-7KJ">
@@ -577,6 +580,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9n-kn-i7V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="31.884057971014496" y="122.54464285714285"/>
+        </scene>
+        <!--Add Debt Controller-->
+        <scene sceneID="6v8-Mq-Tgi">
+            <objects>
+                <viewController id="iEs-ox-hoF" customClass="AddDebtController" customModule="Money_Management" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Ek-jR-244">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rhd-NN-8gg">
+                                <rect key="frame" x="94" y="256" width="226" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="iEs-ox-hoF" id="vi4-Fh-AfY"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-x2-tNF">
+                                <rect key="frame" x="94" y="316" width="226" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="iEs-ox-hoF" id="ge8-Py-Aht"/>
+                                </connections>
+                            </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6lC-Wo-8LP">
+                                <rect key="frame" x="94" y="180" width="226" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxM-gf-FGN">
+                                <rect key="frame" x="153" y="548" width="108" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="Save:" destination="iEs-ox-hoF" eventType="touchUpInside" id="iyq-qf-wH2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="i9p-eF-hgf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="btn_save" destination="rxM-gf-FGN" id="UzE-Ce-Lwa"/>
+                        <outlet property="segmentedControl" destination="6lC-Wo-8LP" id="gI0-JN-u8c"/>
+                        <outlet property="txt_amount" destination="gi3-x2-tNF" id="Guv-6O-ubN"/>
+                        <outlet property="txt_name" destination="Rhd-NN-8gg" id="i2q-xa-5yd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z2l-GM-KcL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="763.768115942029" y="122.54464285714285"/>
         </scene>
         <!--Item-->
         <scene sceneID="I07-dg-bkO">

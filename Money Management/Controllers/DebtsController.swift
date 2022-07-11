@@ -22,6 +22,11 @@ class DebtsController: UITableViewController {
         debtsViewModel.setUpTableView(tableView)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        debtsViewModel.update(from: mm)
+        tableView.reloadData()
+    }
+    
     // ACTIONS
     @IBAction func addDebt(_ sender: UIBarButtonItem) {
         
