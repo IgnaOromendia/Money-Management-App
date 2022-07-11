@@ -55,13 +55,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <backgroundConfiguration key="background" imageContentMode="scaleAspectFit">
-                                                <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="hierarchical">
-                                                    <hierarchicalColors>
-                                                        <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color systemColor="secondaryLabelColor"/>
-                                                        <color systemColor="tertiaryLabelColor"/>
-                                                    </hierarchicalColors>
-                                                </imageReference>
+                                                <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                                             </backgroundConfiguration>
                                         </buttonConfiguration>
                                         <connections>
@@ -87,7 +81,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="0ay-ab-Pjf" secondAttribute="bottom" constant="53" id="29m-0b-Hn8"/>
                                     <constraint firstAttribute="height" constant="180" id="2YX-KI-idE"/>

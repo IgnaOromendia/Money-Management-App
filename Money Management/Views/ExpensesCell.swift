@@ -23,10 +23,10 @@ class ExpensesCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        setUpCell()
+        setUpCell(darkMode: traitCollection.userInterfaceStyle == .dark)
     }
     
-    private func setUpCell() {
+    private func setUpCell(darkMode: Bool) {
         lbl_expeseName.font = UIFont.systemFont(ofSize: titleFontSize, weight: .medium)
         
         lbl_details.font = UIFont.systemFont(ofSize: detailsFontSize, weight: .regular)
@@ -37,8 +37,11 @@ class ExpensesCell: UITableViewCell {
         view_category.cornerRadius(of: cornerRadiusV)
         view_category.backgroundColor = UIColor.randomColor()
         
-        view_containerCategory.backgroundColor = view_category.backgroundColor?.ligthUp(delta: 0.1)
-        view_containerCategory.applyBlurEffect(style: .systemThickMaterialLight) 
+        let delta = darkMode ? -0.1 : 0.1
+        let blurEffect: UIBlurEffect.Style = darkMode ? .systemThickMaterialDark : .systemThickMaterialLight
+        
+        view_containerCategory.backgroundColor = view_category.backgroundColor?.ligthUp(delta: delta)
+        view_containerCategory.applyBlurEffect(style: blurEffect)
         view_containerCategory.cornerRadius(of: cornerRadiusV)
     }
     

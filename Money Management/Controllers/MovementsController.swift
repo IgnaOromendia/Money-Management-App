@@ -28,17 +28,13 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationTransparent()
-        MCViewModel.setUpTableView(tableView_expenses)
-        MCViewModel.setUpDayBalanceView(containerView: view_dayBalance,
-                                        title: lbl_dayBalanceTitle,
-                                        money: lbl_dayBalanceMoney,
-                                        compLabel1: lbl_dayBalanceCompYesterday,
-                                        compLabel2: lbl_dayBalanceComp2days,
-                                        btn: btn_DayBalancePlus)
+        setUpController()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let week = Date.now.getKeyData().weekOfMonth
+        setUpController()
         if MCViewModel.productsPerDay != mm.getAllWeekMovement(week!, for: .Expense) {
             MCViewModel.updateValues(mm, money: lbl_dayBalanceMoney, comp1: lbl_dayBalanceCompYesterday, comp2: lbl_dayBalanceComp2days)
             tableView_expenses.reloadData()
@@ -80,6 +76,15 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
         return cell
     }
     
+    private func setUpController() {
+        MCViewModel.setUpTableView(tableView_expenses)
+        MCViewModel.setUpDayBalanceView(containerView: view_dayBalance,
+                                        title: lbl_dayBalanceTitle,
+                                        money: lbl_dayBalanceMoney,
+                                        compLabel1: lbl_dayBalanceCompYesterday,
+                                        compLabel2: lbl_dayBalanceComp2days,
+                                        btn: btn_DayBalancePlus,
+                                        darkMode: traitCollection.userInterfaceStyle == .dark)
+    }
     
-
 }

@@ -18,6 +18,7 @@ let addMovementControllerID = "AddMovementControllerID"
 let customBlue = UIColor.rgbColor(r: 72, g: 129, b: 215)
 let moneyRed = UIColor.rgbColor(r: 255, g: 0, b: 0)
 let moneyGreen = UIColor.rgbColor(r: 104, g: 154, b: 64)
+let darkBlue = UIColor.rgbColor(r: 61, g: 108, b: 177)
 
 // Fonts
 let moneyFontSize = 18.0

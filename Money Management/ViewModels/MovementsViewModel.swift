@@ -17,6 +17,7 @@ fileprivate let lightGreen = UIColor.rgbColor(r: 158, g: 191, b: 131)
 fileprivate let lightRed = UIColor.rgbColor(r: 255, g: 139, b: 139)
 fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)
 fileprivate let blue = UIColor.rgbColor(r: 72, g: 129, b: 215)
+fileprivate let darkGreyCustom = UIColor.rgbColor(r: 51, g: 51, b: 51)
 
 final class MovementViewModel {
     
@@ -75,9 +76,9 @@ final class MovementViewModel {
         setUpStringAndColor(with: dataTwoD, text: &comp2Text, color: &comp2Color, day: "2 days ago")
     }
     
-    func setUpDayBalanceView(containerView:UIView, title:UILabel, money: UILabel, compLabel1: UILabel, compLabel2: UILabel, btn: UIButton) {
+    func setUpDayBalanceView(containerView:UIView, title:UILabel, money: UILabel, compLabel1: UILabel, compLabel2: UILabel, btn: UIButton, darkMode: Bool) {
         containerView.cornerRadius(of: 20)
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = darkMode ? darkGreyCustom : .white
         containerView.shadow = true
         
         title.font = UIFont.systemFont(ofSize: fontSizeTitle, weight: .semibold)
@@ -96,7 +97,8 @@ final class MovementViewModel {
         
         btn.clipsToBounds = true
         btn.cornerRadius(of: btn.frame.size.height / 2)
-        btn.backgroundColor = blue
+        btn.backgroundColor = darkMode ? darkBlue : blue
+        btn.tintColor = darkMode ? .black : .white
     }
     
     func setUpTableView(_ tableView: UITableView) {
