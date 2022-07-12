@@ -110,10 +110,8 @@ final class MovementViewModel {
     
     private func getSectionTitles() -> Array<String> {
         var result: Array<String> = []
-        var date = Date.now
-        for _ in 0...self.productsPerDay.count {
-            result.append(date.prettyDate)
-            date.stepBackOneDay()
+        for elem in self.productsPerDay {
+            result.append(elem.date.prettyDate)
         }
         return result
     }

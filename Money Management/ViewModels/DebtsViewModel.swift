@@ -46,8 +46,6 @@ final class DebtsViewModel {
     }
     
     func deleteSelection(_ selection:Array<Int>) {
-        print(selection)
-        print(arrDD)
         for i in selection {
             let item = self.arrDD[i]
             if item.type == .Debt {

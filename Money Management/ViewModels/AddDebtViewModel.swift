@@ -61,7 +61,7 @@ final class AddDebtViewModel {
     }
     
     func postNotification() {
-        NotificationCenter.default.post(name: reloadDataNotification, object: nil)
+        NotificationCenter.default.post(name: reloadDataDebtNotification, object: nil)
     }
     
 }

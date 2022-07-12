@@ -21,8 +21,8 @@ extension Array where Element == Int {
 extension Array where Element:Equatable {
     /// Get the index of a given element
     func getIndex(of item: Element) -> Int?{
-        for i in 0...self.count {
-            if self[i] == item {
+        for (i,elem) in self.enumerated() {
+            if elem == item {
                 return i
             }
         }

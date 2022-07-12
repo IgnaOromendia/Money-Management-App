@@ -118,4 +118,8 @@ final class AddMovementViewModel {
         lbl.textColor = mov == .Expense ? moneyRed : moneyGreen
     }
     
+    func postNotification() {
+        NotificationCenter.default.post(name: reloadDataMovNotification, object: nil)
+    }
+    
 }

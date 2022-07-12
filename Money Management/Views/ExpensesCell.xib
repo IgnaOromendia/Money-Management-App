@@ -82,7 +82,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lbl_details" destination="cVR-Qc-RPE" id="trm-Yc-djW"/>
-                <outlet property="lbl_expeseName" destination="xIb-2P-moO" id="n10-y2-INx"/>
+                <outlet property="lbl_expenseName" destination="xIb-2P-moO" id="n10-y2-INx"/>
                 <outlet property="lbl_money" destination="rMG-XK-YaS" id="3KQ-cp-deg"/>
                 <outlet property="view_category" destination="hNa-Ie-msT" id="KLx-KR-NcO"/>
                 <outlet property="view_containerCategory" destination="w4l-2n-arG" id="k62-gX-tDL"/>

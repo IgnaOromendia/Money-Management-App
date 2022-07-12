@@ -282,10 +282,10 @@
 			isa = PBXGroup;
 			children = (
 				700A6FCF287376B0002A3F8E /* Date-Extension.swift */,
+				70EA1CFE287A3D9700546031 /* DateComponenets-Extension.swift */,
 				700A6FD7287388F2002A3F8E /* Array-Extension.swift */,
 				700A6FE02874622C002A3F8E /* Set-Extension.swift */,
 				709745E5287631F50046EE06 /* UI-Extensions.swift */,
-				70EA1CFE287A3D9700546031 /* DateComponenets-Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";

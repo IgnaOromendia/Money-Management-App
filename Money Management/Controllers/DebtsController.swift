@@ -60,7 +60,7 @@ class DebtsController: UITableViewController, UIPopoverPresentationControllerDel
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DebtsCell
-        cell.setSelected(cell.isSelected, animated: true)
+        cell.setSelected(true, animated: true) // cell.isSelected
         
         let data = cell.getData()
         let index = debtsViewModel.getIndex(of: data)
@@ -73,7 +73,7 @@ class DebtsController: UITableViewController, UIPopoverPresentationControllerDel
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DebtsCell
-        cell.setSelected(cell.isSelected, animated: true)
+        cell.setSelected(false, animated: true) // cell.isSelected
         
         let data = cell.getData()
         let index = debtsViewModel.getIndex(of: data)
@@ -87,7 +87,7 @@ class DebtsController: UITableViewController, UIPopoverPresentationControllerDel
     }
     
     private func addObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: reloadDataNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: reloadDataDebtNotification, object: nil)
     }
     
     @objc func refresh() {

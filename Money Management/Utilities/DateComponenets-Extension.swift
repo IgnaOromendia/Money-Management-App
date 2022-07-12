@@ -18,4 +18,16 @@ extension DateComponents: Comparable {
         let difYear = lhs.year! < rhs.year!
         return justDay || difMonth || difYear
     }
+    
+    var prettyDate: String {
+        get {
+            if self == Date.now.getKeyData()  {
+                return "Today"
+            } else if self == Date.now.yesterday.getKeyData() {
+                return "Yesterady"
+            } else {
+                return "\(self.day ?? -1)/\(self.month ?? -1)/\(self.year ?? -1)"
+            }
+        }
+    }
 }

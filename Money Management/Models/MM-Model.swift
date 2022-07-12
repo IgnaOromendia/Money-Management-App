@@ -7,12 +7,22 @@
 
 import Foundation
 
-struct Product: Hashable, Equatable {
+struct Product: Hashable, Equatable, CustomStringConvertible {
     let name: String
     let price: Int
     let category: Category
     let movement: Movement
     var quantity: Int
+    
+    var description: String {
+        return """
+        \nName: \(name)
+        Price: $\(price)
+        Category: \(category)
+        Movement: \(movement)
+        quantity: x\(quantity)
+        """
+    }
     
     static func == (lhs: Product, rhs: Product) -> Bool {
         return lhs.name == rhs.name && lhs.price == rhs.price && lhs.category == rhs.category
@@ -23,9 +33,18 @@ struct Product: Hashable, Equatable {
     }
 }
 
-struct ProductsData: Equatable {
+struct ProductsData: Equatable, CustomStringConvertible {
     var products: Set<Product>
     var sum: Int
+    let date: DateComponents
+    
+    var description: String {
+        return """
+        prod: \(products)
+        sum: \(sum)
+        date: \(date)
+        """
+    }
 }
 
 class MoneyManagement {
@@ -121,7 +140,7 @@ class MoneyManagement {
             }
             self.expenses.updateValue(expensesD, forKey: date)
         } else {
-            let data = ProductsData(products: [product], sum: -product.price)
+            let data = ProductsData(products: [product], sum: -product.price, date: date)
             self.expenses.updateValue(data, forKey: date)
         }
         
@@ -153,7 +172,7 @@ class MoneyManagement {
             }
             self.earnings.updateValue(earningD, forKey: date)
         } else {
-            let data = ProductsData(products: [product], sum: product.price)
+            let data = ProductsData(products: [product], sum: product.price, date: date)
             self.earnings.updateValue(data, forKey: date)
         }
         
@@ -189,6 +208,24 @@ class MoneyManagement {
     
     // MARK: - REMOVES
     
+    func removeExpense(_ product: Product, on d: DateComponents ) {
+        if self.expenses[d]?.products.count == 1 {
+            self.expenses.removeValue(forKey: d)
+        } else {
+            self.expenses[d]?.products.remove(product)
+            self.expenses[d]?.sum += (product.price * product.quantity)
+        }
+    }
+    
+    func removeEarning(_ product: Product, on d: DateComponents ) {
+        if self.earnings[d]?.products.count == 1 {
+            self.earnings.removeValue(forKey: d)
+        } else {
+            self.earnings[d]?.products.remove(product)
+            self.earnings[d]?.sum -= (product.price * product.quantity)
+        }
+    }
+    
     func removeDebt(of name: String) {
         self.debts.removeValue(forKey: name)
     }
@@ -213,7 +250,7 @@ class MoneyManagement {
         case .Earning:
             return getValuesSortedByDate(of: self.earnings.filter({return $0.key.month == month}))
         case .Both:
-            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $0.sum + $1.sum)})
+            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $0.sum + $1.sum, date: $0.date)})
             return getValuesSortedByDate(of: dic.filter({return $0.key.month == month}))
         }
     }
@@ -232,7 +269,7 @@ class MoneyManagement {
         case .Earning:
             return getValuesSortedByDate(of: self.earnings.filter({return $0.key.weekOfMonth == week}))
         case .Both:
-            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $1.sum + $0.sum)})
+            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $1.sum + $0.sum, date: $0.date)})
             return getValuesSortedByDate(of: dic.filter({return $0.key.weekOfMonth == week}))
         }
     }
@@ -276,7 +313,7 @@ class MoneyManagement {
         case .Earning:
             return getValuesSortedByDate(of: self.earnings)
         case .Both:
-            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $1.sum + $0.sum)})
+            let dic = self.expenses.merging(self.earnings, uniquingKeysWith: {return ProductsData(products: $0.products.union($1.products), sum: $1.sum + $0.sum, date: $0.date)})
             return getValuesSortedByDate(of: dic)
         }
     }

@@ -10,13 +10,26 @@ import UIKit
 class EEController: UITableViewController {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var btn_edit: UIBarButtonItem!
+    @IBOutlet weak var btn_trash: UIBarButtonItem!
     
     let eeViewModel = EEViewModel(mm)
+    var deleteIndexes: Array<(DateComponents,Product)> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        eeViewModel.updateData(from: mm)
+        addObserver()
         eeViewModel.setUpTableView(tableView)
+        eeViewModel.setUpBtn(btn_edit,btn_trash)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // ACTIONS
+    
     @IBAction func changeMovement(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             eeViewModel.selectedMov = .Both
@@ -26,6 +39,17 @@ class EEController: UITableViewController {
             eeViewModel.selectedMov = .Earning
         }
         tableView.reloadData()
+    }
+    
+    @IBAction func editEE(_ sender: UIBarButtonItem) {
+        eeViewModel.setEditStyle(tableView, btn_edit, btn_trash)
+    }
+    
+    @IBAction func deleteSelection(_ sender: Any) {
+        eeViewModel.deleteSelection(deleteIndexes)
+        deleteIndexes.removeAll()
+        tableView.reloadData()
+        eeViewModel.setEditStyle(tableView, btn_edit, btn_trash)
     }
     
     // TABLE VIEW
@@ -52,5 +76,40 @@ class EEController: UITableViewController {
         cell.fillWithData(product)
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ExpensesCell
+        cell.setSelected(true, animated: true)
+        
+        let product = cell.getData()
 
+        let date = eeViewModel.selectedArr[indexPath.section].date
+        deleteIndexes.append((date,product))
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ExpensesCell
+        cell.setSelected(false, animated: true)
+        
+        let product = cell.getData()
+        let date = eeViewModel.selectedArr[indexPath.section].date
+        var index = 0
+        
+        for (i,item) in deleteIndexes.enumerated() {
+            if item.0 == date && item.1 == product {
+                index = i
+            }
+        }
+        
+        deleteIndexes.remove(at: index)
+    }
+    
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: reloadDataMovNotification, object: nil)
+    }
+    
+    @objc func refresh() {
+        eeViewModel.updateData(from: mm)
+        self.tableView.reloadData()
+    }
 }

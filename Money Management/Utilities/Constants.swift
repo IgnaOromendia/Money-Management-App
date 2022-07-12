@@ -26,7 +26,8 @@ let moneyFontSize = 18.0
 let titleFontSize = 20.0
 
 // Notifications
-let reloadDataNotification = Notification.Name("reloadData")
+let reloadDataDebtNotification = Notification.Name("reloadDataDebt")
+let reloadDataMovNotification = Notification.Name("reloadDataMov")
 
 // MARK: - ALIAS
 

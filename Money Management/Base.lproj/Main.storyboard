@@ -24,6 +24,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="apL-z6-yOw">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="4vs-y9-PUx">
+                            <connections>
+                                <action selector="editEE:" destination="t8U-Nf-ojg" id="VBN-hb-bFb"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="e6T-tZ-DaY">
                             <rect key="frame" x="79" y="5.5" width="256" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -36,8 +41,15 @@
                                 <action selector="changeMovement:" destination="t8U-Nf-ojg" eventType="valueChanged" id="pn0-fU-4Pn"/>
                             </connections>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="vV7-6X-QFN">
+                            <connections>
+                                <action selector="deleteSelection:" destination="t8U-Nf-ojg" id="dBw-G5-qOI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btn_edit" destination="4vs-y9-PUx" id="Plj-2h-6ER"/>
+                        <outlet property="btn_trash" destination="vV7-6X-QFN" id="ogx-R7-snJ"/>
                         <outlet property="segmentedControl" destination="e6T-tZ-DaY" id="MhY-jD-75c"/>
                     </connections>
                 </tableViewController>

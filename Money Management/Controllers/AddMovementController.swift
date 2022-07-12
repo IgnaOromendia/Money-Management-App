@@ -54,7 +54,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btn_save: UIButton!
     
     // VARIABLES
-    private let addMovVM = AddMovementViewModel()
+    private let addMovViewModel = AddMovementViewModel()
     private let validation = DataValidation()
     private var selectedDate = Date.now
     private var selectedMovement: Movement = .Expense
@@ -64,13 +64,13 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setUpController()
         setNavigationTransparent()
-        addMovVM.setUpSegmentedControl(segmentedMovement)
-        addMovVM.setUpDate(lbl_dateData, datePicker)
-        addMovVM.setUpViews(views)
-        addMovVM.setUpLabels(labels)
-        addMovVM.setUpTexts(texts)
-        addMovVM.setUpPreview(viewP: view_preview, view_containerCatP, view_catP, lbl_titleP, lbl_detailsP, lbl_priceP)
-        addMovVM.setUpBtns(btn_save, btn_calendar)
+        addMovViewModel.setUpSegmentedControl(segmentedMovement)
+        addMovViewModel.setUpDate(lbl_dateData, datePicker)
+        addMovViewModel.setUpViews(views)
+        addMovViewModel.setUpLabels(labels)
+        addMovViewModel.setUpTexts(texts)
+        addMovViewModel.setUpPreview(viewP: view_preview, view_containerCatP, view_catP, lbl_titleP, lbl_detailsP, lbl_priceP)
+        addMovViewModel.setUpBtns(btn_save, btn_calendar)
     }
     
     // TEXTFIELD
@@ -101,7 +101,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     
     @IBAction func changeMovement(_ sender: UISegmentedControl) {
         selectedMovement = sender.selectedSegmentIndex == 0 ? .Expense : .Earning
-        addMovVM.updateMoneyLabel(lbl_priceP, selectedMovement,txt_price.text ?? "")
+        addMovViewModel.updateMoneyLabel(lbl_priceP, selectedMovement,txt_price.text ?? "")
     }
     
     @IBAction func selectDate(_ sender: UIDatePicker) {
@@ -114,8 +114,9 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveMovement(_ sender: UIButton) {
+        addMovViewModel.postNotification()
         do {
-            let product = try addMovVM.createProduct(from: txt_title.text, txt_price.text, txt_category.text, txt_quantity.text, selectedMovement)
+            let product = try addMovViewModel.createProduct(from: txt_title.text, txt_price.text, txt_category.text, txt_quantity.text, selectedMovement)
             try validation.futureDate(selectedDate)
             
             if selectedMovement == .Expense {
@@ -123,6 +124,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
             } else {
                 try mm.addEarnings(product: product, on: selectedDate)
             }
+            
             navigationController?.popViewController(animated: true)
         } catch {
             print(error)
