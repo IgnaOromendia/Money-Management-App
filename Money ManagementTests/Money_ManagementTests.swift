@@ -9,10 +9,11 @@ import XCTest
 @testable import Money_Management
 
 class MoneyManagement_Model_test: XCTestCase {
-    var expenses = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", movement: .Expense, quantity: 1),
-                                           Product(name: "Hielo", price: 50, category: "Otros", movement: .Expense, quantity: 1)], sum: 150)
-    var earnings = ProductsData(products: [Product(name: "Robo", price: 500, category: "Otros", movement: .Expense, quantity: 1)], sum: 500)
     let date = Date().getKeyData()
+    var expenses = ProductsData(products: [Product(name: "Coca", price: 100, category: "Bebida", movement: .Expense, quantity: 1),
+                                           Product(name: "Hielo", price: 50, category: "Otros", movement: .Expense, quantity: 1)], sum: 150, date: Date().getKeyData())
+    var earnings = ProductsData(products: [Product(name: "Robo", price: 500, category: "Otros", movement: .Expense, quantity: 1)], sum: 500, date: Date().getKeyData())
+    
     var arr1 = [0,0,0,0,0,0,150,0,0,0,0,0]
     var arr2 = [0,0,0,0,0,0,500,0,0,0,0,0]
     var debtsT = ["Juan":10000]
@@ -58,7 +59,7 @@ class MoneyManagement_Model_test: XCTestCase {
     func test_AddExpensesToANewEmptyMM() throws {
         let mmTest = MoneyManagement()
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
-        let products = ProductsData(products: [prod1], sum: -250)
+        let products = ProductsData(products: [prod1], sum: -250, date: date)
         
         try mmTest.addExpenses(product: prod1, on: Date())
         
@@ -76,14 +77,14 @@ class MoneyManagement_Model_test: XCTestCase {
         try mmTest.addExpenses(product: prod1, on: Date())
         
         XCTAssert(mmTest.dateExpenses(on: Date()) == expenses)
-        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == expenses.sum)
+        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: Movement.Expense) == expenses.sum)
     }
     
     func test_AddExpensesToAMMTwice() throws {
         let mmTest =  MoneyManagement()
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
         let prod2 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 2)
-        let products = ProductsData(products: [prod2], sum: -500)
+        let products = ProductsData(products: [prod2], sum: -500, date: date)
         
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1, on: Date())
@@ -95,7 +96,7 @@ class MoneyManagement_Model_test: XCTestCase {
         }
         
         XCTAssert(mmTest.dateExpenses(on: Date()) == products)
-        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: .Expense) == products.sum)
+        XCTAssert(mmTest.monthlyMovement(Date().getKeyData().month!, for: Movement.Expense) == products.sum)
     }
     
     func test_AddExpensesToAMMMultiplesTimes() throws {
@@ -103,7 +104,7 @@ class MoneyManagement_Model_test: XCTestCase {
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
         let prod2 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 5)
         let prod3 = Product(name: "Papas", price: 100, category: "Comida", movement: .Expense, quantity: 5)
-        let products = ProductsData(products: [prod2,prod3], sum: -250*5 - 100)
+        let products = ProductsData(products: [prod2,prod3], sum: -250*5 - 100, date: date)
         
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1, on: Date())
@@ -127,7 +128,7 @@ class MoneyManagement_Model_test: XCTestCase {
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
         let prod1_3 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 3)
         let prod2 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 4)
-        let products = ProductsData(products: [prod2], sum: -(250*4))
+        let products = ProductsData(products: [prod2], sum: -(250*4), date: date)
         
         try mmTest.addExpenses(product: prod1, on: Date())
         try mmTest.addExpenses(product: prod1_3, on: Date())
@@ -145,7 +146,7 @@ class MoneyManagement_Model_test: XCTestCase {
     func test_AddEarningsToANewEmptyMM() throws {
         let mmTest = MoneyManagement()
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
-        let products = ProductsData(products: [prod1], sum: 250)
+        let products = ProductsData(products: [prod1], sum: 250, date: date)
         
         try mmTest.addEarnings(product: prod1, on: Date())
         
@@ -170,7 +171,7 @@ class MoneyManagement_Model_test: XCTestCase {
         let mmTest =  MoneyManagement()
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
         let prod2 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 2)
-        let products = ProductsData(products: [prod2], sum: 500)
+        let products = ProductsData(products: [prod2], sum: 500, date: date)
         
         try mmTest.addEarnings(product: prod1, on: Date())
         try mmTest.addEarnings(product: prod1, on: Date())
@@ -190,7 +191,7 @@ class MoneyManagement_Model_test: XCTestCase {
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
         let prod2 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 5)
         let prod3 = Product(name: "Papas", price: 100, category: "Comida", movement: .Expense, quantity: 5)
-        let products = ProductsData(products: [prod2,prod3], sum: 250*5 + 100)
+        let products = ProductsData(products: [prod2,prod3], sum: 250*5 + 100, date: date)
         
         try mmTest.addEarnings(product: prod1, on: Date())
         try mmTest.addEarnings(product: prod1, on: Date())
@@ -214,7 +215,7 @@ class MoneyManagement_Model_test: XCTestCase {
         let prod1 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 1)
         let prod1_3 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 3)
         let prod2 = Product(name: "Milanesa", price: 250, category: "Comida", movement: .Expense, quantity: 4)
-        let products = ProductsData(products: [prod2], sum: 250*4)
+        let products = ProductsData(products: [prod2], sum: 250*4, date: date)
         
         try mmTest.addEarnings(product: prod1, on: Date())
         try mmTest.addEarnings(product: prod1_3, on: Date())
