@@ -17,6 +17,7 @@ let jsonFileName = "MoneyManagementData.json"
 let movementControllerID = "MovementControllerID"
 let addMovementControllerID = "AddMovementControllerID"
 let debtControllerID = "DebtControllerID"
+let eeControllerID = "EeControllerID"
 
 // Colors
 let customBlue = UIColor.rgbColor(r: 72, g: 129, b: 215)

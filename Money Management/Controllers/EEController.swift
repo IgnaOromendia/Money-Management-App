@@ -106,7 +106,7 @@ class EEController: UITableViewController {
         deleteIndexes.remove(at: index)
     }
     
-    private func addObserver() {
+    func addObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: reloadDataMovNotification, object: nil)
     }
     

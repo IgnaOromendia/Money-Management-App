@@ -119,6 +119,8 @@ final class AddMovementViewModel {
     }
     
     func postNotification() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: eeControllerID) as! EEController// because the observer needs to be added
+        vc.addObserver()
         NotificationCenter.default.post(name: reloadDataMovNotification, object: nil)
     }
     

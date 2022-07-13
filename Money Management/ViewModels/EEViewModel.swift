@@ -86,7 +86,6 @@ final class EEViewModel {
         
         if isEditing {
             for sec in 0...numberOfSections {
-                print(sec)
                 if sec < numberOfRowsPerSection.count {
                     for row in 0...numberOfRowsPerSection[sec] {
                         let index = IndexPath(row: row, section: sec)
