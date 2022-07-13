@@ -8,9 +8,9 @@
 import Foundation
 
 // TO DO LIST
-// Graficos
-// .
 // Poner alertas
+// Poder agregar gastos/ganacias automaticas
+// Graficos
 // Mejorar modo oscuro
 // Hacer que peudas elegir como aparecen ordenadas las deudas
 
