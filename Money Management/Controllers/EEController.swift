@@ -16,6 +16,7 @@ class EEController: UITableViewController {
     private let eeViewModel = EEViewModel(mm)
     private var deleteIndexes: Array<(DateComponents,Product)> = []
     private let storageManager = StorageManager()
+    private let alertManager = AlertManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class EEController: UITableViewController {
         addObserver()
         eeViewModel.setUpTableView(tableView)
         eeViewModel.setUpBtn(btn_edit,btn_trash)
+        alertManager.setViewController(self)
     }
     
     deinit {
@@ -47,11 +49,13 @@ class EEController: UITableViewController {
     }
     
     @IBAction func deleteSelection(_ sender: Any) {
-        eeViewModel.deleteSelection(deleteIndexes)
-        deleteIndexes.removeAll()
-        tableView.reloadData()
-        eeViewModel.setEditStyle(tableView, btn_edit, btn_trash)
-        storageManager.save(mm, fileName: jsonFileName)
+        alertManager.deleteAlert(title: titleDelete, message: messageDelete) {
+            self.eeViewModel.deleteSelection(self.deleteIndexes)
+            self.deleteIndexes.removeAll()
+            self.tableView.reloadData()
+            self.eeViewModel.setEditStyle(self.tableView, self.btn_edit, self.btn_trash)
+            self.storageManager.save(mm, fileName: jsonFileName)
+        }
     }
     
     // TABLE VIEW

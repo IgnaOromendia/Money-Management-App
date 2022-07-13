@@ -7,13 +7,6 @@
 
 import Foundation
 
-enum ValidationErrors: LocalizedError {
-    case notNumberChar
-    case futureDate
-    case emptyText
-    case nilText
-}
-
 class DataValidation {
     
     /// Verifies if in the given sentece there is only numbers

@@ -33,6 +33,16 @@ let titleFontSize = 20.0
 let reloadDataDebtNotification = Notification.Name("reloadDataDebt")
 let reloadDataMovNotification = Notification.Name("reloadDataMov")
 
+// Alerts titles
+let titleError = "Error"
+let titleDelete = "Delete selection"
+
+// Alert messages
+let messageEmpty = "A texfield is empty"
+let messageNotNumber = "There can't be a non number character in some textfields"
+let messageFutureDate = "The date has to be today or before"
+let messageDelete = "Are you sure you want to delete the selected items?"
+
 // MARK: - ALIAS
 
 typealias Name = String
@@ -57,4 +67,11 @@ enum DebtType: Codable {
 
 enum AddErrors: LocalizedError {
     case monthError
+}
+
+enum ValidationErrors: LocalizedError {
+    case notNumberChar
+    case futureDate
+    case emptyText
+    case nilText
 }

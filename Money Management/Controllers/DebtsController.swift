@@ -17,11 +17,13 @@ class DebtsController: UITableViewController, UIPopoverPresentationControllerDel
     private let storageManager = StorageManager()
     private let debtsViewModel = DebtsViewModel(mm)
     private var deleteIndexes: Array<Int> = []
+    private let alertManager = AlertManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         debtsViewModel.setUpTableView(tableView)
         addObserver()
+        alertManager.setViewController(self)
     }
     
     deinit {
@@ -36,11 +38,13 @@ class DebtsController: UITableViewController, UIPopoverPresentationControllerDel
     }
     
     @IBAction func deleteSelected(_ sender: UIBarButtonItem) {
-        debtsViewModel.deleteSelection(deleteIndexes)
-        deleteIndexes.removeAll()
-        tableView.reloadData()
-        debtsViewModel.setUpEditingStyle(tableView, btn_edit, btn_add, btn_delete)
-        storageManager.save(mm, fileName: jsonFileName)
+        alertManager.deleteAlert(title: titleDelete, message: messageDelete) {
+            self.debtsViewModel.deleteSelection(self.deleteIndexes)
+            self.deleteIndexes.removeAll()
+            self.tableView.reloadData()
+            self.debtsViewModel.setUpEditingStyle(self.tableView, self.btn_edit, self.btn_add, self.btn_delete)
+            self.storageManager.save(mm, fileName: jsonFileName)
+        }
     }
     
     // TABLE VIEW

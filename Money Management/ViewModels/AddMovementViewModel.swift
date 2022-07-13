@@ -16,7 +16,7 @@ fileprivate let lightGrey = UIColor.rgbColor(r: 130, g: 130, b: 130)
 
 final class AddMovementViewModel {
     private let titles = ["Preview","Price","Title","Category","On","Quantity"]
-    private let placeHolders = ["Title","Category","x1 (default)"]
+    private let placeHolders = ["Title","Category (Optional)","x1 (default)"]
     private let validation = DataValidation()
     
     func setUpLabels(_ labels: [UILabel]) {

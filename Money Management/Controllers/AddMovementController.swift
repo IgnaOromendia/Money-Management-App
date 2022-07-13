@@ -60,6 +60,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     private var selectedDate = Date.now
     private var selectedMovement: Movement = .Expense
     private let animator = Animator()
+    private let alertManager = AlertManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
         addMovViewModel.setUpTexts(texts)
         addMovViewModel.setUpPreview(viewP: view_preview, view_containerCatP, view_catP, lbl_titleP, lbl_detailsP, lbl_priceP)
         addMovViewModel.setUpBtns(btn_save, btn_calendar)
+        alertManager.setViewController(self)
     }
     
     // TEXTFIELD
@@ -129,6 +131,12 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
             storageManager.save(mm, fileName: jsonFileName)
             
             navigationController?.popViewController(animated: true)
+        } catch ValidationErrors.emptyText{
+            alertManager.simpleAlert(title: titleError, message: messageEmpty)
+        } catch ValidationErrors.futureDate {
+            alertManager.simpleAlert(title: titleError, message: messageFutureDate)
+        } catch ValidationErrors.notNumberChar {
+            alertManager.simpleAlert(title: titleError, message: messageNotNumber)
         } catch {
             print(error)
         }
@@ -171,6 +179,10 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
             lbl_titleP.text = title.isEmpty ? "No-Name" : title
             lbl_priceP.text = "-$" + (price.isEmpty ? "0" : price)
             lbl_detailsP.text = cat + " x" + (quant.isEmpty ? "1" : quant)
+        } catch ValidationErrors.emptyText{
+            alertManager.simpleAlert(title: titleError, message: messageEmpty)
+        } catch ValidationErrors.notNumberChar {
+            alertManager.simpleAlert(title: titleError, message: messageNotNumber)
         } catch {
             print(error)
         }

@@ -726,7 +726,7 @@
                                     <constraint firstItem="fBN-KD-gww" firstAttribute="top" secondItem="rxM-gf-FGN" secondAttribute="bottom" constant="18" id="jYj-TU-nyT"/>
                                     <constraint firstAttribute="trailing" secondItem="6lC-Wo-8LP" secondAttribute="trailing" priority="750" constant="28" id="nbY-rC-BPo"/>
                                     <constraint firstAttribute="height" constant="418" id="qNY-9j-sCc"/>
-                                    <constraint firstItem="6lC-Wo-8LP" firstAttribute="top" secondItem="MWf-OQ-K39" secondAttribute="top" constant="30" id="s6c-gp-YKS"/>
+                                    <constraint firstItem="6lC-Wo-8LP" firstAttribute="top" secondItem="MWf-OQ-K39" secondAttribute="top" priority="750" constant="30" id="s6c-gp-YKS"/>
                                     <constraint firstItem="rxM-gf-FGN" firstAttribute="top" secondItem="gi3-x2-tNF" secondAttribute="bottom" constant="45" id="sNM-5z-0DY"/>
                                     <constraint firstItem="gi3-x2-tNF" firstAttribute="leading" secondItem="MWf-OQ-K39" secondAttribute="leading" constant="46" id="vba-26-fXc"/>
                                     <constraint firstItem="rxM-gf-FGN" firstAttribute="centerX" secondItem="MWf-OQ-K39" secondAttribute="centerX" id="vhl-n5-Yo7"/>
@@ -740,7 +740,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MWf-OQ-K39" firstAttribute="centerX" secondItem="9Ek-jR-244" secondAttribute="centerX" id="AuJ-lJ-oeX"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="MWf-OQ-K39" secondAttribute="bottom" constant="205" id="Dle-55-jdg"/>
                             <constraint firstItem="i9p-eF-hgf" firstAttribute="trailing" secondItem="MWf-OQ-K39" secondAttribute="trailing" constant="48" id="Kcb-cm-cSv"/>
                             <constraint firstItem="MWf-OQ-K39" firstAttribute="centerY" secondItem="9Ek-jR-244" secondAttribute="centerY" id="R2w-Lm-6wr"/>
                             <constraint firstItem="MWf-OQ-K39" firstAttribute="leading" secondItem="i9p-eF-hgf" secondAttribute="leading" constant="48" id="pT0-0j-he1"/>

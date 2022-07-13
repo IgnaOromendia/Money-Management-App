@@ -27,6 +27,7 @@
 		7023B9AF287B4D7D000FD45C /* DebtsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023B9AD287B4D7D000FD45C /* DebtsController.swift */; };
 		7023B9B1287B4DA4000FD45C /* DebtsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */; };
 		7023B9B2287B4DA4000FD45C /* DebtsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */; };
+		705D46DD287F69D700400E6D /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D46DC287F69D700400E6D /* AlertManager.swift */; };
 		708760CB287F1C910019D829 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708760CA287F1C910019D829 /* StorageManager.swift */; };
 		708760CD287F1DF40019D829 /* Product-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708760CC287F1DF40019D829 /* Product-Model.swift */; };
 		708AFAD62878C8D5009726DC /* AddMovementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD52878C8D5009726DC /* AddMovementController.swift */; };
@@ -101,6 +102,7 @@
 		7023B9AA287B4D5B000FD45C /* DebtsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebtsCell.xib; sourceTree = "<group>"; };
 		7023B9AD287B4D7D000FD45C /* DebtsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsController.swift; sourceTree = "<group>"; };
 		7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewModel.swift; sourceTree = "<group>"; };
+		705D46DC287F69D700400E6D /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		708760CA287F1C910019D829 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		708760CC287F1DF40019D829 /* Product-Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product-Model.swift"; sourceTree = "<group>"; };
 		708AFAD52878C8D5009726DC /* AddMovementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementController.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				700A6FCB287369FD002A3F8E /* Constants.swift */,
 				70EA1CDF2879E38300546031 /* DataValidation.swift */,
 				708760CA287F1C910019D829 /* StorageManager.swift */,
+				705D46DC287F69D700400E6D /* AlertManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				70A61F87287CC6FA00459114 /* EEController.swift in Sources */,
 				7092A868287C5FF20074DC5E /* AddDebtViewModel.swift in Sources */,
 				709745E6287631F50046EE06 /* UI-Extensions.swift in Sources */,
+				705D46DD287F69D700400E6D /* AlertManager.swift in Sources */,
 				708AFAD92878C919009726DC /* AddMovementViewModel.swift in Sources */,
 				7023B9B1287B4DA4000FD45C /* DebtsViewModel.swift in Sources */,
 				700A6F91287361E4002A3F8E /* AppDelegate.swift in Sources */,

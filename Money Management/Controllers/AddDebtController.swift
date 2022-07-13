@@ -18,6 +18,7 @@ class AddDebtController: UIViewController, UITextFieldDelegate {
     
     private let addDebtViewModel = AddDebtViewModel()
     private let storageManager = StorageManager()
+    private let alertManager = AlertManager()
     
     var selectedType: DebtType {
         return segmentedControl.selectedSegmentIndex == 0 ? .Debt : .Debtor
@@ -25,6 +26,7 @@ class AddDebtController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        alertManager.setViewController(self)
         addDebtViewModel.setUpTexts(txt_name, txt_amount)
         addDebtViewModel.setUpBtn(btn_save,btn_cancel)
         addDebtViewModel.setUpSegmentedControl(segmentedControl)
@@ -48,6 +50,10 @@ class AddDebtController: UIViewController, UITextFieldDelegate {
             addDebtViewModel.postNotification()
             storageManager.save(mm, fileName: jsonFileName)
             dismiss(animated: true)
+        } catch ValidationErrors.emptyText{
+            alertManager.simpleAlert(title: titleError, message: messageEmpty)
+        } catch ValidationErrors.notNumberChar {
+            alertManager.simpleAlert(title: titleError, message: messageNotNumber)
         } catch {
             print(error)
         }
