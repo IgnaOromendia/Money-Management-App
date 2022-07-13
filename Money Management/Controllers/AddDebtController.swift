@@ -16,7 +16,8 @@ class AddDebtController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btn_cancel: UIButton!
     @IBOutlet weak var view_popOver: UIView!
     
-    let addDebtViewModel = AddDebtViewModel()
+    private let addDebtViewModel = AddDebtViewModel()
+    private let storageManager = StorageManager()
     
     var selectedType: DebtType {
         return segmentedControl.selectedSegmentIndex == 0 ? .Debt : .Debtor
@@ -45,6 +46,7 @@ class AddDebtController: UIViewController, UITextFieldDelegate {
             let data = try addDebtViewModel.validation(name: txt_name.text, amount: txt_amount.text, type: selectedType)
             addDebtViewModel.add(of: data)
             addDebtViewModel.postNotification()
+            storageManager.save(mm, fileName: jsonFileName)
             dismiss(animated: true)
         } catch {
             print(error)

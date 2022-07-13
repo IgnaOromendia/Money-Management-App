@@ -55,6 +55,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     
     // VARIABLES
     private let addMovViewModel = AddMovementViewModel()
+    private let storageManager = StorageManager()
     private let validation = DataValidation()
     private var selectedDate = Date.now
     private var selectedMovement: Movement = .Expense
@@ -124,6 +125,8 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
             } else {
                 try mm.addEarnings(product: product, on: selectedDate)
             }
+            
+            storageManager.save(mm, fileName: jsonFileName)
             
             navigationController?.popViewController(animated: true)
         } catch {

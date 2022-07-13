@@ -27,6 +27,8 @@
 		7023B9AF287B4D7D000FD45C /* DebtsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023B9AD287B4D7D000FD45C /* DebtsController.swift */; };
 		7023B9B1287B4DA4000FD45C /* DebtsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */; };
 		7023B9B2287B4DA4000FD45C /* DebtsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */; };
+		708760CB287F1C910019D829 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708760CA287F1C910019D829 /* StorageManager.swift */; };
+		708760CD287F1DF40019D829 /* Product-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708760CC287F1DF40019D829 /* Product-Model.swift */; };
 		708AFAD62878C8D5009726DC /* AddMovementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD52878C8D5009726DC /* AddMovementController.swift */; };
 		708AFAD92878C919009726DC /* AddMovementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AFAD82878C919009726DC /* AddMovementViewModel.swift */; };
 		7092A865287C5F100074DC5E /* AddDebtController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7092A864287C5F100074DC5E /* AddDebtController.swift */; };
@@ -99,6 +101,8 @@
 		7023B9AA287B4D5B000FD45C /* DebtsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebtsCell.xib; sourceTree = "<group>"; };
 		7023B9AD287B4D7D000FD45C /* DebtsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsController.swift; sourceTree = "<group>"; };
 		7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewModel.swift; sourceTree = "<group>"; };
+		708760CA287F1C910019D829 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		708760CC287F1DF40019D829 /* Product-Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product-Model.swift"; sourceTree = "<group>"; };
 		708AFAD52878C8D5009726DC /* AddMovementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementController.swift; sourceTree = "<group>"; };
 		708AFAD82878C919009726DC /* AddMovementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementViewModel.swift; sourceTree = "<group>"; };
 		7092A864287C5F100074DC5E /* AddDebtController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDebtController.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				700A6FC92873694B002A3F8E /* MM-Model.swift */,
+				708760CC287F1DF40019D829 /* Product-Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,11 +225,12 @@
 		700A6FC328736221002A3F8E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				700A6FDD287394F5002A3F8E /* Global.swift */,
-				700A6FCB287369FD002A3F8E /* Constants.swift */,
-				70EA1CE8287A311500546031 /* Animations.swift */,
-				70EA1CDF2879E38300546031 /* DataValidation.swift */,
 				70EA1CE42879E65A00546031 /* Extensions */,
+				700A6FDD287394F5002A3F8E /* Global.swift */,
+				70EA1CE8287A311500546031 /* Animations.swift */,
+				700A6FCB287369FD002A3F8E /* Constants.swift */,
+				70EA1CDF2879E38300546031 /* DataValidation.swift */,
+				708760CA287F1C910019D829 /* StorageManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -425,6 +431,8 @@
 			files = (
 				70E6A96128774AAC005E9E4C /* ExpensesCell.swift in Sources */,
 				700A6FD0287376B0002A3F8E /* Date-Extension.swift in Sources */,
+				708760CB287F1C910019D829 /* StorageManager.swift in Sources */,
+				708760CD287F1DF40019D829 /* Product-Model.swift in Sources */,
 				7023B9AB287B4D5B000FD45C /* DebtsCell.swift in Sources */,
 				70A61F87287CC6FA00459114 /* EEController.swift in Sources */,
 				7092A868287C5FF20074DC5E /* AddDebtViewModel.swift in Sources */,

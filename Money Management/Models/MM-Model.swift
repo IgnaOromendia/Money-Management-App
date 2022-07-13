@@ -7,47 +7,7 @@
 
 import Foundation
 
-struct Product: Hashable, Equatable, CustomStringConvertible {
-    let name: String
-    let price: Int
-    let category: Category
-    let movement: Movement
-    var quantity: Int
-    
-    var description: String {
-        return """
-        \nName: \(name)
-        Price: $\(price)
-        Category: \(category)
-        Movement: \(movement)
-        quantity: x\(quantity)
-        """
-    }
-    
-    static func == (lhs: Product, rhs: Product) -> Bool {
-        return lhs.name == rhs.name && lhs.price == rhs.price && lhs.category == rhs.category
-    }
-    
-    mutating func incrmentQuantity(by value: Int) {
-        self.quantity += value
-    }
-}
-
-struct ProductsData: Equatable, CustomStringConvertible {
-    var products: Set<Product>
-    var sum: Int
-    let date: DateComponents
-    
-    var description: String {
-        return """
-        prod: \(products)
-        sum: \(sum)
-        date: \(date)
-        """
-    }
-}
-
-class MoneyManagement {
+class MoneyManagement: Codable {
     private var expenses: Dictionary<DateComponents,ProductsData>
     private var earnings: Dictionary<DateComponents,ProductsData>
     private var monthlyExpenses: Array<Int>                         // 12 positions

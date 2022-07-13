@@ -7,13 +7,15 @@
 
 import UIKit
 
+var mm = MoneyManagement()
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    private let storageManager = StorageManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        mm = storageManager.fetch(for: jsonFileName)
         return true
     }
 

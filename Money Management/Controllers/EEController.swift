@@ -13,8 +13,9 @@ class EEController: UITableViewController {
     @IBOutlet weak var btn_edit: UIBarButtonItem!
     @IBOutlet weak var btn_trash: UIBarButtonItem!
     
-    let eeViewModel = EEViewModel(mm)
-    var deleteIndexes: Array<(DateComponents,Product)> = []
+    private let eeViewModel = EEViewModel(mm)
+    private var deleteIndexes: Array<(DateComponents,Product)> = []
+    private let storageManager = StorageManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,7 @@ class EEController: UITableViewController {
         deleteIndexes.removeAll()
         tableView.reloadData()
         eeViewModel.setEditStyle(tableView, btn_edit, btn_trash)
+        storageManager.save(mm, fileName: jsonFileName)
     }
     
     // TABLE VIEW

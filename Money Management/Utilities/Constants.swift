@@ -10,6 +10,9 @@ import UIKit
 
 // MARK: - CONSTANTS
 
+// File name
+let jsonFileName = "MoneyManagementData.json"
+
 // IDs
 let movementControllerID = "MovementControllerID"
 let addMovementControllerID = "AddMovementControllerID"
@@ -38,13 +41,13 @@ typealias UISearchBarMethods =  UISearchResultsUpdating & UISearchBarDelegate
 
 // MARK: - ENUM
 
-enum Movement {
+enum Movement: Codable {
     case Expense
     case Earning
     case Both
 }
 
-enum DebtType {
+enum DebtType: Codable {
     case Debt
     case Debtor
 }

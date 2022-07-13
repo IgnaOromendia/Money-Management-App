@@ -14,8 +14,9 @@ class DebtsController: UITableViewController, UIPopoverPresentationControllerDel
     @IBOutlet weak var btn_delete: UIBarButtonItem!
     
     // VARIABLES
-    let debtsViewModel = DebtsViewModel(mm)
-    var deleteIndexes: Array<Int> = []
+    private let storageManager = StorageManager()
+    private let debtsViewModel = DebtsViewModel(mm)
+    private var deleteIndexes: Array<Int> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class DebtsController: UITableViewController, UIPopoverPresentationControllerDel
         deleteIndexes.removeAll()
         tableView.reloadData()
         debtsViewModel.setUpEditingStyle(tableView, btn_edit, btn_add, btn_delete)
+        storageManager.save(mm, fileName: jsonFileName)
     }
     
     // TABLE VIEW

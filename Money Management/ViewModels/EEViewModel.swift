@@ -85,10 +85,13 @@ final class EEViewModel {
         tableView.allowsMultipleSelection = !isEditing
         
         if isEditing {
-            for sec in 0...numberOfSections-1 {
-                for row in 0...numberOfRowsPerSection[sec]-1 {
-                    let index = IndexPath(row: row, section: sec)
-                    tableView.cellForRow(at: index)?.setSelected(false, animated: true)
+            for sec in 0...numberOfSections {
+                print(sec)
+                if sec < numberOfRowsPerSection.count {
+                    for row in 0...numberOfRowsPerSection[sec] {
+                        let index = IndexPath(row: row, section: sec)
+                        tableView.cellForRow(at: index)?.setSelected(false, animated: true)
+                    }
                 }
             }
         }

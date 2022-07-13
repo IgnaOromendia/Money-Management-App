@@ -23,7 +23,7 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
     
     // Variables
     private let MCViewModel = MovementViewModel(mm)
-   
+    private let storageManager = StorageManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
