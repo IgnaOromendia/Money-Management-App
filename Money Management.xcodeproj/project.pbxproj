@@ -27,6 +27,10 @@
 		7023B9AF287B4D7D000FD45C /* DebtsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023B9AD287B4D7D000FD45C /* DebtsController.swift */; };
 		7023B9B1287B4DA4000FD45C /* DebtsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */; };
 		7023B9B2287B4DA4000FD45C /* DebtsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */; };
+		703B59BF2880B1C40017C29C /* AutomationManager-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B877132880691700C3BF54 /* AutomationManager-Model.swift */; };
+		703B59C02880B1C80017C29C /* Automation-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B8771528806E7D00C3BF54 /* Automation-Model.swift */; };
+		703B59C12880BEAE0017C29C /* Product-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708760CC287F1DF40019D829 /* Product-Model.swift */; };
+		703B59C32880BF0E0017C29C /* Automation_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B59C22880BF0E0017C29C /* Automation_tests.swift */; };
 		705D46DD287F69D700400E6D /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D46DC287F69D700400E6D /* AlertManager.swift */; };
 		708760CB287F1C910019D829 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708760CA287F1C910019D829 /* StorageManager.swift */; };
 		708760CD287F1DF40019D829 /* Product-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708760CC287F1DF40019D829 /* Product-Model.swift */; };
@@ -39,6 +43,10 @@
 		709745E6287631F50046EE06 /* UI-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709745E5287631F50046EE06 /* UI-Extensions.swift */; };
 		70A61F87287CC6FA00459114 /* EEController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A61F86287CC6FA00459114 /* EEController.swift */; };
 		70A61F89287CC78F00459114 /* EEViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A61F88287CC78F00459114 /* EEViewModel.swift */; };
+		70B87710288068A600C3BF54 /* AutomationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B8770F288068A600C3BF54 /* AutomationViewModel.swift */; };
+		70B87712288068C700C3BF54 /* AutomationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B87711288068C700C3BF54 /* AutomationController.swift */; };
+		70B877142880691700C3BF54 /* AutomationManager-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B877132880691700C3BF54 /* AutomationManager-Model.swift */; };
+		70B8771628806E7D00C3BF54 /* Automation-Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B8771528806E7D00C3BF54 /* Automation-Model.swift */; };
 		70E6A96128774AAC005E9E4C /* ExpensesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6A95F28774AAC005E9E4C /* ExpensesCell.swift */; };
 		70E6A96328774AAC005E9E4C /* ExpensesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E6A96028774AAC005E9E4C /* ExpensesCell.xib */; };
 		70EA1CE02879E38300546031 /* DataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA1CDF2879E38300546031 /* DataValidation.swift */; };
@@ -102,6 +110,7 @@
 		7023B9AA287B4D5B000FD45C /* DebtsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebtsCell.xib; sourceTree = "<group>"; };
 		7023B9AD287B4D7D000FD45C /* DebtsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsController.swift; sourceTree = "<group>"; };
 		7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewModel.swift; sourceTree = "<group>"; };
+		703B59C22880BF0E0017C29C /* Automation_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Automation_tests.swift; sourceTree = "<group>"; };
 		705D46DC287F69D700400E6D /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		708760CA287F1C910019D829 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		708760CC287F1DF40019D829 /* Product-Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product-Model.swift"; sourceTree = "<group>"; };
@@ -114,6 +123,10 @@
 		709745E5287631F50046EE06 /* UI-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI-Extensions.swift"; sourceTree = "<group>"; };
 		70A61F86287CC6FA00459114 /* EEController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EEController.swift; sourceTree = "<group>"; };
 		70A61F88287CC78F00459114 /* EEViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EEViewModel.swift; sourceTree = "<group>"; };
+		70B8770F288068A600C3BF54 /* AutomationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationViewModel.swift; sourceTree = "<group>"; };
+		70B87711288068C700C3BF54 /* AutomationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationController.swift; sourceTree = "<group>"; };
+		70B877132880691700C3BF54 /* AutomationManager-Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutomationManager-Model.swift"; sourceTree = "<group>"; };
+		70B8771528806E7D00C3BF54 /* Automation-Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Automation-Model.swift"; sourceTree = "<group>"; };
 		70E6A95F28774AAC005E9E4C /* ExpensesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesCell.swift; sourceTree = "<group>"; };
 		70E6A96028774AAC005E9E4C /* ExpensesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpensesCell.xib; sourceTree = "<group>"; };
 		70EA1CDF2879E38300546031 /* DataValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidation.swift; sourceTree = "<group>"; };
@@ -193,6 +206,7 @@
 				700A6FA7287361E9002A3F8E /* Money_ManagementTests.swift */,
 				70EA1CE52879E80100546031 /* Validation_test.swift */,
 				70EA1CFC287A3C7900546031 /* Extension_tests.swift */,
+				703B59C22880BF0E0017C29C /* Automation_tests.swift */,
 			);
 			path = "Money ManagementTests";
 			sourceTree = "<group>";
@@ -209,8 +223,10 @@
 		700A6FC028736202002A3F8E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				700A6FC92873694B002A3F8E /* MM-Model.swift */,
 				708760CC287F1DF40019D829 /* Product-Model.swift */,
+				700A6FC92873694B002A3F8E /* MM-Model.swift */,
+				70B8771528806E7D00C3BF54 /* Automation-Model.swift */,
+				70B877132880691700C3BF54 /* AutomationManager-Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,6 +262,7 @@
 				7023B9AD287B4D7D000FD45C /* DebtsController.swift */,
 				7092A864287C5F100074DC5E /* AddDebtController.swift */,
 				70A61F86287CC6FA00459114 /* EEController.swift */,
+				70B87711288068C700C3BF54 /* AutomationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -283,6 +300,7 @@
 				7023B9B0287B4DA4000FD45C /* DebtsViewModel.swift */,
 				7092A867287C5FF20074DC5E /* AddDebtViewModel.swift */,
 				70A61F88287CC78F00459114 /* EEViewModel.swift */,
+				70B8770F288068A600C3BF54 /* AutomationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -436,8 +454,11 @@
 				700A6FD0287376B0002A3F8E /* Date-Extension.swift in Sources */,
 				708760CB287F1C910019D829 /* StorageManager.swift in Sources */,
 				708760CD287F1DF40019D829 /* Product-Model.swift in Sources */,
+				70B877142880691700C3BF54 /* AutomationManager-Model.swift in Sources */,
 				7023B9AB287B4D5B000FD45C /* DebtsCell.swift in Sources */,
+				70B87712288068C700C3BF54 /* AutomationController.swift in Sources */,
 				70A61F87287CC6FA00459114 /* EEController.swift in Sources */,
+				70B8771628806E7D00C3BF54 /* Automation-Model.swift in Sources */,
 				7092A868287C5FF20074DC5E /* AddDebtViewModel.swift in Sources */,
 				709745E6287631F50046EE06 /* UI-Extensions.swift in Sources */,
 				705D46DD287F69D700400E6D /* AlertManager.swift in Sources */,
@@ -454,6 +475,7 @@
 				700A6FCC287369FD002A3F8E /* Constants.swift in Sources */,
 				7023B9AE287B4D7D000FD45C /* DebtsController.swift in Sources */,
 				70EA1CE02879E38300546031 /* DataValidation.swift in Sources */,
+				70B87710288068A600C3BF54 /* AutomationViewModel.swift in Sources */,
 				709745E028762EC00046EE06 /* MovementsViewModel.swift in Sources */,
 				709745DD28762EAE0046EE06 /* MovementsController.swift in Sources */,
 				7092A865287C5F100074DC5E /* AddDebtController.swift in Sources */,
@@ -470,6 +492,8 @@
 				70EA1CEF287A3C3100546031 /* Animations.swift in Sources */,
 				70EA1CF7287A3C3A00546031 /* MovementsViewModel.swift in Sources */,
 				70EA1CF1287A3C3500546031 /* Array-Extension.swift in Sources */,
+				703B59C02880B1C80017C29C /* Automation-Model.swift in Sources */,
+				703B59C32880BF0E0017C29C /* Automation_tests.swift in Sources */,
 				70EA1CF9287A3C4200546031 /* AddMovementController.swift in Sources */,
 				70EA1CF0287A3C3100546031 /* Global.swift in Sources */,
 				70EA1CFD287A3C7900546031 /* Extension_tests.swift in Sources */,
@@ -480,10 +504,12 @@
 				70EA1CF4287A3C3500546031 /* UI-Extensions.swift in Sources */,
 				7023B9AF287B4D7D000FD45C /* DebtsController.swift in Sources */,
 				70EA1CF5287A3C3800546031 /* MM-Model.swift in Sources */,
+				703B59C12880BEAE0017C29C /* Product-Model.swift in Sources */,
 				70EA1CF3287A3C3500546031 /* Set-Extension.swift in Sources */,
 				70EA1CED287A3C3100546031 /* DataValidation.swift in Sources */,
 				70EA1CEE287A3C3100546031 /* Constants.swift in Sources */,
 				7023B9B2287B4DA4000FD45C /* DebtsViewModel.swift in Sources */,
+				703B59BF2880B1C40017C29C /* AutomationManager-Model.swift in Sources */,
 				70EA1CF2287A3C3500546031 /* Date-Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

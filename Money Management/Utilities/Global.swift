@@ -8,7 +8,6 @@
 import Foundation
 
 // TO DO LIST
-// Poner alertas
 // Poder agregar gastos/ganacias automaticas
 // Graficos
 // Mejorar modo oscuro
@@ -32,4 +31,3 @@ import Foundation
 //let debts = ["Harry":100, "Lil":120, "John":300]
 //let debtors = ["Jake":420, "Ed":80, "George":175]
 // END of TEST coca, hielo-coca, mila
-

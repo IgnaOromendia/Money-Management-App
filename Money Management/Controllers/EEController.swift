@@ -116,6 +116,7 @@ class EEController: UITableViewController {
     
     @objc func refresh() {
         eeViewModel.updateData(from: mm)
+        //print("refresh")
         self.tableView.reloadData()
     }
 }

@@ -80,7 +80,7 @@ class MoneyManagement: Codable {
     // MARK: - Set functions
     
     /// Add an expense to a date
-    func addExpenses(product: Product,on d: Date) throws {
+    func addExpenses(product: Product,on d: Date) {
         let date = d.getKeyData()
         let expensesD = self.expenses[date]
         
@@ -106,13 +106,11 @@ class MoneyManagement: Codable {
         
         if let month = date.month {
             monthlyExpenses[month] += product.price
-        } else {
-            throw AddErrors.monthError
         }
     }
     
     /// Add an earning to a date
-    func addEarnings(product: Product,on d: Date) throws {
+    func addEarnings(product: Product,on d: Date) {
         let date = d.getKeyData()
         let earningD = self.earnings[date]
         
@@ -138,8 +136,6 @@ class MoneyManagement: Codable {
         
         if let month = date.month {
             monthlyEarnings[month] += product.price
-        } else {
-            throw AddErrors.monthError
         }
     }
     

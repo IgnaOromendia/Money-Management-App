@@ -594,6 +594,7 @@
                         <segue destination="Z77-jM-MEz" kind="relationship" relationship="viewControllers" id="ddi-wd-aro"/>
                         <segue destination="ukd-1u-LD0" kind="relationship" relationship="viewControllers" id="fey-ve-adV"/>
                         <segue destination="HIv-pd-T4W" kind="relationship" relationship="viewControllers" id="LES-d9-2ZL"/>
+                        <segue destination="Xx6-Gy-iZz" kind="relationship" relationship="viewControllers" id="D0L-lm-0IJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxj-Gt-IGP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -643,6 +644,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9n-kn-i7V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="31.884057971014496" y="122.54464285714285"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="6G4-Ob-yVa">
+            <objects>
+                <tableViewController id="JCj-Oa-NBM" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="il6-IA-0IM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <sections>
+                            <tableViewSection headerTitle="automation" id="9tj-55-Mjr">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="USS-oD-Arf">
+                                        <rect key="frame" x="20" y="32" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="USS-oD-Arf" id="D24-ie-ENA">
+                                            <rect key="frame" x="0.0" y="0.0" width="345.5" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add auotmatic movement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phw-gL-4AI">
+                                                    <rect key="frame" x="20" y="11" width="196" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Bbo-pH-eMH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="Phw-gL-4AI" secondAttribute="trailing" constant="138" id="4Iq-aQ-V6X"/>
+                                                <constraint firstItem="Phw-gL-4AI" firstAttribute="top" secondItem="D24-ie-ENA" secondAttribute="topMargin" id="8z4-o7-Cpx"/>
+                                                <constraint firstItem="Phw-gL-4AI" firstAttribute="centerY" secondItem="D24-ie-ENA" secondAttribute="centerY" id="Ry9-I6-SRx"/>
+                                                <constraint firstItem="Phw-gL-4AI" firstAttribute="leading" secondItem="D24-ie-ENA" secondAttribute="leadingMargin" id="eLL-eR-Z2u"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Q7h-2l-tIE" kind="show" trigger="accessoryAction" id="x4L-Bd-XGs"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="JCj-Oa-NBM" id="2Cu-AI-Z06"/>
+                            <outlet property="delegate" destination="JCj-Oa-NBM" id="f69-tq-xLD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="always" id="Npj-No-PaY"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IjQ-4t-igs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31.884057971014496" y="794.86607142857144"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7E8-6r-wlf">
+            <objects>
+                <viewController id="Q7h-2l-tIE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8iB-eV-p3q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="65f-u9-PL4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="njO-ud-UKM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H9j-Kx-Fof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="764" y="795"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="hEX-lZ-mJv">
+            <objects>
+                <navigationController id="Xx6-Gy-iZz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear.circle" catalog="system" selectedImage="gear.circle.fill" id="arz-tz-WhG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="sBS-BX-Uyf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JCj-Oa-NBM" kind="relationship" relationship="rootViewController" id="zEW-bq-lvs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pEx-oe-bkv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-681" y="795"/>
         </scene>
         <!--Add Debt Controller-->
         <scene sceneID="6v8-Mq-Tgi">
@@ -800,6 +886,8 @@
         <image name="balance" width="24" height="24"/>
         <image name="balance.fill" width="24" height="24"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="gear.circle" catalog="system" width="128" height="121"/>
+        <image name="gear.circle.fill" catalog="system" width="128" height="121"/>
         <image name="latch.2.case" catalog="system" width="128" height="100"/>
         <image name="latch.2.case.fill" catalog="system" width="128" height="100"/>
         <image name="list.bullet.rectangle.portrait" catalog="system" width="115" height="128"/>

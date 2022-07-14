@@ -117,19 +117,18 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveMovement(_ sender: UIButton) {
-        addMovViewModel.postNotification()
         do {
             let product = try addMovViewModel.createProduct(from: txt_title.text, txt_price.text, txt_category.text, txt_quantity.text, selectedMovement)
             try validation.futureDate(selectedDate)
             
             if selectedMovement == .Expense {
-                try mm.addExpenses(product: product, on: selectedDate)
+                mm.addExpenses(product: product, on: selectedDate)
             } else {
-                try mm.addEarnings(product: product, on: selectedDate)
+                mm.addEarnings(product: product, on: selectedDate)
             }
             
             storageManager.save(mm, fileName: jsonFileName)
-            
+            addMovViewModel.postNotification()
             navigationController?.popViewController(animated: true)
         } catch ValidationErrors.emptyText{
             alertManager.simpleAlert(title: titleError, message: messageEmpty)

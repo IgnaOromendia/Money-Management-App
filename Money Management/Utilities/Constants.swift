@@ -63,6 +63,16 @@ enum DebtType: Codable {
     case Debtor
 }
 
+enum Repetitions: Codable {
+    case EveryDay
+    case Weekly
+    case EveryTwoWeeks
+    case Monthly
+    case EveryThreeMonths
+    case EverySixMonths
+    case EveryYear
+}
+
 //  MARK: - ERRORS
 
 enum AddErrors: LocalizedError {
