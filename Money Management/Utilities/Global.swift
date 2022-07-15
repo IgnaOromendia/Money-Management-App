@@ -8,7 +8,8 @@
 import Foundation
 
 // TO DO LIST
-// Poder agregar gastos/ganacias automaticas
+// Diseñar la parte de gastos automaticos
+// Ver como agregar con el mismo view controller pero q no se agregue a money management
 // Graficos
 // Mejorar modo oscuro
 // Hacer que peudas elegir como aparecen ordenadas las deudas
