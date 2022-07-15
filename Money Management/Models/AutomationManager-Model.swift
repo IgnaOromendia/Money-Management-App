@@ -13,19 +13,24 @@ class AutomationManager: Codable {
     
     init(automations: Array<Automation>) {
         self.automations = automations
-        var dicDates: Dictionary<Repetitions,[Int]> = [:]
-        for (i,item) in automations.enumerated() {
-            if dicDates[item.getRepetitions()] == nil {
-                dicDates.updateValue([i], forKey: item.getRepetitions())
-            } else {
-                dicDates[item.getRepetitions()]!.append(i)
-            }
-        }
-        self.repetitions = dicDates
+        self.repetitions = [:]
+        self.repetitions = updateIndexes(with: automations)
     }
     
     convenience init() {
         self.init(automations: [])
+    }
+    
+    private func updateIndexes(with arr: Array<Automation>) -> Dictionary<Repetitions,Array<Int>> {
+        var result: Dictionary<Repetitions,[Int]> = [:]
+        for (i,item) in arr.enumerated() {
+            if result[item.getRepetitions()] == nil {
+                result.updateValue([i], forKey: item.getRepetitions())
+            } else {
+                result[item.getRepetitions()]!.append(i)
+            }
+        }
+        return result
     }
     
     // Get
@@ -46,9 +51,9 @@ class AutomationManager: Codable {
     func addAutomation(_ auto:Automation) {
         automations.append(auto)
         if repetitions[auto.getRepetitions()] == nil {
-            repetitions.updateValue([automations.endIndex], forKey: auto.getRepetitions())
+            repetitions.updateValue([automations.endIndex - 1], forKey: auto.getRepetitions())
         } else {
-            repetitions[auto.getRepetitions()]!.append(automations.endIndex)
+            repetitions[auto.getRepetitions()]!.append(automations.endIndex - 1)
         }
     }
     
@@ -62,6 +67,7 @@ class AutomationManager: Codable {
             let subindex = self.repetitions[auto.getRepetitions()]!.getIndex(of: index)!
             self.repetitions[auto.getRepetitions()]?.remove(at: subindex)
         }
+        self.repetitions = updateIndexes(with: self.automations)
     }
     
     /// Checks if any automation has passed his endingDate
@@ -76,14 +82,14 @@ class AutomationManager: Codable {
     }
     
     /// Apply the products corresoponding to today's date
-    func applyTodayProducts() {
+    func applyTodayProducts(to m: MoneyManagement) {
         let products = productsToApply()
         for product in products {
             switch product.movement {
             case .Earning:
-                mm.addEarnings(product: product, on: Date.now)
+                m.addEarnings(product: product, on: Date.now)
             case .Expense:
-                mm.addExpenses(product: product, on: Date.now)
+                m.addExpenses(product: product, on: Date.now)
             default:
                 print("Error")
             }
@@ -104,19 +110,19 @@ class AutomationManager: Codable {
     private func checkLastApplicationDate(_ last: Date, _ rep: Repetitions) -> Bool {
         switch rep {
         case .EveryDay:
-            return last.timeIntervalSinceNow > 86400
+            return -last.timeIntervalSinceNow > 86400
         case .Weekly:
-            return last.timeIntervalSinceNow > 604800
+            return -last.timeIntervalSinceNow > 604800
         case .EveryTwoWeeks:
-            return last.timeIntervalSinceNow > 1209600
+            return -last.timeIntervalSinceNow > 1209600
         case .Monthly:
-            return last.timeIntervalSinceNow > 2628001
+            return -last.timeIntervalSinceNow > 2628001
         case .EveryThreeMonths:
-            return last.timeIntervalSinceNow > 78884003
+            return -last.timeIntervalSinceNow > 78884003
         case .EverySixMonths:
-            return last.timeIntervalSinceNow > 15768006
+            return -last.timeIntervalSinceNow > 15768006
         case .EveryYear:
-            return last.timeIntervalSinceNow > 31536013
+            return -last.timeIntervalSinceNow > 31536013
         }
     }
     
