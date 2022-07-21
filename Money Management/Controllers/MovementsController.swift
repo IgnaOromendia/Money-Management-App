@@ -76,6 +76,12 @@ class MovementsController: UIViewController, UITableViewControllerMethods {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? AddMovementController {
+            vc.automationProduct = false
+        }
+    }
+    
     private func setUpController() {
         MCViewModel.setUpTableView(tableView_expenses)
         MCViewModel.setUpDayBalanceView(containerView: view_dayBalance,

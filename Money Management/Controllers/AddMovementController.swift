@@ -61,6 +61,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     private var selectedMovement: Movement = .Expense
     private let animator = Animator()
     private let alertManager = AlertManager()
+    var automationProduct = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
         addMovViewModel.setUpBtns(btn_save, btn_calendar)
         alertManager.setViewController(self)
     }
+    
     
     // TEXTFIELD
     
@@ -121,14 +123,16 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
             let product = try addMovViewModel.createProduct(from: txt_title.text, txt_price.text, txt_category.text, txt_quantity.text, selectedMovement)
             try validation.futureDate(selectedDate)
             
-            if selectedMovement == .Expense {
-                mm.addExpenses(product: product, on: selectedDate)
+            if !automationProduct {
+                addMovViewModel.addProduct(product, on: selectedDate, selectedMovement)
+                storageManager.save(mm, fileName: jsonFileName)
+                addMovViewModel.postNotification()
             } else {
-                mm.addEarnings(product: product, on: selectedDate)
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: automationID) as? AutomationController {
+                    //vc.product = product
+                }
             }
             
-            storageManager.save(mm, fileName: jsonFileName)
-            addMovViewModel.postNotification()
             navigationController?.popViewController(animated: true)
         } catch ValidationErrors.emptyText{
             alertManager.simpleAlert(title: titleError, message: messageEmpty)
@@ -144,6 +148,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
     // OTHERS
     
     private func setUpController() {
+        self.title = addMovementTitle
         view.backgroundColor = customBlue
         navigationController?.navigationBar.tintColor = .white
     }
@@ -176,7 +181,7 @@ class AddMovementController: UIViewController, UITextFieldDelegate {
             price = "\(priceInt * quantInt)"
             
             lbl_titleP.text = title.isEmpty ? "No-Name" : title
-            lbl_priceP.text = "-$" + (price.isEmpty ? "0" : price)
+            lbl_priceP.text = "$" + (price.isEmpty ? "0" : price)
             lbl_detailsP.text = cat + " x" + (quant.isEmpty ? "1" : quant)
         } catch ValidationErrors.emptyText{
             alertManager.simpleAlert(title: titleError, message: messageEmpty)

@@ -87,7 +87,7 @@ class MoneyManagement: Codable {
         if var expensesD = expensesD {
             if let oldProduct = expensesD.products.find(product) {
                 do {
-                    var newProduct = oldProduct
+                    let newProduct = oldProduct
                     newProduct.incrmentQuantity(by: product.quantity)
                     expensesD.sum -= (product.price * product.quantity)
                     try expensesD.products.replace(old: oldProduct, new: newProduct)
@@ -100,7 +100,7 @@ class MoneyManagement: Codable {
             }
             self.expenses.updateValue(expensesD, forKey: date)
         } else {
-            let data = ProductsData(products: [product], sum: -product.price, date: date)
+            let data = ProductsData(products: [product], sum: -(product.price * product.quantity), date: date)
             self.expenses.updateValue(data, forKey: date)
         }
         
@@ -117,7 +117,7 @@ class MoneyManagement: Codable {
         if var earningD = earningD {
             if let oldProduct = earningD.products.find(product) {
                 do {
-                    var newProduct = oldProduct
+                    let newProduct = oldProduct
                     newProduct.incrmentQuantity(by: product.quantity)
                     earningD.sum += (product.price * product.quantity)
                     try earningD.products.replace(old: oldProduct, new: newProduct)
@@ -130,7 +130,7 @@ class MoneyManagement: Codable {
             }
             self.earnings.updateValue(earningD, forKey: date)
         } else {
-            let data = ProductsData(products: [product], sum: product.price, date: date)
+            let data = ProductsData(products: [product], sum: product.price * product.quantity, date: date)
             self.earnings.updateValue(data, forKey: date)
         }
         
@@ -192,7 +192,7 @@ class MoneyManagement: Codable {
     
     // MARK: - Other funcitions
     
-    /// Retruns the amount of money earned or spent in that month
+    /// Returns the amount of money earned or spent in that month
     func monthlyMovement(_ month: Int, for m: Movement) -> Int {
         let monthMovement: Array<Int> = getAllMonthMovement(month,for: m).map({$0.sum})
         return monthMovement.reduce(0, +)

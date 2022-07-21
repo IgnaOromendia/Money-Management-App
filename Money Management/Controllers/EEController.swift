@@ -116,7 +116,7 @@ class EEController: UITableViewController {
     
     @objc func refresh() {
         eeViewModel.updateData(from: mm)
-        //print("refresh")
+        eeViewModel.setEditStyle(self.tableView, self.btn_edit, self.btn_trash)
         self.tableView.reloadData()
     }
 }

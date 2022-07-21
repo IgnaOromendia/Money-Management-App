@@ -58,8 +58,8 @@ final class EEViewModel {
     
     func updateData(from m: MoneyManagement) {
         self.arrEE = m.getAllMovements(for: .Both)
-        //self.expenses = m.getAllMovements(for: .Expense)
-        //self.earnings = m.getAllMovements(for: .Earning)
+        self.expenses = m.getAllMovements(for: .Expense)
+        self.earnings = m.getAllMovements(for: .Earning)
         self.selectedMov = .Both
         self.sectionTitles = getSectionTitles()
     }

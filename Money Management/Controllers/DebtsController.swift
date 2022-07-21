@@ -21,6 +21,7 @@ class DebtsController: UITableViewController, UIPopoverPresentationControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.title = debtTitle
         debtsViewModel.setUpTableView(tableView)
         addObserver()
         alertManager.setViewController(self)

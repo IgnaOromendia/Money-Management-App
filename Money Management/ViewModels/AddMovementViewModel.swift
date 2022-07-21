@@ -124,4 +124,11 @@ final class AddMovementViewModel {
         NotificationCenter.default.post(name: reloadDataMovNotification, object: nil)
     }
     
+    func addProduct(_ product: Product, on date: Date, _ movement: Movement) {
+        if movement == .Expense {
+            mm.addExpenses(product: product, on: date)
+        } else {
+            mm.addEarnings(product: product, on: date)
+        }
+    }
 }

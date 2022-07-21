@@ -26,6 +26,7 @@ class AddDebtController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.title = addDebtTitle
         alertManager.setViewController(self)
         addDebtViewModel.setUpTexts(txt_name, txt_amount)
         addDebtViewModel.setUpBtn(btn_save,btn_cancel)

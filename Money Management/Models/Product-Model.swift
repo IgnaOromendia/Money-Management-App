@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Product: Hashable, Equatable, CustomStringConvertible, Codable {
-    let name: String
+class Product: Hashable, Equatable, CustomStringConvertible, Codable {
+    let name: Name
     let price: Int
     let category: Category
     let movement: Movement
@@ -24,12 +24,36 @@ struct Product: Hashable, Equatable, CustomStringConvertible, Codable {
         """
     }
     
+    init(name: Name, price: Int, category: Category, movement: Movement, quantity: Int) {
+        self.name = name
+        self.price = price
+        self.category = category
+        self.movement = movement
+        self.quantity = quantity
+    }
+
+    convenience init() {
+        self.init(name: "No-name", price: 0, category: "No-cat", movement: .Expense, quantity: 1)
+    }
+    
     static func == (lhs: Product, rhs: Product) -> Bool {
         return lhs.name == rhs.name && lhs.price == rhs.price && lhs.category == rhs.category
     }
     
-    mutating func incrmentQuantity(by value: Int) {
+    static func != (lhs: Product, rhs: Product) -> Bool {
+        return lhs.name != rhs.name || lhs.price != rhs.price || lhs.category != rhs.category
+    }
+    
+    func incrmentQuantity(by value: Int) {
         self.quantity += value
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(price)
+        hasher.combine(category)
+        hasher.combine(movement)
+        hasher.combine(quantity)
     }
 }
 

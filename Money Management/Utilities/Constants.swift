@@ -18,6 +18,11 @@ let movementControllerID = "MovementControllerID"
 let addMovementControllerID = "AddMovementControllerID"
 let debtControllerID = "DebtControllerID"
 let eeControllerID = "EeControllerID"
+let automationID = "AutomationID"
+
+// Segue ID
+let addAutomation = "AddAutomationSegueID"
+let addMovement = "AddMovementSegueID"
 
 // Colors
 let customBlue = UIColor.rgbColor(r: 72, g: 129, b: 215)
@@ -32,6 +37,14 @@ let titleFontSize = 20.0
 // Notifications
 let reloadDataDebtNotification = Notification.Name("reloadDataDebt")
 let reloadDataMovNotification = Notification.Name("reloadDataMov")
+
+// View controllers title's
+let movementsTitle = "Movements"
+let addMovementTitle = "Add-Movement"
+let debtTitle = "Debts"
+let addDebtTitle = "Add-Debt"
+let expensesAndEarningsTitle = "Expenses-&-Earnings"
+let automationTitle = "Automation"
 
 // Alerts titles
 let titleError = "Error"
